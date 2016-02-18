@@ -1,0 +1,4 @@
+services:
+#    pidev_crowd_rise.example:
+#        class: PIDEV\CrowdRiseBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

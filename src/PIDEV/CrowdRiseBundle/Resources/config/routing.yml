@@ -1,0 +1,15 @@
+pidev_crowd_rise_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Default:index }
+
+pidev_crowd_rise_accueil:
+    path:     /accueil
+    defaults: { _controller: PIDEVCrowdRiseBundle:Default:accueil }
+    
+pidev_crowd_rise_projet:
+    path:     /projet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Default:projet }
+    
+pidev_crowd_rise_utilisable:
+    path:     /utilisable
+    defaults: { _controller: PIDEVCrowdRiseBundle:Default:utilisable }
