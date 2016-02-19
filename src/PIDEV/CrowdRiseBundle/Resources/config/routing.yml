@@ -13,3 +13,15 @@ pidev_crowd_rise_projet:
 pidev_crowd_rise_utilisable:
     path:     /utilisable
     defaults: { _controller: PIDEVCrowdRiseBundle:Default:utilisable }
+    
+pidev_crowd_rise_demandesolution:
+    path:     /demandesolution
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:demande }
+    
+pidev_crowd_rise_ajoutersolution:
+    path:     /ajoutersolution
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:ajouter }
+   
+pidev_crowd_rise_consultersolution:
+    path:     /consultersolution
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulter }
