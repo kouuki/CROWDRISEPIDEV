@@ -244,3 +244,11 @@ d94be5,::1,GET,http://localhost/Pidev/web/app_dev.php/register/,1455810851,
 4feed9,::1,GET,http://localhost/Pidev/web/app_dev.php/accueil,1455815750,
 9208cf,::1,GET,http://localhost/Pidev/web/app_dev.php/accueil,1455815795,
 >>>>>>> 91ed0747ed47227a13e03b116dfcaabe4f6734ed
+99118c,::1,GET,http://localhost/PIDEV/web/app_dev.php/accueil,1455923445,
+3c5972,::1,GET,http://localhost/PIDEV/web/app_dev.php/SupprimerProjet,1455923456,
+a07c9c,::1,GET,http://localhost/PIDEV/web/app_dev.php/RechercherProjet,1455923479,
+6a6d06,::1,GET,http://localhost/PIDEV/web/app_dev.php/ModifierProjet,1455923486,
+723c6b,::1,GET,http://localhost/PIDEV/web/app_dev.php/ListeProjet,1455923493,
+66d59f,::1,GET,http://localhost/PIDEV/web/app_dev.php/AjouterProjet,1455923498,d13e0a
+d13e0a,::1,GET,http://localhost/PIDEV/web/app_dev.php/AjouterProjet,1455923498,
+607931,::1,GET,http://localhost/PIDEV/web/app_dev.php/AjouterProjet,1455923514,
