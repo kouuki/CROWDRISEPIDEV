@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2e81e2,::1,GET,http://localhost/Pidev/web/app_dev.php/accueil,1455817534,
 ffd94c,::1,GET,http://localhost/Pidev/web/app_dev.php/register,1455817564,
 79cd5a,::1,GET,http://localhost/Pidev/web/app_dev.php/register/,1455817565,
@@ -237,3 +238,9 @@ ae0745,::1,GET,http://localhost/Pidev/web/app_dev.php/images/thumbs/winter-sun.j
 57c9e8,::1,GET,http://localhost/Pidev/web/app_dev.php/images/thumbs/woodstump.jpg,1455876740,
 3cd16b,::1,GET,http://localhost/Pidev/web/app_dev.php/images/thumbs/winter-2.jpg,1455876740,
 559fd8,::1,GET,http://localhost/Pidev/web/app_dev.php/images/thumbs/winter-sun.jpg,1455876740,
+=======
+92fd12,::1,GET,http://localhost/Pidev/web/app_dev.php/register,1455810850,
+d94be5,::1,GET,http://localhost/Pidev/web/app_dev.php/register/,1455810851,
+4feed9,::1,GET,http://localhost/Pidev/web/app_dev.php/accueil,1455815750,
+9208cf,::1,GET,http://localhost/Pidev/web/app_dev.php/accueil,1455815795,
+>>>>>>> 91ed0747ed47227a13e03b116dfcaabe4f6734ed
