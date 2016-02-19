@@ -20,6 +20,13 @@ class Solution
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idSolution;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=50, nullable=false)
+     */
+    private $titre;
 
     /**
      * @var string
