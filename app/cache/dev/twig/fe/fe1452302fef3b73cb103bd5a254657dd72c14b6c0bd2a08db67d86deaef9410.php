@@ -37,7 +37,7 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
         <div class = \"container slider-content\">
             <div class=\"row\">
                 <div class=\"col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12\">
-                    <h2>Ajoutez votre solution</h2>
+                    <h2>Ajoutez un nouveau Projet</h2>
 
                     <div class=\"panel panel-grey wow bounceInLeft\">
                         <div class=\"panel-heading\"></div>
@@ -46,27 +46,50 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
                                 <div class=\"form-body pal\">
                                     <div class=\"row\">
                                         <div class=\"col-md-12\">
-                                            <div class=\"form-group\">
-
-                                                <h3>titre du problème depuis la bd</h3>
+                                            <div class=\"input-icon\">
+                                                <i class=\"glyphicon glyphicon-pencil\"></i>  Titre du projet
+                                                <input id=\"titre\" type=\"text\" class=\"form-control\" required=\"required\"/>
                                             </div>
                                         </div>
-
                                     </div>
-
-                                    
                                     <div class=\"form-group\">
+
                                         <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-pencil\"></i>
-                                            <input type=\"text\" class=\"form-control\" required=\"required\"/>
+                                            <i class=\"glyphicon glyphicon-edit\"></i> Description du Projet
+                                            <textarea rows=\"5\" class=\"form-control\" required=\"required\" placeholder=\"Description du projet...\" ></textarea></div>
+                                    </div>
+                                    <div class=\"form-group\">
+                                        <input id=\"inputIncludeFile\" type=\"file\" placeholder=\"Include image\" multiple=\"true\" /></div>
+                                    <div class=\"input-icon\">
+                                        <i class=\"glyphicon glyphicon-th-list\"></i> Type De Financement
+                                        <select class=\"btn btn-default dropdown-toggle \">
+                                            <option value=\"Donnation\">Donnation</option>
+                                            <option value=\"Partenaire\">Partenaire</option>
+                                            <option value=\"Produit\">Produit</option>
+                                            <option value=\"Crédit\">Crédit</option>
+                                        </select>
+                                    </div>
+                                    <hr />
+                                    <i class=\"glyphicon glyphicon-calendar\"></i>  Date limite
+                                    <div class=\"container\">
+                                        <div class=\"row\">
+                                            <div class='col-sm-6'>
+                                                <div class=\"form-group\">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <input type='text' class=\"form-control\" />
+                                                        <span class=\"input-group-addon\">
+                                                            <span class=\"glyphicon glyphicon-calendar\"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <script type=\"text/javascript\">
+                                                \$(function () {
+                                                    \$('#datetimepicker1').datetimepicker();
+                                                });
+                                            </script>
                                         </div>
-                                    </div>
-
-                                    <div class=\"form-group\">
-
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-edit\"></i>
-                                            <textarea rows=\"10\" class=\"form-control\" required=\"required\">Modifier le text existant</textarea></div>
                                     </div>
                                 </div>
                                 <hr />
@@ -111,7 +134,7 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
 /*         <div class = "container slider-content">*/
 /*             <div class="row">*/
 /*                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">*/
-/*                     <h2>Ajoutez votre solution</h2>*/
+/*                     <h2>Ajoutez un nouveau Projet</h2>*/
 /* */
 /*                     <div class="panel panel-grey wow bounceInLeft">*/
 /*                         <div class="panel-heading"></div>*/
@@ -120,27 +143,50 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
 /*                                 <div class="form-body pal">*/
 /*                                     <div class="row">*/
 /*                                         <div class="col-md-12">*/
-/*                                             <div class="form-group">*/
-/* */
-/*                                                 <h3>titre du problème depuis la bd</h3>*/
+/*                                             <div class="input-icon">*/
+/*                                                 <i class="glyphicon glyphicon-pencil"></i>  Titre du projet*/
+/*                                                 <input id="titre" type="text" class="form-control" required="required"/>*/
 /*                                             </div>*/
 /*                                         </div>*/
-/* */
 /*                                     </div>*/
-/* */
-/*                                     */
 /*                                     <div class="form-group">*/
+/* */
 /*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-pencil"></i>*/
-/*                                             <input type="text" class="form-control" required="required"/>*/
+/*                                             <i class="glyphicon glyphicon-edit"></i> Description du Projet*/
+/*                                             <textarea rows="5" class="form-control" required="required" placeholder="Description du projet..." ></textarea></div>*/
+/*                                     </div>*/
+/*                                     <div class="form-group">*/
+/*                                         <input id="inputIncludeFile" type="file" placeholder="Include image" multiple="true" /></div>*/
+/*                                     <div class="input-icon">*/
+/*                                         <i class="glyphicon glyphicon-th-list"></i> Type De Financement*/
+/*                                         <select class="btn btn-default dropdown-toggle ">*/
+/*                                             <option value="Donnation">Donnation</option>*/
+/*                                             <option value="Partenaire">Partenaire</option>*/
+/*                                             <option value="Produit">Produit</option>*/
+/*                                             <option value="Crédit">Crédit</option>*/
+/*                                         </select>*/
+/*                                     </div>*/
+/*                                     <hr />*/
+/*                                     <i class="glyphicon glyphicon-calendar"></i>  Date limite*/
+/*                                     <div class="container">*/
+/*                                         <div class="row">*/
+/*                                             <div class='col-sm-6'>*/
+/*                                                 <div class="form-group">*/
+/*                                                     <div class='input-group date' id='datetimepicker1'>*/
+/*                                                         <input type='text' class="form-control" />*/
+/*                                                         <span class="input-group-addon">*/
+/*                                                             <span class="glyphicon glyphicon-calendar"></span>*/
+/*                                                         </span>*/
+/*                                                     </div>*/
+/*                                                 </div>*/
+/*                                             </div>*/
+/* */
+/*                                             <script type="text/javascript">*/
+/*                                                 $(function () {*/
+/*                                                     $('#datetimepicker1').datetimepicker();*/
+/*                                                 });*/
+/*                                             </script>*/
 /*                                         </div>*/
-/*                                     </div>*/
-/* */
-/*                                     <div class="form-group">*/
-/* */
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-edit"></i>*/
-/*                                             <textarea rows="10" class="form-control" required="required">Modifier le text existant</textarea></div>*/
 /*                                     </div>*/
 /*                                 </div>*/
 /*                                 <hr />*/
