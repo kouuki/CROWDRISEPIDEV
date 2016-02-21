@@ -25,7 +25,27 @@ pidev_crowd_rise_ajoutersolution:
 pidev_crowd_rise_consultersolution:
     path:     /consultersolution
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulter }
-    
+
 pidev_crowd_rise_modifiersolution:
     path:     /modifiersolution
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:modifier }
+    
+pidev_crowd_rise_AjouterProjet:
+    path:     /AjouterProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:AjouterProjet }
+    
+pidev_crowd_rise_ListeProjet:
+    path:     /ListeProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ListeProjet }
+    
+pidev_crowd_rise_ModifierProjet:
+    path:     /ModifierProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ModifierProjet }
+    
+pidev_crowd_rise_RechercherProjet:
+    path:     /RechercherProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:RechercherProjet }
+   
+pidev_crowd_rise_SupprimerProjet:
+    path:     /SupprimerProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:SupprimerProjet }

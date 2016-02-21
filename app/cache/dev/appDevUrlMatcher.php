@@ -162,9 +162,35 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterAction',  '_route' => 'pidev_crowd_rise_consultersolution',);
         }
 
+<<<<<<< HEAD
         // pidev_crowd_rise_modifiersolution
         if ($pathinfo === '/modifiersolution') {
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::modifierAction',  '_route' => 'pidev_crowd_rise_modifiersolution',);
+=======
+        // pidev_crowd_rise_AjouterProjet
+        if ($pathinfo === '/AjouterProjet') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::AjouterProjetAction',  '_route' => 'pidev_crowd_rise_AjouterProjet',);
+        }
+
+        // pidev_crowd_rise_ListeProjet
+        if ($pathinfo === '/ListeProjet') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ListeProjetAction',  '_route' => 'pidev_crowd_rise_ListeProjet',);
+        }
+
+        // pidev_crowd_rise_ModifierProjet
+        if ($pathinfo === '/ModifierProjet') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ModifierProjetAction',  '_route' => 'pidev_crowd_rise_ModifierProjet',);
+        }
+
+        // pidev_crowd_rise_RechercherProjet
+        if ($pathinfo === '/RechercherProjet') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::RechercherProjetAction',  '_route' => 'pidev_crowd_rise_RechercherProjet',);
+        }
+
+        // pidev_crowd_rise_SupprimerProjet
+        if ($pathinfo === '/SupprimerProjet') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::SupprimerProjetAction',  '_route' => 'pidev_crowd_rise_SupprimerProjet',);
+>>>>>>> koukiProjet
         }
 
         // homepage

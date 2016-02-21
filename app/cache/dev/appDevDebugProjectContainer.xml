@@ -3106,7 +3106,11 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
+<<<<<<< HEAD
             <argument>56c99897ca6aa7.78674259</argument>
+=======
+            <argument>56c7a0f3c8ca10.24420853</argument>
+>>>>>>> koukiProjet
           </service>
         </argument>
       </argument>
@@ -3385,7 +3389,11 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
+<<<<<<< HEAD
             <argument>56c99897ca6aa7.78674259</argument>
+=======
+            <argument>56c7a0f3c8ca10.24420853</argument>
+>>>>>>> koukiProjet
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
