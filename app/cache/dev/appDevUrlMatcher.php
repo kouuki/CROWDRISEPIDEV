@@ -159,12 +159,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // pidev_crowd_rise_consultersolution
         if ($pathinfo === '/consultersolution') {
-            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterAction',  '_route' => 'pidev_crowd_rise_consultersolution',);
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterSolutionAction',  '_route' => 'pidev_crowd_rise_consultersolution',);
         }
 
         // pidev_crowd_rise_modifiersolution
         if ($pathinfo === '/modifiersolution') {
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::modifierAction',  '_route' => 'pidev_crowd_rise_modifiersolution',);
+        }
+
+        // pidev_crowd_rise_ajoutDemande
+        if ($pathinfo === '/ajoutDemande') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::ajoutDemandeAction',  '_route' => 'pidev_crowd_rise_ajoutDemande',);
+        }
+
+        // pidev_crowd_rise_deleteSolution
+        if (0 === strpos($pathinfo, '/deleteSolution') && preg_match('#^/deleteSolution/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_deleteSolution')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::deleteSolutionAction',));
+        }
+
+        // pidev_crowd_rise_updateSolution
+        if (0 === strpos($pathinfo, '/updateSolution') && preg_match('#^/updateSolution/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_updateSolution')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::updateSolutionAction',));
         }
 
         // homepage

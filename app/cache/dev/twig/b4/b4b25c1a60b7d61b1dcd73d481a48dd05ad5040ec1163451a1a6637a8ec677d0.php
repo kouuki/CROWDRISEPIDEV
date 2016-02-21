@@ -42,14 +42,17 @@ class __TwigTemplate_8fe49d48571df8e3ecec602a117a1e7aad6ab09a61b6ae14c7e127b75d8
                     <div class=\"panel panel-grey wow bounceInLeft\">
                         <div class=\"panel-heading\"></div>
                         <div class=\"panel-body pan\">
-                            <form action=\"#\">
+                            <form action=\"#\" method=\"POST\">
                                 <div class=\"form-body pal\">
                                     <div class=\"row\">
                                         <div class=\"col-md-12\">
                                             <div class=\"form-group\">
                                                 <div class=\"input-icon\">
                                                     <i class=\"glyphicon glyphicon-pencil\"></i>
-                                                    <input type=\"text\" placeholder=\"Entrez un titre\" class=\"form-control\" value=\"methode1\" required=\"required\"/> </div>
+                                                    <input type=\"text\" placeholder=\"Entrez un titre\" class=\"form-control\" required=\"required\" ";
+        // line 24
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "titre", array()), 'widget');
+        echo " </div>
                                                     
                                                     <div class=\"extra-space-m\" style=\"background-color: white\"></div>
                                                     
@@ -63,12 +66,17 @@ class __TwigTemplate_8fe49d48571df8e3ecec602a117a1e7aad6ab09a61b6ae14c7e127b75d8
 
                                         <div class=\"input-icon\">
                                             <i class=\"glyphicon glyphicon-edit\"></i>
-                                            <textarea rows=\"10\" placeholder=\"Ajoutez une description\" class=\"form-control\" required=\"required\">methode</textarea></div>
+                                            <textarea rows=\"5\" placeholder=\"Ajoutez une description\" class=\"form-control\" required=\"required\"  ";
+        // line 38
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "description", array()), 'widget');
+        echo "</textarea></div>
                                     </div>
                                 </div>
                                 <div class=\"form-actions text-right pal\">
-                                    <button type=\"submit\" class=\"btn btn-primary\" style=\"background-color: #363940\">
-                                        Enregistrer</button>
+                                  <div action=";
+        // line 42
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), 'rest');
+        echo "
                                 </div>
                             </form>
                         </div>
@@ -91,7 +99,7 @@ class __TwigTemplate_8fe49d48571df8e3ecec602a117a1e7aad6ab09a61b6ae14c7e127b75d8
 
     public function getDebugInfo()
     {
-        return array (  31 => 3,  28 => 2,  11 => 1,);
+        return array (  78 => 42,  71 => 38,  54 => 24,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}*/
@@ -110,14 +118,14 @@ class __TwigTemplate_8fe49d48571df8e3ecec602a117a1e7aad6ab09a61b6ae14c7e127b75d8
 /*                     <div class="panel panel-grey wow bounceInLeft">*/
 /*                         <div class="panel-heading"></div>*/
 /*                         <div class="panel-body pan">*/
-/*                             <form action="#">*/
+/*                             <form action="#" method="POST">*/
 /*                                 <div class="form-body pal">*/
 /*                                     <div class="row">*/
 /*                                         <div class="col-md-12">*/
 /*                                             <div class="form-group">*/
 /*                                                 <div class="input-icon">*/
 /*                                                     <i class="glyphicon glyphicon-pencil"></i>*/
-/*                                                     <input type="text" placeholder="Entrez un titre" class="form-control" value="methode1" required="required"/> </div>*/
+/*                                                     <input type="text" placeholder="Entrez un titre" class="form-control" required="required" {{ form_widget(Form.titre)}} </div>*/
 /*                                                     */
 /*                                                     <div class="extra-space-m" style="background-color: white"></div>*/
 /*                                                     */
@@ -131,12 +139,11 @@ class __TwigTemplate_8fe49d48571df8e3ecec602a117a1e7aad6ab09a61b6ae14c7e127b75d8
 /* */
 /*                                         <div class="input-icon">*/
 /*                                             <i class="glyphicon glyphicon-edit"></i>*/
-/*                                             <textarea rows="10" placeholder="Ajoutez une description" class="form-control" required="required">methode</textarea></div>*/
+/*                                             <textarea rows="5" placeholder="Ajoutez une description" class="form-control" required="required"  {{ form_widget(Form.description)}}</textarea></div>*/
 /*                                     </div>*/
 /*                                 </div>*/
 /*                                 <div class="form-actions text-right pal">*/
-/*                                     <button type="submit" class="btn btn-primary" style="background-color: #363940">*/
-/*                                         Enregistrer</button>*/
+/*                                   <div action={{ form_rest(Form) }}*/
 /*                                 </div>*/
 /*                             </form>*/
 /*                         </div>*/

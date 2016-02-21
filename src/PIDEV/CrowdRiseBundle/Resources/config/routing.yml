@@ -24,8 +24,20 @@ pidev_crowd_rise_ajoutersolution:
    
 pidev_crowd_rise_consultersolution:
     path:     /consultersolution
-    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulter }
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterSolution }
     
 pidev_crowd_rise_modifiersolution:
     path:     /modifiersolution
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:modifier }
+    
+pidev_crowd_rise_ajoutDemande:
+    path:     /ajoutDemande
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:ajoutDemande }
+    
+pidev_crowd_rise_deleteSolution:
+    path:     /deleteSolution/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:deleteSolution }
+    
+pidev_crowd_rise_updateSolution:
+    path:     /updateSolution/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:updateSolution }

@@ -60,7 +60,7 @@ class Solution
      * @var integer
      * @ORM\ManyToOne(targetEntity="Membre")
      * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="Membre_id", referencedColumnName="id" , onDelete="CASCADE")
+     * @ORM\JoinColumn(name="Membre_id", referencedColumnName="id")
      * })
      */
     private $MembreId;

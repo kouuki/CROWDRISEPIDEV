@@ -43,9 +43,9 @@ class __TwigTemplate_4417e5daa54bab49ab0c92a5aa8781775b28e5ec1914ae0fa064fa379c6
                         <div class=\"panel-body pan\" style=\"background-color: white\">
 
 
-                            <div class=\"input-group\"> <span class=\"input-group-addon\">Filter</span>
+                            <div class=\"input-group\"> <span class=\"input-group-addon\">Rechercher</span>
 
-                                <input id=\"filter\" type=\"text\" class=\"form-control\" placeholder=\"Type here...\">
+                                <input id=\"filter\" type=\"text\" class=\"form-control\" placeholder=\"Ecrire ici ...\">
                             </div>
 
                             <table class=\"table table-striped col-lg-4\">
@@ -55,118 +55,54 @@ class __TwigTemplate_4417e5daa54bab49ab0c92a5aa8781775b28e5ec1914ae0fa064fa379c6
                                         <th>Problème</th> 
                                         <th>Modifier</th>
                                         <th>Supprimer</th>
-                                        <th>Evaluer</th>
 
                                     </tr>
                                 </thead>
                                 <tbody class=\"searchable\">
-
-                                    <tr>
-                                        <td>
-                                            <h4>  solution1</h4>
-                                            <p>iuzahqlnv</p>
-                                        </td>
-                                        <td>
-                                            <a href=\"#\">  problème3</a>
-                                        </td>
-                                        <td><a href=\"#\">Modifier</a></td>
-                                        <td><a href=\"#\">Supprimer</a></td>
-                                        <td>
-                                            <div class=\"form-group\">
-                                                <div class=\"rating\">
-                                                    <label for=\"reliability-5\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"overall-5\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-3\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-2\">
-                                                                <i class=\"fa fa-star text-yellow\"></i>
-                                                            </label>
-                                                            <label for=\"quality-1\">
-                                                                <i class=\"fa fa-star text-yellow\"></i>
-                                                            </label>
-
+                                    ";
+        // line 35
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["solutions"]) ? $context["solutions"] : $this->getContext($context, "solutions")));
+        foreach ($context['_seq'] as $context["_key"] => $context["solution"]) {
+            // line 36
+            echo "
+                                        <tr>
+                                            <td>
+                                                <a href=\"#\"><h6> ";
+            // line 39
+            echo twig_escape_filter($this->env, $this->getAttribute($context["solution"], "getTitre", array(), "method"), "html", null, true);
+            echo " <i class=\"glyphicon glyphicon-save small\"></i></h6></a>
+                                                <div class=\"item\">
+                                                    ";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["solution"], "getDescription", array(), "method"), "html", null, true);
+            echo "
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                            </td>
+                                            <td>
 
-                                        <td>
-                                            <h4>  solution2</h4>
-                                            <p>iuzahqlnv</p>
-                                        </td>
-                                        <td>
-                                            <a href=\"#\">  problème3</a>
-                                        </td>
+                                                <a href=\"#\">  ";
+            // line 46
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["solution"], "ProblemeId", array()), "getTitre", array(), "method"), "html", null, true);
+            echo "</a>
+                                            </td>
+                                            <td><a href=\"";
+            // line 48
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pidev_crowd_rise_updateSolution", array("id" => $this->getAttribute($context["solution"], "idSolution", array()))), "html", null, true);
+            echo "\"><i class=\"glyphicon glyphicon-edit\"></i></a></td>
+                                            <td><a href=\"";
+            // line 49
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pidev_crowd_rise_deleteSolution", array("id" => $this->getAttribute($context["solution"], "idSolution", array()))), "html", null, true);
+            echo "\"><i class=\"glyphicon glyphicon-trash\"></i></a></td>
 
-                                        <td><a href=\"#\">Modifier</a></td>
-                                        <td><a href=\"#\">Supprimer</a></td>
-
-                                        <td>
-                                            <div class=\"form-group\">
-                                                <div class=\"rating\">
-                                                    <label for=\"quality-5\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-4\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-3\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-2\">
-                                                                <i class=\"fa fa-star text-yellow\"></i>
-                                                            </label>
-                                                            <label for=\"quality-1\">
-                                                                <i class=\"fa fa-star text-yellow\"></i>
-                                                            </label>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-                                            <h4>  solution1</h4>
-                                            <p>iuzahqlnv</p>
-                                        </td>
-                                        <td>
-                                            <a href=\"#\">  problème3</a>
-                                        </td>
-                                        <td><a href=\"#\">Modifier</a></td>
-                                        <td><a href=\"#\">Supprimer</a></td>
-
-                                        <td>
-                                            <div class=\"form-group\">
-                                                <div class=\"rating\">
-                                                   <label for=\"quality-5\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-4\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-3\">
-                                                                <i class=\"fa fa-star\"></i>
-                                                            </label>
-                                                            <label for=\"quality-2\">
-                                                                <i class=\"fa fa-star text-yellow\"></i>
-                                                            </label>
-                                                            <label for=\"quality-1\">
-                                                                <i class=\"fa fa-star text-yellow\"></i>
-                                                            </label>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
+                                        </tr>
+                                    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['solution'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 53
+        echo "
 
                                 </tbody>
                             </table>
@@ -201,7 +137,7 @@ class __TwigTemplate_4417e5daa54bab49ab0c92a5aa8781775b28e5ec1914ae0fa064fa379c6
 
     public function getDebugInfo()
     {
-        return array (  31 => 4,  28 => 3,  11 => 2,);
+        return array (  105 => 53,  95 => 49,  91 => 48,  86 => 46,  78 => 41,  73 => 39,  68 => 36,  64 => 35,  31 => 4,  28 => 3,  11 => 2,);
     }
 }
 /* */
@@ -222,9 +158,9 @@ class __TwigTemplate_4417e5daa54bab49ab0c92a5aa8781775b28e5ec1914ae0fa064fa379c6
 /*                         <div class="panel-body pan" style="background-color: white">*/
 /* */
 /* */
-/*                             <div class="input-group"> <span class="input-group-addon">Filter</span>*/
+/*                             <div class="input-group"> <span class="input-group-addon">Rechercher</span>*/
 /* */
-/*                                 <input id="filter" type="text" class="form-control" placeholder="Type here...">*/
+/*                                 <input id="filter" type="text" class="form-control" placeholder="Ecrire ici ...">*/
 /*                             </div>*/
 /* */
 /*                             <table class="table table-striped col-lg-4">*/
@@ -234,117 +170,28 @@ class __TwigTemplate_4417e5daa54bab49ab0c92a5aa8781775b28e5ec1914ae0fa064fa379c6
 /*                                         <th>Problème</th> */
 /*                                         <th>Modifier</th>*/
 /*                                         <th>Supprimer</th>*/
-/*                                         <th>Evaluer</th>*/
 /* */
 /*                                     </tr>*/
 /*                                 </thead>*/
 /*                                 <tbody class="searchable">*/
+/*                                     {% for solution in solutions %}*/
 /* */
-/*                                     <tr>*/
-/*                                         <td>*/
-/*                                             <h4>  solution1</h4>*/
-/*                                             <p>iuzahqlnv</p>*/
-/*                                         </td>*/
-/*                                         <td>*/
-/*                                             <a href="#">  problème3</a>*/
-/*                                         </td>*/
-/*                                         <td><a href="#">Modifier</a></td>*/
-/*                                         <td><a href="#">Supprimer</a></td>*/
-/*                                         <td>*/
-/*                                             <div class="form-group">*/
-/*                                                 <div class="rating">*/
-/*                                                     <label for="reliability-5">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="overall-5">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-3">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-2">*/
-/*                                                                 <i class="fa fa-star text-yellow"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-1">*/
-/*                                                                 <i class="fa fa-star text-yellow"></i>*/
-/*                                                             </label>*/
-/* */
+/*                                         <tr>*/
+/*                                             <td>*/
+/*                                                 <a href="#"><h6> {{solution.getTitre()}} <i class="glyphicon glyphicon-save small"></i></h6></a>*/
+/*                                                 <div class="item">*/
+/*                                                     {{solution.getDescription()}}*/
 /*                                                 </div>*/
-/*                                             </div>*/
-/*                                         </td>*/
-/*                                     </tr>*/
-/*                                     <tr>*/
+/*                                             </td>*/
+/*                                             <td>*/
 /* */
-/*                                         <td>*/
-/*                                             <h4>  solution2</h4>*/
-/*                                             <p>iuzahqlnv</p>*/
-/*                                         </td>*/
-/*                                         <td>*/
-/*                                             <a href="#">  problème3</a>*/
-/*                                         </td>*/
+/*                                                 <a href="#">  {{solution.ProblemeId.getTitre()}}</a>*/
+/*                                             </td>*/
+/*                                             <td><a href="{{ path('pidev_crowd_rise_updateSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>*/
+/*                                             <td><a href="{{ path('pidev_crowd_rise_deleteSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-trash"></i></a></td>*/
 /* */
-/*                                         <td><a href="#">Modifier</a></td>*/
-/*                                         <td><a href="#">Supprimer</a></td>*/
-/* */
-/*                                         <td>*/
-/*                                             <div class="form-group">*/
-/*                                                 <div class="rating">*/
-/*                                                     <label for="quality-5">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-4">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-3">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-2">*/
-/*                                                                 <i class="fa fa-star text-yellow"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-1">*/
-/*                                                                 <i class="fa fa-star text-yellow"></i>*/
-/*                                                             </label>*/
-/* */
-/*                                                 </div>*/
-/*                                             </div>*/
-/*                                         </td>*/
-/*                                     </tr>*/
-/* */
-/*                                     <tr>*/
-/* */
-/*                                         <td>*/
-/*                                             <h4>  solution1</h4>*/
-/*                                             <p>iuzahqlnv</p>*/
-/*                                         </td>*/
-/*                                         <td>*/
-/*                                             <a href="#">  problème3</a>*/
-/*                                         </td>*/
-/*                                         <td><a href="#">Modifier</a></td>*/
-/*                                         <td><a href="#">Supprimer</a></td>*/
-/* */
-/*                                         <td>*/
-/*                                             <div class="form-group">*/
-/*                                                 <div class="rating">*/
-/*                                                    <label for="quality-5">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-4">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-3">*/
-/*                                                                 <i class="fa fa-star"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-2">*/
-/*                                                                 <i class="fa fa-star text-yellow"></i>*/
-/*                                                             </label>*/
-/*                                                             <label for="quality-1">*/
-/*                                                                 <i class="fa fa-star text-yellow"></i>*/
-/*                                                             </label>*/
-/* */
-/*                                                 </div>*/
-/*                                             </div>*/
-/*                                         </td>*/
-/*                                     </tr>*/
+/*                                         </tr>*/
+/*                                     {% endfor %}*/
 /* */
 /* */
 /*                                 </tbody>*/

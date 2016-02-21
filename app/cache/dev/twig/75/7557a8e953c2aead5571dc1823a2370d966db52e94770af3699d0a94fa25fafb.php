@@ -326,6 +326,37 @@ class __TwigTemplate_af6b392fd42e2c6460059e558dab68456fa2cf054479f800a41738a6ee8
     }(jQuery));
 
 });</script>
+<script>
+\$(function(){ /* to make sure the script runs after page load */
+
+\t\$('.item').each(function(event){ /* select all divs with the item class */
+\t
+\t\tvar max_length = 150; /* set the max content length before a read more link will be added */
+\t\t
+\t\tif(\$(this).html().length > max_length){ /* check for content length */
+\t\t\t
+\t\t\tvar short_content \t= \$(this).html().substr(0,max_length); /* split the content in two parts */
+\t\t\tvar long_content\t= \$(this).html().substr(max_length);
+\t\t\t
+\t\t\t\$(this).html(short_content+
+\t\t\t\t\t\t '<a href=\"#\" class=\"read_more\"><br/>Afficher la suite</a>'+
+\t\t\t\t\t\t '<span class=\"more_text\" style=\"display:none;\">'+long_content+'</span>'); /* Alter the html to allow the read more functionality */
+\t\t\t\t\t\t 
+\t\t\t\$(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
+ 
+\t\t\t\tevent.preventDefault(); /* prevent the a from changing the url */
+\t\t\t\t\$(this).hide(); /* hide the read more button */
+\t\t\t\t\$(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+\t\t 
+\t\t\t});
+\t\t\t
+\t\t}
+\t\t
+\t});
+ 
+ 
+});
+</script>
     </body> 
 
 
@@ -353,7 +384,7 @@ class __TwigTemplate_af6b392fd42e2c6460059e558dab68456fa2cf054479f800a41738a6ee8
 
     public function getDebugInfo()
     {
-        return array (  341 => 127,  338 => 126,  309 => 205,  303 => 202,  299 => 201,  295 => 200,  291 => 199,  287 => 198,  283 => 197,  279 => 196,  275 => 195,  271 => 194,  267 => 193,  263 => 192,  197 => 128,  195 => 126,  148 => 82,  144 => 81,  135 => 75,  100 => 43,  96 => 42,  92 => 41,  88 => 40,  84 => 39,  78 => 36,  74 => 35,  70 => 34,  64 => 31,  60 => 30,  56 => 29,  52 => 28,  48 => 27,  20 => 1,);
+        return array (  372 => 127,  369 => 126,  309 => 205,  303 => 202,  299 => 201,  295 => 200,  291 => 199,  287 => 198,  283 => 197,  279 => 196,  275 => 195,  271 => 194,  267 => 193,  263 => 192,  197 => 128,  195 => 126,  148 => 82,  144 => 81,  135 => 75,  100 => 43,  96 => 42,  92 => 41,  88 => 40,  84 => 39,  78 => 36,  74 => 35,  70 => 34,  64 => 31,  60 => 30,  56 => 29,  52 => 28,  48 => 27,  20 => 1,);
     }
 }
 /* <!doctype html>*/
@@ -579,6 +610,37 @@ class __TwigTemplate_af6b392fd42e2c6460059e558dab68456fa2cf054479f800a41738a6ee8
 /*     }(jQuery));*/
 /* */
 /* });</script>*/
+/* <script>*/
+/* $(function(){ /* to make sure the script runs after page load *//* */
+/* */
+/* 	$('.item').each(function(event){ /* select all divs with the item class *//* */
+/* 	*/
+/* 		var max_length = 150; /* set the max content length before a read more link will be added *//* */
+/* 		*/
+/* 		if($(this).html().length > max_length){ /* check for content length *//* */
+/* 			*/
+/* 			var short_content 	= $(this).html().substr(0,max_length); /* split the content in two parts *//* */
+/* 			var long_content	= $(this).html().substr(max_length);*/
+/* 			*/
+/* 			$(this).html(short_content+*/
+/* 						 '<a href="#" class="read_more"><br/>Afficher la suite</a>'+*/
+/* 						 '<span class="more_text" style="display:none;">'+long_content+'</span>'); /* Alter the html to allow the read more functionality *//* */
+/* 						 */
+/* 			$(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it *//* */
+/*  */
+/* 				event.preventDefault(); /* prevent the a from changing the url *//* */
+/* 				$(this).hide(); /* hide the read more button *//* */
+/* 				$(this).parents('.item').find('.more_text').show(); /* show the .more_text span *//* */
+/* 		 */
+/* 			});*/
+/* 			*/
+/* 		}*/
+/* 		*/
+/* 	});*/
+/*  */
+/*  */
+/* });*/
+/* </script>*/
 /*     </body> */
 /* */
 /* */
