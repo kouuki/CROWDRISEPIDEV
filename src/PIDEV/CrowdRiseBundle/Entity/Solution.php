@@ -27,6 +27,13 @@ class Solution
      * @ORM\Column(name="titre", type="string", length=50, nullable=false)
      */
     private $titre;
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="salaire", type="float")
+     */
+    private $salaire;
 
     /**
      * @var string
@@ -67,6 +74,70 @@ class Solution
      * 
      */
     private $ProblemeId;
+
+    function getIdSolution() {
+        return $this->idSolution;
+    }
+
+    function getTitre() {
+        return $this->titre;
+    }
+
+    function getSalaire() {
+        return $this->salaire;
+    }
+
+    function getDescription() {
+        return $this->description;
+    }
+
+    function getFichierSolution() {
+        return $this->fichierSolution;
+    }
+
+    function getEtat() {
+        return $this->etat;
+    }
+
+    function getMembreId() {
+        return $this->MembreId;
+    }
+
+    function getProblemeId() {
+        return $this->ProblemeId;
+    }
+
+    function setIdSolution($idSolution) {
+        $this->idSolution = $idSolution;
+    }
+
+    function setTitre($titre) {
+        $this->titre = $titre;
+    }
+
+    function setSalaire($salaire) {
+        $this->salaire = $salaire;
+    }
+
+    function setDescription($description) {
+        $this->description = $description;
+    }
+
+    function setFichierSolution($fichierSolution) {
+        $this->fichierSolution = $fichierSolution;
+    }
+
+    function setEtat($etat) {
+        $this->etat = $etat;
+    }
+
+    function setMembreId($MembreId) {
+        $this->MembreId = $MembreId;
+    }
+
+    function setProblemeId($ProblemeId) {
+        $this->ProblemeId = $ProblemeId;
+    }
 
 
 }

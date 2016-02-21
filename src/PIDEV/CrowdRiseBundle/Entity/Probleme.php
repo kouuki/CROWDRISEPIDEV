@@ -65,6 +65,62 @@ class Probleme
      */
     private $MembreId;
 
-    
+    function getIdProbleme() {
+        return $this->idProbleme;
+    }
+
+    function getTitre() {
+        return $this->titre;
+    }
+
+    function getDescription() {
+        return $this->description;
+    }
+
+    function getDateProbleme() {
+        return $this->dateProbleme;
+    }
+
+    function getDeadlineProbleme() {
+        return $this->deadlineProbleme;
+    }
+
+    function getFichierProbleme() {
+        return $this->fichierProbleme;
+    }
+
+    function getMembreId() {
+        return $this->MembreId;
+    }
+
+    function setIdProbleme($idProbleme) {
+        $this->idProbleme = $idProbleme;
+    }
+
+    function setTitre($titre) {
+        $this->titre = $titre;
+    }
+
+    function setDescription($description) {
+        $this->description = $description;
+    }
+
+    function setDateProbleme($dateProbleme) {
+        $this->dateProbleme = $dateProbleme;
+    }
+
+    function setDeadlineProbleme($deadlineProbleme) {
+        $this->deadlineProbleme = $deadlineProbleme;
+    }
+
+    function setFichierProbleme($fichierProbleme) {
+        $this->fichierProbleme = $fichierProbleme;
+    }
+
+    function setMembreId($MembreId) {
+        $this->MembreId = $MembreId;
+    }
+
+
 
 }

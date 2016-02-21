@@ -162,6 +162,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterAction',  '_route' => 'pidev_crowd_rise_consultersolution',);
         }
 
+        // pidev_crowd_rise_modifiersolution
+        if ($pathinfo === '/modifiersolution') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::modifierAction',  '_route' => 'pidev_crowd_rise_modifiersolution',);
+        }
+
         // homepage
         if ($pathinfo === '/app/example') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);

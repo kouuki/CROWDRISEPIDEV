@@ -308,7 +308,24 @@ class __TwigTemplate_af6b392fd42e2c6460059e558dab68456fa2cf054479f800a41738a6ee8
         // line 205
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("js/theme.js"), "html", null, true);
         echo "></script>
+        
+<script>\$(document).ready(function () {
 
+    (function (\$) {
+
+        \$('#filter').keyup(function () {
+
+            var rex = new RegExp(\$(this).val(), 'i');
+            \$('.searchable tr').hide();
+            \$('.searchable tr').filter(function () {
+                return rex.test(\$(this).text());
+            }).show();
+
+        })
+
+    }(jQuery));
+
+});</script>
     </body> 
 
 
@@ -336,7 +353,7 @@ class __TwigTemplate_af6b392fd42e2c6460059e558dab68456fa2cf054479f800a41738a6ee8
 
     public function getDebugInfo()
     {
-        return array (  324 => 127,  321 => 126,  309 => 205,  303 => 202,  299 => 201,  295 => 200,  291 => 199,  287 => 198,  283 => 197,  279 => 196,  275 => 195,  271 => 194,  267 => 193,  263 => 192,  197 => 128,  195 => 126,  148 => 82,  144 => 81,  135 => 75,  100 => 43,  96 => 42,  92 => 41,  88 => 40,  84 => 39,  78 => 36,  74 => 35,  70 => 34,  64 => 31,  60 => 30,  56 => 29,  52 => 28,  48 => 27,  20 => 1,);
+        return array (  341 => 127,  338 => 126,  309 => 205,  303 => 202,  299 => 201,  295 => 200,  291 => 199,  287 => 198,  283 => 197,  279 => 196,  275 => 195,  271 => 194,  267 => 193,  263 => 192,  197 => 128,  195 => 126,  148 => 82,  144 => 81,  135 => 75,  100 => 43,  96 => 42,  92 => 41,  88 => 40,  84 => 39,  78 => 36,  74 => 35,  70 => 34,  64 => 31,  60 => 30,  56 => 29,  52 => 28,  48 => 27,  20 => 1,);
     }
 }
 /* <!doctype html>*/
@@ -544,7 +561,24 @@ class __TwigTemplate_af6b392fd42e2c6460059e558dab68456fa2cf054479f800a41738a6ee8
 /* */
 /*         <!-- Theme JS -->*/
 /*         <script src={{ asset('js/theme.js') }}></script>*/
+/*         */
+/* <script>$(document).ready(function () {*/
 /* */
+/*     (function ($) {*/
+/* */
+/*         $('#filter').keyup(function () {*/
+/* */
+/*             var rex = new RegExp($(this).val(), 'i');*/
+/*             $('.searchable tr').hide();*/
+/*             $('.searchable tr').filter(function () {*/
+/*                 return rex.test($(this).text());*/
+/*             }).show();*/
+/* */
+/*         })*/
+/* */
+/*     }(jQuery));*/
+/* */
+/* });</script>*/
 /*     </body> */
 /* */
 /* */
