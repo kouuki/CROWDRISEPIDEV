@@ -37,4 +37,12 @@ private $nom;
      */
     private $adresse;
 
+    /**
+     * @var integer
+     * @ORM\OneToOne(targetEntity="Profil")
+     * @ORM\JoinColumns({
+     * @ORM\JoinColumn(name="profil_id", referencedColumnName="id" , onDelete="CASCADE")
+     * })
+     */
+private $profil;
 }
