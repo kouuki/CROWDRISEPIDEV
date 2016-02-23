@@ -17,3 +17,7 @@ pidev_crowd_rise_utilisable:
 pidev_profil_ajouter:
     path:     /ajoutProfil
     defaults: { _controller: PIDEVCrowdRiseBundle:Profil:ajout}
+
+pidev_profil_afficher:
+    path:     /afficheProfil/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Profil:affiche}

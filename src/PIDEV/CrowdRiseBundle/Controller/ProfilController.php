@@ -18,7 +18,7 @@ class ProfilController extends Controller
             $dateNaissance = $request->get('dateNaissance');
             $pseudo = $request->get('pseudo');
             $adresse = $request->get('adresse');
-            $image= $request->get('image');
+            $image = $request->get('image');
             $profession = $request->get('profession');
             $profil->setNom($nom);
             $profil->setPrenom($prenom);
@@ -30,8 +30,22 @@ class ProfilController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($profil);
             $em->flush();
+            //$this->redirectToRoute('pidev_profil_affiche',$id);
         }
 
         return $this->render('PIDEVCrowdRiseBundle:Profil:ajouter.html.twig');
+    }
+
+    public function afficheAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
+        return $this->render('PIDEVCrowdRiseBundle:Profil:affiche.html.twig',array('profil' => $profil));
+
+    }
+
+    public function ajoutCompetenceAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
+
     }
 }
