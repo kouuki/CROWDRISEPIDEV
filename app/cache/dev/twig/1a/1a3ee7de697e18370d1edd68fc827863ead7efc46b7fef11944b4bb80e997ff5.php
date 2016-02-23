@@ -38,46 +38,76 @@ class __TwigTemplate_48f980fb5980ec9dfb3e733c25c52a65b68c2097e638e8b38a3072d3dd5
         <div class = \"container slider-content\">
             <div class=\"row\">
                 <div class=\"col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12\">
-                    <h2>Ajoutez votre solution</h2>
+                    <h2>Chercher Solution</h2>
 
                     <div class=\"panel panel-grey wow bounceInLeft\">
                         <div class=\"panel-heading\"></div>
                         <div class=\"panel-body pan\">
-                            <form action=\"#\">
-                                <div class=\"form-body pal\">
-                                    <div class=\"row\">
-                                        <div class=\"col-md-12\">
-                                            <div class=\"form-group\">
 
-                                                <h3>titre du problème depuis la bd</h3>
-                                            </div>
-                                        </div>
+                            <div class=\"form-body pal\">
+                                <div class=\"row\">
+                                    <div class=\"col-md-12\">
+                                        <div class=\"form-group\">
+
+                                       
+                                        <div class=\"input-group\"> <span class=\"input-group-addon\">Rechercher</span>
+
+                                <input id=\"filter\" type=\"text\" class=\"form-control\" placeholder=\"Ecrire ici ...\">
+                            </div>
+                                        <table class=\"table table-striped col-lg-4\">
+                                            <thead>
+                                                <tr>
+                                                    <th>titre</th>
+                                                    <th>description</th>
+                                                    <th>typeFinancement</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class=\"searchable\">
+                                                ";
+        // line 39
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["projets"]) ? $context["projets"] : $this->getContext($context, "projets")));
+        foreach ($context['_seq'] as $context["_key"] => $context["projet"]) {
+            // line 40
+            echo "                                                    <tr>
+                                                        <td>";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["projet"], "titre", array()), "html", null, true);
+            echo "</td>
+                                                        <td>";
+            // line 42
+            echo twig_escape_filter($this->env, $this->getAttribute($context["projet"], "description", array()), "html", null, true);
+            echo "</td>
+                                                        <td>";
+            // line 43
+            echo twig_escape_filter($this->env, $this->getAttribute($context["projet"], "typeFinancement", array()), "html", null, true);
+            echo "</td>
+                                                        <td></td>
+                                                        ";
+            // line 46
+            echo "
+
+
+
+
+
+                                                    </tr>
+                                                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['projet'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 54
+        echo "                                                </tbody>
+                                        </table>
 
                                     </div>
 
-                                    
-                                    <div class=\"form-group\">
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-pencil\"></i>
-                                            <input type=\"text\" class=\"form-control\" required=\"required\"/>
-                                        </div>
-                                    </div>
-
-                                    <div class=\"form-group\">
-
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-edit\"></i>
-                                            <textarea rows=\"10\" class=\"form-control\" required=\"required\">Modifier le text existant</textarea></div>
-                                    </div>
                                 </div>
-                                <hr />
-                                <div class=\"form-group\">
-                                    <input id=\"inputIncludeFile\" type=\"file\" placeholder=\"Inlcude some file\" /></div>
-                                <div class=\"form-actions text-right pal\">
-                                    <button type=\"submit\" class=\"btn btn-primary\" style=\"background-color: #363940\">
-                                        Envoyer</button>
-                                </div>
-                            </form>
+
+
+                                
                         </div>
                     </div>
                 </div>
@@ -98,7 +128,7 @@ class __TwigTemplate_48f980fb5980ec9dfb3e733c25c52a65b68c2097e638e8b38a3072d3dd5
 
     public function getDebugInfo()
     {
-        return array (  31 => 3,  28 => 2,  11 => 1,);
+        return array (  102 => 54,  89 => 46,  84 => 43,  80 => 42,  76 => 41,  73 => 40,  69 => 39,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}*/
@@ -113,46 +143,56 @@ class __TwigTemplate_48f980fb5980ec9dfb3e733c25c52a65b68c2097e638e8b38a3072d3dd5
 /*         <div class = "container slider-content">*/
 /*             <div class="row">*/
 /*                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">*/
-/*                     <h2>Ajoutez votre solution</h2>*/
+/*                     <h2>Chercher Solution</h2>*/
 /* */
 /*                     <div class="panel panel-grey wow bounceInLeft">*/
 /*                         <div class="panel-heading"></div>*/
 /*                         <div class="panel-body pan">*/
-/*                             <form action="#">*/
-/*                                 <div class="form-body pal">*/
-/*                                     <div class="row">*/
-/*                                         <div class="col-md-12">*/
-/*                                             <div class="form-group">*/
 /* */
-/*                                                 <h3>titre du problème depuis la bd</h3>*/
-/*                                             </div>*/
-/*                                         </div>*/
+/*                             <div class="form-body pal">*/
+/*                                 <div class="row">*/
+/*                                     <div class="col-md-12">*/
+/*                                         <div class="form-group">*/
+/* */
+/*                                        */
+/*                                         <div class="input-group"> <span class="input-group-addon">Rechercher</span>*/
+/* */
+/*                                 <input id="filter" type="text" class="form-control" placeholder="Ecrire ici ...">*/
+/*                             </div>*/
+/*                                         <table class="table table-striped col-lg-4">*/
+/*                                             <thead>*/
+/*                                                 <tr>*/
+/*                                                     <th>titre</th>*/
+/*                                                     <th>description</th>*/
+/*                                                     <th>typeFinancement</th>*/
+/* */
+/*                                                 </tr>*/
+/*                                             </thead>*/
+/*                                             <tbody class="searchable">*/
+/*                                                 {% for projet in projets %}*/
+/*                                                     <tr>*/
+/*                                                         <td>{{projet.titre}}</td>*/
+/*                                                         <td>{{projet.description}}</td>*/
+/*                                                         <td>{{projet.typeFinancement}}</td>*/
+/*                                                         <td></td>*/
+/*                                                         {# <td><img height="150px" src="{{ asset(path('my_image_route', {'id': projet.idProjet})) }}"/> </td>#}*/
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+/*                                                     </tr>*/
+/*                                                 {% endfor %}*/
+/*                                                 </tbody>*/
+/*                                         </table>*/
 /* */
 /*                                     </div>*/
 /* */
-/*                                     */
-/*                                     <div class="form-group">*/
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-pencil"></i>*/
-/*                                             <input type="text" class="form-control" required="required"/>*/
-/*                                         </div>*/
-/*                                     </div>*/
-/* */
-/*                                     <div class="form-group">*/
-/* */
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-edit"></i>*/
-/*                                             <textarea rows="10" class="form-control" required="required">Modifier le text existant</textarea></div>*/
-/*                                     </div>*/
 /*                                 </div>*/
-/*                                 <hr />*/
-/*                                 <div class="form-group">*/
-/*                                     <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" /></div>*/
-/*                                 <div class="form-actions text-right pal">*/
-/*                                     <button type="submit" class="btn btn-primary" style="background-color: #363940">*/
-/*                                         Envoyer</button>*/
-/*                                 </div>*/
-/*                             </form>*/
+/* */
+/* */
+/*                                 */
 /*                         </div>*/
 /*                     </div>*/
 /*                 </div>*/

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class SolutionController extends Controller {
 
     public function demandeAction() {
+        $form = $this->createForm(new ImageForm(), $im);
         return $this->render('PIDEVCrowdRiseBundle:Solution:demandesolution.html.twig', array());
     }
     

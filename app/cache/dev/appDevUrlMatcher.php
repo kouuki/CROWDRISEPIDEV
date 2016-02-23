@@ -162,24 +162,24 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterAction',  '_route' => 'pidev_crowd_rise_consultersolution',);
         }
 
-<<<<<<< HEAD
         // pidev_crowd_rise_modifiersolution
         if ($pathinfo === '/modifiersolution') {
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::modifierAction',  '_route' => 'pidev_crowd_rise_modifiersolution',);
-=======
+        }
+
         // pidev_crowd_rise_AjouterProjet
         if ($pathinfo === '/AjouterProjet') {
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::AjouterProjetAction',  '_route' => 'pidev_crowd_rise_AjouterProjet',);
         }
 
-        // pidev_crowd_rise_ListeProjet
+        // pidev_crowd_rise_ListProjet
         if ($pathinfo === '/ListeProjet') {
-            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ListeProjetAction',  '_route' => 'pidev_crowd_rise_ListeProjet',);
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ListProjetAction',  '_route' => 'pidev_crowd_rise_ListProjet',);
         }
 
         // pidev_crowd_rise_ModifierProjet
-        if ($pathinfo === '/ModifierProjet') {
-            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ModifierProjetAction',  '_route' => 'pidev_crowd_rise_ModifierProjet',);
+        if (0 === strpos($pathinfo, '/ModifierProjet') && preg_match('#^/ModifierProjet/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_ModifierProjet')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ModifierProjetAction',));
         }
 
         // pidev_crowd_rise_RechercherProjet
@@ -188,9 +188,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // pidev_crowd_rise_SupprimerProjet
-        if ($pathinfo === '/SupprimerProjet') {
-            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::SupprimerProjetAction',  '_route' => 'pidev_crowd_rise_SupprimerProjet',);
->>>>>>> koukiProjet
+        if (0 === strpos($pathinfo, '/SupprimerProjet') && preg_match('#^/SupprimerProjet/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_SupprimerProjet')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::SupprimerProjetAction',));
         }
 
         // homepage

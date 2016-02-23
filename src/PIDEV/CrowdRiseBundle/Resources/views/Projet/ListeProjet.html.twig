@@ -15,41 +15,34 @@
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
-                            <form action="#">
-                                <div class="form-body pal">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-
-                                                <h3>titre du problème depuis la bd</h3>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    
-                                    <div class="form-group">
-                                        <div class="input-icon">
-                                            <i class="glyphicon glyphicon-pencil"></i>
-                                            <input type="text" class="form-control" required="required"/>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <div class="input-icon">
-                                            <i class="glyphicon glyphicon-edit"></i>
-                                            <textarea rows="10" class="form-control" required="required">Modifier le text existant</textarea></div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class="form-group">
-                                    <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" /></div>
-                                <div class="form-actions text-right pal">
-                                    <button type="submit" class="btn btn-primary" style="background-color: #363940">
-                                        Envoyer</button>
-                                </div>
-                            </form>
+                           <h1>Liste Des projets</h1>
+<table border="1">
+    <tr>
+        <th>titre</th>
+        <th>description</th>
+        <th>typeFinancement</th>
+        
+        <th>Image</th>
+        
+       
+    </tr>
+    {% for projet in projets %}
+    <tr>
+        <td>{{projet.titre}}</td>
+        <td>{{projet.description}}</td>
+        <td>{{projet.typeFinancement}}</td>
+        <td></td>
+       {# <td><img height="150px" src="{{ asset(path('my_image_route', {'id': projet.idProjet})) }}"/> </td>#}
+         <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}">Modifier</a></td>
+          <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}">Supprimer</a></td>
+        
+        
+        
+        
+        
+    </tr>
+    {% endfor %}
+</table>
                         </div>
                     </div>
                 </div>

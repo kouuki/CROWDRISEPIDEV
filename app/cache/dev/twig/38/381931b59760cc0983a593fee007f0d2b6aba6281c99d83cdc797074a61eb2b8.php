@@ -43,41 +43,59 @@ class __TwigTemplate_c95c786a37cbb1b63d838eb4f156714d2e027e788e06f72ebfec824f409
                     <div class=\"panel panel-grey wow bounceInLeft\">
                         <div class=\"panel-heading\"></div>
                         <div class=\"panel-body pan\">
-                            <form action=\"#\">
-                                <div class=\"form-body pal\">
-                                    <div class=\"row\">
-                                        <div class=\"col-md-12\">
-                                            <div class=\"form-group\">
-
-                                                <h3>titre du problème depuis la bd</h3>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    
-                                    <div class=\"form-group\">
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-pencil\"></i>
-                                            <input type=\"text\" class=\"form-control\" required=\"required\"/>
-                                        </div>
-                                    </div>
-
-                                    <div class=\"form-group\">
-
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-edit\"></i>
-                                            <textarea rows=\"10\" class=\"form-control\" required=\"required\">Modifier le text existant</textarea></div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class=\"form-group\">
-                                    <input id=\"inputIncludeFile\" type=\"file\" placeholder=\"Inlcude some file\" /></div>
-                                <div class=\"form-actions text-right pal\">
-                                    <button type=\"submit\" class=\"btn btn-primary\" style=\"background-color: #363940\">
-                                        Envoyer</button>
-                                </div>
-                            </form>
+                           <h1>Liste Des projets</h1>
+<table border=\"1\">
+    <tr>
+        <th>titre</th>
+        <th>description</th>
+        <th>typeFinancement</th>
+        
+        <th>Image</th>
+        
+       
+    </tr>
+    ";
+        // line 29
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["projets"]) ? $context["projets"] : $this->getContext($context, "projets")));
+        foreach ($context['_seq'] as $context["_key"] => $context["projet"]) {
+            // line 30
+            echo "    <tr>
+        <td>";
+            // line 31
+            echo twig_escape_filter($this->env, $this->getAttribute($context["projet"], "titre", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 32
+            echo twig_escape_filter($this->env, $this->getAttribute($context["projet"], "description", array()), "html", null, true);
+            echo "</td>
+        <td>";
+            // line 33
+            echo twig_escape_filter($this->env, $this->getAttribute($context["projet"], "typeFinancement", array()), "html", null, true);
+            echo "</td>
+        <td></td>
+       ";
+            // line 36
+            echo "         <td><a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pidev_crowd_rise_ModifierProjet", array("id" => $this->getAttribute($context["projet"], "idProjet", array()))), "html", null, true);
+            echo "\">Modifier</a></td>
+          <td><a href=\"";
+            // line 37
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pidev_crowd_rise_SupprimerProjet", array("id" => $this->getAttribute($context["projet"], "idProjet", array()))), "html", null, true);
+            echo "\">Supprimer</a></td>
+        
+        
+        
+        
+        
+    </tr>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['projet'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 45
+        echo "</table>
                         </div>
                     </div>
                 </div>
@@ -98,7 +116,7 @@ class __TwigTemplate_c95c786a37cbb1b63d838eb4f156714d2e027e788e06f72ebfec824f409
 
     public function getDebugInfo()
     {
-        return array (  31 => 3,  28 => 2,  11 => 1,);
+        return array (  98 => 45,  84 => 37,  79 => 36,  74 => 33,  70 => 32,  66 => 31,  63 => 30,  59 => 29,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}*/
@@ -118,41 +136,34 @@ class __TwigTemplate_c95c786a37cbb1b63d838eb4f156714d2e027e788e06f72ebfec824f409
 /*                     <div class="panel panel-grey wow bounceInLeft">*/
 /*                         <div class="panel-heading"></div>*/
 /*                         <div class="panel-body pan">*/
-/*                             <form action="#">*/
-/*                                 <div class="form-body pal">*/
-/*                                     <div class="row">*/
-/*                                         <div class="col-md-12">*/
-/*                                             <div class="form-group">*/
-/* */
-/*                                                 <h3>titre du problème depuis la bd</h3>*/
-/*                                             </div>*/
-/*                                         </div>*/
-/* */
-/*                                     </div>*/
-/* */
-/*                                     */
-/*                                     <div class="form-group">*/
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-pencil"></i>*/
-/*                                             <input type="text" class="form-control" required="required"/>*/
-/*                                         </div>*/
-/*                                     </div>*/
-/* */
-/*                                     <div class="form-group">*/
-/* */
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-edit"></i>*/
-/*                                             <textarea rows="10" class="form-control" required="required">Modifier le text existant</textarea></div>*/
-/*                                     </div>*/
-/*                                 </div>*/
-/*                                 <hr />*/
-/*                                 <div class="form-group">*/
-/*                                     <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" /></div>*/
-/*                                 <div class="form-actions text-right pal">*/
-/*                                     <button type="submit" class="btn btn-primary" style="background-color: #363940">*/
-/*                                         Envoyer</button>*/
-/*                                 </div>*/
-/*                             </form>*/
+/*                            <h1>Liste Des projets</h1>*/
+/* <table border="1">*/
+/*     <tr>*/
+/*         <th>titre</th>*/
+/*         <th>description</th>*/
+/*         <th>typeFinancement</th>*/
+/*         */
+/*         <th>Image</th>*/
+/*         */
+/*        */
+/*     </tr>*/
+/*     {% for projet in projets %}*/
+/*     <tr>*/
+/*         <td>{{projet.titre}}</td>*/
+/*         <td>{{projet.description}}</td>*/
+/*         <td>{{projet.typeFinancement}}</td>*/
+/*         <td></td>*/
+/*        {# <td><img height="150px" src="{{ asset(path('my_image_route', {'id': projet.idProjet})) }}"/> </td>#}*/
+/*          <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}">Modifier</a></td>*/
+/*           <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}">Supprimer</a></td>*/
+/*         */
+/*         */
+/*         */
+/*         */
+/*         */
+/*     </tr>*/
+/*     {% endfor %}*/
+/* </table>*/
 /*                         </div>*/
 /*                     </div>*/
 /*                 </div>*/

@@ -34,12 +34,13 @@ pidev_crowd_rise_AjouterProjet:
     path:     /AjouterProjet
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:AjouterProjet }
     
-pidev_crowd_rise_ListeProjet:
+pidev_crowd_rise_ListProjet:
     path:     /ListeProjet
-    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ListeProjet }
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ListProjet }
+
     
 pidev_crowd_rise_ModifierProjet:
-    path:     /ModifierProjet
+    path:     /ModifierProjet/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ModifierProjet }
     
 pidev_crowd_rise_RechercherProjet:
@@ -47,5 +48,5 @@ pidev_crowd_rise_RechercherProjet:
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:RechercherProjet }
    
 pidev_crowd_rise_SupprimerProjet:
-    path:     /SupprimerProjet
+    path:     /SupprimerProjet/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:SupprimerProjet }
