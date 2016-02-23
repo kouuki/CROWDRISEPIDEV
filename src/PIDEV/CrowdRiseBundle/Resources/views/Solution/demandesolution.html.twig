@@ -21,13 +21,17 @@
                                             <div class="form-group">
                                                 <div class="input-icon">
                                                     <i class="glyphicon glyphicon-pencil"></i>
-                                                    <input type="text" placeholder="Entrez un titre" class="form-control" required="required" {{ form_widget(Form.titre)}}</div>
-                                                    
-                                                    <div class="extra-space-m" style="background-color: white"></div>
-                                                    
-                                                    <div class="input-icon">
+                                                    <input type="text" placeholder="Entrez un titre" class="form-control" required="required" {{ form_widget(Form.titre)}}
+                                                </div>
+
+                                                <div class="extra-space-m" style="background-color: white">
+
+                                                </div>
+
+                                                <div class="input-icon">
                                                     <i class="glyphicon glyphicon-usd"></i>
-                                                    <input type="number" placeholder="Entrez le salaire souhaité" class="form-control" {{ form_widget(Form.salaire)}}</div>
+                                                    <input type="number" placeholder="Entrez le salaire souhaité" class="form-control" {{ form_widget(Form.salaire)}}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -44,13 +48,13 @@
                                     </div>
                                 </div>
                                 <div class="form-actions text-right pal">
-                                  <div action={{ form_rest(Form) }}
+                                    <div action={{ form_rest(Form) }}
                                 </div>
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-    </section>
+        </div>
+</section>
 {% endblock %}
 

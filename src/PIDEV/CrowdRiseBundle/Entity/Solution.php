@@ -44,8 +44,8 @@ class Solution
 
     /**
      * @var string
-     *
-     * @ORM\Column(name="fichier_solution", type="string", length=1000, nullable=false)
+     * 
+     * @ORM\Column(name="fichier_solution", type="blob", nullable=false)
      */
     private $fichierSolution;
 

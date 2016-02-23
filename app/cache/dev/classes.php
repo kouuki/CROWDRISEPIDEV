@@ -7535,6 +7535,7 @@ return $converters;
 namespace Sensio\Bundle\FrameworkExtraBundle\EventListener
 {
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use Symfony\Component\HttpKernel\Event\GetResponseForControllerResultEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
@@ -7550,59 +7551,44 @@ $this->container = $container;
 }
 public function onKernelController(FilterControllerEvent $event)
 {
-if (!is_array($controller = $event->getController())) {
-return;
-}
 $request = $event->getRequest();
-if (!$configuration = $request->attributes->get('_template')) {
+$template = $request->attributes->get('_template');
+if (null === $template) {
 return;
 }
-if (!$configuration->getTemplate()) {
-$guesser = $this->container->get('sensio_framework_extra.view.guesser');
-$configuration->setTemplate($guesser->guessTemplateName($controller, $request, $configuration->getEngine()));
+if (!$template instanceof Template) {
+throw new \InvalidArgumentException('Request attribute "_template" is reserved for @Template annotations.');
 }
-$request->attributes->set('_template', $configuration->getTemplate());
-$request->attributes->set('_template_vars', $configuration->getVars());
-$request->attributes->set('_template_streamable', $configuration->isStreamable());
-if (!$configuration->getVars()) {
-$r = new \ReflectionObject($controller[0]);
-$vars = array();
-foreach ($r->getMethod($controller[1])->getParameters() as $param) {
-$vars[] = $param->getName();
-}
-$request->attributes->set('_template_default_vars', $vars);
-}
+$template->setOwner($event->getController());
 }
 public function onKernelView(GetResponseForControllerResultEvent $event)
 {
 $request = $event->getRequest();
-$parameters = $event->getControllerResult();
-if (null === $parameters) {
-if (!$vars = $request->attributes->get('_template_vars')) {
-if (!$vars = $request->attributes->get('_template_default_vars')) {
+$template = $request->attributes->get('_template');
+if (null === $template) {
 return;
 }
+$parameters = $event->getControllerResult();
+$owner = $template->getOwner();
+list($controller, $action) = $owner;
+if (null === $template->getTemplate()) {
+if ($action ==='__invoke') {
+throw new \InvalidArgumentException(sprintf('Cannot guess a template name for "%s::%s", please provide a template name.', get_class($controller), $action));
 }
-$parameters = array();
-foreach ($vars as $var) {
-$parameters[$var] = $request->attributes->get($var);
+$guesser = $this->container->get('sensio_framework_extra.view.guesser');
+$template->setTemplate($guesser->guessTemplateName($owner, $request, $template->getEngine()));
 }
-}
-if (!is_array($parameters)) {
-return $parameters;
-}
-if (!$template = $request->attributes->get('_template')) {
-return $parameters;
+if (null === $parameters) {
+$parameters = $this->resolveDefaultParameters($request, $template, $controller, $action);
 }
 $templating = $this->container->get('templating');
-if (!$request->attributes->get('_template_streamable')) {
-$event->setResponse($templating->renderResponse($template, $parameters));
-} else {
+if ($template->isStreamable()) {
 $callback = function () use ($templating, $template, $parameters) {
-return $templating->stream($template, $parameters);
+return $templating->stream($template->getTemplate(), $parameters);
 };
 $event->setResponse(new StreamedResponse($callback));
 }
+$event->setResponse($templating->renderResponse($template->getTemplate(), $parameters));
 }
 public static function getSubscribedEvents()
 {
@@ -7610,6 +7596,22 @@ return array(
 KernelEvents::CONTROLLER => array('onKernelController', -128),
 KernelEvents::VIEW =>'onKernelView',
 );
+}
+private function resolveDefaultParameters(Request $request, Template $template, $controller, $action)
+{
+$parameters = array();
+$arguments = $template->getVars();
+if (0 === count($arguments)) {
+$r = new \ReflectionObject($controller);
+$arguments = array();
+foreach ($r->getMethod($action)->getParameters() as $param) {
+$arguments[] = $param->getName();
+}
+}
+foreach ($arguments as $argument) {
+$parameters[$argument] = $request->attributes->get($argument);
+}
+return $parameters;
 }
 }
 }
@@ -7621,7 +7623,6 @@ use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 class HttpCacheListener implements EventSubscriberInterface
 {
 private $lastModifiedDates;

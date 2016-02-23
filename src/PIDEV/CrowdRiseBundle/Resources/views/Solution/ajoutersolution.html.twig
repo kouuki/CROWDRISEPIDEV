@@ -14,13 +14,13 @@
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
-                            <form action="#">
+                            <form action="" method="post">
                                 <div class="form-body pal">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
 
-                                                <h3>titre du problème depuis la bd</h3>
+                                                <h3> {{solution.ProblemeId.getTitre()}}</h3>
                                             </div>
                                         </div>
 
@@ -30,7 +30,7 @@
                                     <div class="form-group">
                                         <div class="input-icon">
                                             <i class="glyphicon glyphicon-pencil"></i>
-                                            <input type="text" class="form-control" required="required" />
+                                            <input type="text" class="form-control" required="required" {{ form_widget(Form.titre)}}
                                         </div>
                                     </div>
 
@@ -38,15 +38,15 @@
 
                                         <div class="input-icon">
                                             <i class="glyphicon glyphicon-edit"></i>
-                                            <textarea rows="10" class="form-control" required="required">Modifier le text existant</textarea></div>
+                                            <textarea rows="10" class="form-control" required="required" {{ form_widget(Form.description)}} </textarea></div>
                                     </div>
                                 </div>
                                 <hr />
                                 <div class="form-group">
-                                    <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" /></div>
-                                <div class="form-actions text-right pal">
-                                    <button type="submit" class="btn btn-primary" style="background-color: #363940">
-                                        Envoyer</button>
+                                    <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" name="fichierSolution"/>
+                                </div>
+                                 <div class="form-actions text-right pal">
+                                  <div action={{ form_rest(Form) }}
                                 </div>
                             </form>
                         </div>
