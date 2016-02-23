@@ -147,9 +147,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\DefaultController::utilisableAction',  '_route' => 'pidev_crowd_rise_utilisable',);
         }
 
-        // homepage
-        if ($pathinfo === '/app/example') {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+        if (0 === strpos($pathinfo, '/a')) {
+            // pidev_profil_ajouter
+            if ($pathinfo === '/ajoutProfil') {
+                return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::ajoutAction',  '_route' => 'pidev_profil_ajouter',);
+            }
+
+            // pidev_profil_afficher
+            if (0 === strpos($pathinfo, '/afficheProfil') && preg_match('#^/afficheProfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_afficher')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::afficheAction',));
+            }
+
+            // homepage
+            if ($pathinfo === '/app/example') {
+                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/log')) {

@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Probleme list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idprobleme</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Dateprobleme</th>
+                <th>Deadlineprobleme</th>
+                <th>Fichierprobleme</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('probleme_show', { 'id': entity.idProbleme }) }}">{{ entity.idProbleme }}</a></td>
+                <td>{{ entity.titre }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.dateProbleme }}</td>
+                <td>{{ entity.deadlineProbleme }}</td>
+                <td>{{ entity.fichierProbleme }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('probleme_show', { 'id': entity.idProbleme }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('probleme_edit', { 'id': entity.idProbleme }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('probleme_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
