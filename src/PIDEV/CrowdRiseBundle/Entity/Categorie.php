@@ -21,7 +21,7 @@ class Categorie {
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nom", type="string", length=50)
      */
     private $nom;
 
@@ -41,6 +41,7 @@ class Categorie {
         $this->nom = $nom;
     }
 
-
-
-}
+public function __toString()
+{
+    return $this->nom; 
+}}

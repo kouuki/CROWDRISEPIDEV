@@ -8,21 +8,27 @@ use PIDEV\CrowdRiseBundle\Form\AjoutProjetForm;
 use PIDEV\CrowdRiseBundle\Form\UpdateForm;
 use PIDEV\CrowdRiseBundle\Form\RechercheProjetForm;
 use PIDEV\CrowdRiseBundle\Entity\Projet;
+use PIDEV\CrowdRiseBundle\Entity\Categorie;
 
 class ProjetController extends Controller {
 
     public function AjouterProjetAction() {
-
+        $em = $this->getDoctrine()->getManager();
         $project = new Projet();
         $form = $this->createForm(new AjoutProjetForm(), $project);
         $request = $this->get('request_stack')->getCurrentRequest();
         $form->handleRequest($request);
-        $em = $this->getDoctrine()->getManager();
 
-        if ($form->isValid()) {
-            $project->setDateProjet( new \DateTime());
+
+        if ($this->get('request')->getMethod() == 'POST') {
+           
+            $cat = new Categorie();
+            $cat= $form['idcat']->getData();
+            $id = $cat->getId();
+            $cat1 = $em->getRepository('PIDEVCrowdRiseBundle:Categorie')->find($id);
+            $project->setIdcat($cat1);
             
-            $em = $this->getDoctrine()->getManager();
+            $project->setDateProjet(new \DateTime());
             $em->persist($project);
             $em->flush();
             return $this->redirect($this->generateUrl('pidev_crowd_rise_accueil'));
@@ -30,15 +36,17 @@ class ProjetController extends Controller {
         return $this->render('PIDEVCrowdRiseBundle:Projet:AjouterProjet.html.twig', array('Form' => $form->createView()));
     }
 
+    
     public function listProjetAction() {
 
         $em = $this->getDoctrine()->getManager();
         $image = $em->getRepository('PIDEVCrowdRiseBundle:Projet')->findAll();
         return $this->render('PIDEVCrowdRiseBundle:Projet:ListeProjet.html.twig', array('projets' => $image));
     }
+
     
     public function ModifierProjetAction($id) {
-        
+
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('PIDEVCrowdRiseBundle:Projet')->find($id);
         $Form = $this->createForm(new UpdateForm(), $project);
@@ -53,6 +61,7 @@ class ProjetController extends Controller {
         }
         return $this->render("PIDEVCrowdRiseBundle:Projet:ModifierProjet.html.twig", array('Form' => $Form->createView(), 'projet' => $project));
     }
+
     public function SupprimerProjetAction($id) {
         $em = $this->getDoctrine()->getManager();
         $project = $em->getRepository('PIDEVCrowdRiseBundle:Projet')->find($id);
@@ -60,8 +69,9 @@ class ProjetController extends Controller {
         $em->flush();
         return $this->redirect($this->generateUrl('pidev_crowd_rise_ListProjet'));
     }
+
     public function RechercherProjetAction() {
-       $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
         $image = $em->getRepository('PIDEVCrowdRiseBundle:Projet')->findAll();
         return $this->render('PIDEVCrowdRiseBundle:Projet:RechercherProjet.html.twig', array('projets' => $image));
     }

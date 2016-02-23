@@ -67,9 +67,12 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
         // line 32
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "typeFinancement", array()), 'widget');
         echo " </td> </tr>
-                                       ";
+                                        <tr> <td>Catégorie:</td> <td> ";
+        // line 33
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "idcat", array()), 'widget');
+        echo " </td> </tr>
+                                        <tr> <td>deadlineProjet:</td> <td> ";
         // line 34
-        echo "                                        <tr> <td>deadlineProjet:</td> <td> ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "deadlineProjet", array()), 'widget');
         echo " </td> </tr>
                                         <tr> <td>image_projet:</td> <td> ";
@@ -114,7 +117,7 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
 
     public function getDebugInfo()
     {
-        return array (  89 => 38,  85 => 37,  81 => 36,  77 => 35,  72 => 34,  68 => 32,  63 => 31,  60 => 30,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  92 => 38,  88 => 37,  84 => 36,  80 => 35,  76 => 34,  72 => 33,  68 => 32,  63 => 31,  60 => 30,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}*/
@@ -149,7 +152,7 @@ class __TwigTemplate_2fad306e22fc9b11867872ade648fb56ac24706130a430fc2514d4588ce
 /*                                         <tr> <td>titre: </td> <td> {{ form_widget(Form.titre) }} </td> </tr>      {#form fct prédéfinie twig   Form label #}*/
 /*                                         <tr> <td>description:</td> <td> {{ form_widget(Form.description) }} </td> </tr>*/
 /*                                         <tr> <td>typeFinancement:</td> <td> {{ form_widget(Form.typeFinancement) }} </td> </tr>*/
-/*                                        {# <tr> <td>Catégorie:</td> <td> {{ form_widget(Form.categories) }} </td> </tr>#}*/
+/*                                         <tr> <td>Catégorie:</td> <td> {{ form_widget(Form.idcat) }} </td> </tr>*/
 /*                                         <tr> <td>deadlineProjet:</td> <td> {{ form_widget(Form.deadlineProjet) }} </td> </tr>*/
 /*                                         <tr> <td>image_projet:</td> <td> {{ form_widget(Form.image_projet) }} </td> </tr>*/
 /*                                         <tr> <td>fichier_projet:</td> <td> {{ form_widget(Form.fichier_projet) }} </td> </tr>*/

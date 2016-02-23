@@ -85,25 +85,26 @@ class Projet
      * @ORM\Column(name="video_projet", type="text"))
      */
     private $videoProjet;
-    /**
-     *
+     /**
+     *  @var Categorie
      * @ORM\ManyToOne(targetEntity="Categorie")
      */
-    private $categories;
+    
+    private $idcat;
     /**
      * 
      * @Assert\File(maxSize="6000000")
      *
      */
+    function getIdcat() {
+        return $this->idcat;
+    }
+
+    function setIdcat($idcat) {
+        $this->idcat = $idcat;
+    }
+
     
-    function getCategories() {
-        return $this->categories;
-    }
-
-    function setCategories($categories) {
-        $this->categories = $categories;
-    }
-
                 function getIdProjet() {
         return $this->idProjet;
     }
