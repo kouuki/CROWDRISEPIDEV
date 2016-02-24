@@ -43,9 +43,5 @@ class ProfilController extends Controller
 
     }
 
-    public function ajoutCompetenceAction($id){
-        $em = $this->getDoctrine()->getManager();
-        $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
 
-    }
 }

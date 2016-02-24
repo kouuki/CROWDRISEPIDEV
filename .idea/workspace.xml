@@ -2,37 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9228216a-33c3-4fe3-a8db-dd31cb1f670c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/847fca1a2c3eab366489da3241f8af4bbea7fbf6$Membre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/847fca1a2c3eab366489da3241f8af4bbea7fbf6$Probleme.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/847fca1a2c3eab366489da3241f8af4bbea7fbf6$idMembre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/847fca1a2c3eab366489da3241f8af4bbea7fbf6$idProbleme.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/bb63ea3ea4225a43ab6bd9e1c326c115c5404df1$Membre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/bb63ea3ea4225a43ab6bd9e1c326c115c5404df1$idMembre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/ce5befdd61bc997b37b28b5d9cabea3e5dee2680$Membre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/ce5befdd61bc997b37b28b5d9cabea3e5dee2680$idMembre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e3da7ca7eb38670e8694f7b73f31adc64edbb7c1$Membre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e3da7ca7eb38670e8694f7b73f31adc64edbb7c1$idMembre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e73a7c6bd498e9fd12caa0e5a82ef2f744f51524$Membre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e73a7c6bd498e9fd12caa0e5a82ef2f744f51524$Projet_id.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e73a7c6bd498e9fd12caa0e5a82ef2f744f51524$idMembre.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e73a7c6bd498e9fd12caa0e5a82ef2f744f51524$idProjet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/annotations/e73a7c6bd498e9fd12caa0e5a82ef2f744f51524$projet.cache.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/profiler/12/fd/92fd12" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/cache/dev/profiler/e5/4b/d94be5" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Competence.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Probleme/edit.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Probleme/index.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Probleme/new.html.twig" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Probleme/show.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php.meta" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" afterPath="$PROJECT_DIR$/app/cache/dev/appDevDebugProjectContainer.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlGenerator.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php" afterPath="$PROJECT_DIR$/app/cache/dev/appDevUrlMatcher.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" afterPath="$PROJECT_DIR$/app/cache/dev/profiler/index.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/twig/21/21d16c47113f095d0790fc7fe2cdb45ccd591fb35b778b325f5e3b30af1c95f6.php" afterPath="$PROJECT_DIR$/app/cache/dev/twig/21/21d16c47113f095d0790fc7fe2cdb45ccd591fb35b778b325f5e3b30af1c95f6.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/twig/36/36a664f59d6383e12729fb39d37673e72323c1791474df17fa36cf51ddda5613.php" afterPath="$PROJECT_DIR$/app/cache/dev/twig/36/36a664f59d6383e12729fb39d37673e72323c1791474df17fa36cf51ddda5613.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/twig/6f/6f3ee4f0726399a3fc98aeed610cf55f1eafe2fb568ad137d6d1987853c6614a.php" afterPath="$PROJECT_DIR$/app/cache/dev/twig/6f/6f3ee4f0726399a3fc98aeed610cf55f1eafe2fb568ad137d6d1987853c6614a.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/twig/9c/9c8acb66cd5e19b723eacd4c785ba8226d8ed2eff2cce440ddc7e78b8a2726ca.php" afterPath="$PROJECT_DIR$/app/cache/dev/twig/9c/9c8acb66cd5e19b723eacd4c785ba8226d8ed2eff2cce440ddc7e78b8a2726ca.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/twig/a7/a76fb1a1412f684dd5346d02b336fe877fd6e4fb3c998304ff8055cab82f7bbe.php" afterPath="$PROJECT_DIR$/app/cache/dev/twig/a7/a76fb1a1412f684dd5346d02b336fe877fd6e4fb3c998304ff8055cab82f7bbe.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/cache/dev/twig/ec/ecf5edd2d9f2bffb6ba36601a8b95f926af0a68026c9429fbb7f696f00d7ea91.php" afterPath="$PROJECT_DIR$/app/cache/dev/twig/ec/ecf5edd2d9f2bffb6ba36601a8b95f926af0a68026c9429fbb7f696f00d7ea91.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/logs/dev.log" afterPath="$PROJECT_DIR$/app/logs/dev.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/logs/prod.log" afterPath="$PROJECT_DIR$/app/logs/prod.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php" afterPath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml" />
     </list>
@@ -66,8 +48,8 @@
       <file leaf-file-name="ProfilController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.538462">
-              <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="43" column="5" selection-start-line="38" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
               <folding>
                 <element signature="e#52#65#0#PHP" expanded="true" />
               </folding>
@@ -75,12 +57,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Competence.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Competence.php">
+      <file leaf-file-name="ajoutCompetence.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/ajoutCompetence.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.24416517">
-              <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="afficheCompetence.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/afficheCompetence.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.54937166">
+              <caret line="18" column="121" selection-start-line="18" selection-start-column="121" selection-end-line="18" selection-end-column="121" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CompetenceController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/CompetenceController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.769231">
+              <caret line="30" column="79" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+              <folding>
+                <element signature="e#52#96#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,8 +102,8 @@
       <file leaf-file-name="ajouter.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/ajouter.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.115385">
-              <caret line="83" column="91" selection-start-line="83" selection-start-column="78" selection-end-line="83" selection-end-column="91" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="34" selection-start-line="17" selection-start-column="28" selection-end-line="22" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -120,6 +134,10 @@
       <command text="s generate:doctrine:crud Profil" />
       <command text="s generate:doctrine:crud " />
       <command text="s generate:controller" />
+      <command text="s generate:doctrine:entity" />
+      <command text="s doctrine:schema:update" />
+      <command text="s doctrine:schema:update --force " />
+      <command text="s generate:controller" />
     </commandsHistory>
   </component>
   <component name="Git.Settings">
@@ -138,10 +156,16 @@
         <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Profil.php" />
         <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Membre.php" />
         <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/ajouter.html.twig" />
-        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/affiche.html.twig" />
-        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php" />
         <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Competence.php" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/afficheCompetence.html.twig" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/ajoutCompetence.html.twig" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/Competence.php" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/ajoutCompetence.html.twig" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/afficheCompetence.html.twig" />
+        <option value="$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/CompetenceController.php" />
       </list>
     </option>
   </component>
@@ -187,7 +211,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -363,6 +386,40 @@
               <option name="myItemId" value="Resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Competence" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CrowdRise" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Pidev" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PIDEV" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CrowdRiseBundle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -448,6 +505,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -459,6 +517,9 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\Pidev\src\PIDEV\CrowdRiseBundle\Resources\views\Competence" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp\www\Pidev\web" />
     </key>
@@ -525,10 +586,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2832061" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28778625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -548,6 +609,27 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3846154" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="CSS Styles" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2832061" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -565,6 +647,58 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="5" selection-start-line="38" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="e#52#65#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/ajoutCompetence.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/afficheCompetence.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="121" selection-start-line="18" selection-start-column="121" selection-end-line="18" selection-end-column="121" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/CompetenceController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#52#96#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/ajouter.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="34" selection-start-line="17" selection-start-column="28" selection-end-line="22" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -587,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -613,7 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="42" selection-start-line="26" selection-start-column="42" selection-end-line="26" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -774,13 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Probleme.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8146068">
-          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -796,60 +921,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Membre.php">
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Profil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7558348">
-          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-          <folding />
+        <state vertical-scroll-proportion="-8.828651">
+          <caret line="42" column="30" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Profil.php">
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Membre.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.11310592">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="30" />
+        <state vertical-scroll-proportion="-7.8461537">
+          <caret line="41" column="43" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Competence.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19101124">
+          <caret line="34" column="37" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/ajouter.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.115385">
-          <caret line="83" column="91" selection-start-line="83" selection-start-column="78" selection-end-line="83" selection-end-column="91" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="34" selection-start-line="17" selection-start-column="28" selection-end-line="22" selection-end-column="34" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Probleme/edit.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Probleme.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.6741574">
+          <caret line="56" column="29" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Profil/affiche.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48833033">
-          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
-          <folding />
+        <state vertical-scroll-proportion="0.6207865">
+          <caret line="24" column="39" selection-start-line="0" selection-start-column="0" selection-end-line="60" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6123499">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="60" selection-start-line="26" selection-start-column="60" selection-end-line="26" selection-end-column="60" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/ProfilController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.538462">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="5" selection-start-line="38" selection-start-column="4" selection-end-line="43" selection-end-column="5" />
           <folding>
             <element signature="e#52#65#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Entity/Competence.php">
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Controller/CompetenceController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24416517">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        <state vertical-scroll-proportion="-15.769231">
+          <caret line="30" column="79" selection-start-line="30" selection-start-column="79" selection-end-line="30" selection-end-column="79" />
+          <folding>
+            <element signature="e#52#96#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/ajoutCompetence.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PIDEV/CrowdRiseBundle/Resources/views/Competence/afficheCompetence.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54937166">
+          <caret line="18" column="121" selection-start-line="18" selection-start-column="121" selection-end-line="18" selection-end-column="121" />
           <folding />
         </state>
       </provider>
