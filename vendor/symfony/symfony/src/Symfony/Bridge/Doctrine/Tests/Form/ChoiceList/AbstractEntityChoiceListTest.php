@@ -16,6 +16,10 @@ use Symfony\Bridge\Doctrine\Form\ChoiceList\EntityChoiceList;
 use Doctrine\ORM\Tools\SchemaTool;
 use Symfony\Component\Form\Tests\Extension\Core\ChoiceList\AbstractChoiceListTest;
 
+if (!class_exists('Symfony\Component\Form\Tests\Extension\Core\ChoiceList\AbstractChoiceListTest')) {
+    return;
+}
+
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
@@ -39,7 +43,7 @@ abstract class AbstractEntityChoiceListTest extends AbstractChoiceListTest
         $this->em = DoctrineTestHelper::createTestEntityManager();
 
         $schemaTool = new SchemaTool($this->em);
-        $classes = array($this->em->getClassMetadata($this->getEntityClass()));
+        $classes = $this->getClassesMetadata();
 
         try {
             $schemaTool->dropSchema($classes);
@@ -72,6 +76,11 @@ abstract class AbstractEntityChoiceListTest extends AbstractChoiceListTest
     abstract protected function getEntityClass();
 
     abstract protected function createObjects();
+
+    protected function getClassesMetadata()
+    {
+        return array($this->em->getClassMetadata($this->getEntityClass()));
+    }
 
     /**
      * @return \Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceListInterface

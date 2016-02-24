@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Symfony\Component\DependencyInjection\Tests\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\MergeExtensionConfigurationPass;
@@ -10,10 +19,6 @@ class MergeExtensionConfigurationPassTest extends \PHPUnit_Framework_TestCase
 {
     public function testExpressionLanguageProviderForwarding()
     {
-        if (true !== class_exists('Symfony\\Component\\ExpressionLanguage\\ExpressionLanguage')) {
-            $this->markTestSkipped('The ExpressionLanguage component isn\'t available!');
-        }
-
         $tmpProviders = array();
 
         $extension = $this->getMock('Symfony\\Component\\DependencyInjection\\Extension\\ExtensionInterface');
@@ -35,7 +40,7 @@ class MergeExtensionConfigurationPassTest extends \PHPUnit_Framework_TestCase
         $provider = $this->getMock('Symfony\\Component\\ExpressionLanguage\\ExpressionFunctionProviderInterface');
         $container = new ContainerBuilder(new ParameterBag());
         $container->registerExtension($extension);
-        $container->prependExtensionConfig('foo', array('bar' => true ));
+        $container->prependExtensionConfig('foo', array('bar' => true));
         $container->addExpressionLanguageProvider($provider);
 
         $pass = new MergeExtensionConfigurationPass();

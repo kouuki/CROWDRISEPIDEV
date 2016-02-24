@@ -31,7 +31,7 @@ class HtmlDumper extends CliDumper
     protected $headerIsDumped = false;
     protected $lastDepth = -1;
     protected $styles = array(
-        'default' => 'background-color:#18171B; color:#FF8400; line-height:1.2em; font:12px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:100000',
+        'default' => 'background-color:#18171B; color:#FF8400; line-height:1.2em; font:12px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: normal',
         'num' => 'font-weight:bold; color:#1299DA',
         'const' => 'font-weight:bold',
         'str' => 'font-weight:bold; color:#56DB3A',
@@ -50,7 +50,7 @@ class HtmlDumper extends CliDumper
      */
     public function __construct($output = null, $charset = null)
     {
-        parent::__construct($output, $charset);
+        AbstractDumper::__construct($output, $charset);
         $this->dumpId = 'sf-dump-'.mt_rand();
     }
 
@@ -123,21 +123,51 @@ Sfdump = window.Sfdump || (function (doc) {
 
 var refStyle = doc.createElement('style'),
     rxEsc = /([.*+?^${}()|\[\]\/\\])/g,
-    idRx = /\bsf-dump-\d+-ref[012]\w+\b/;
+    idRx = /\bsf-dump-\d+-ref[012]\w+\b/,
+    keyHint = 0 <= navigator.platform.toUpperCase().indexOf('MAC') ? 'Cmd' : 'Ctrl',
+    addEventListener = function (e, n, cb) {
+        e.addEventListener(n, cb, false);
+    };
 
-doc.documentElement.firstChild.appendChild(refStyle);
+(doc.documentElement.firstElementChild || doc.documentElement.children[0]).appendChild(refStyle);
 
-function toggle(a) {
-    var s = a.nextSibling || {};
+if (!doc.addEventListener) {
+    addEventListener = function (element, eventName, callback) {
+        element.attachEvent('on' + eventName, function (e) {
+            e.preventDefault = function () {e.returnValue = false;};
+            e.target = e.srcElement;
+            callback(e);
+        });
+    };
+}
 
-    if ('sf-dump-compact' == s.className) {
-        a.lastChild.innerHTML = '▼';
-        s.className = 'sf-dump-expanded';
-    } else if ('sf-dump-expanded' == s.className) {
-        a.lastChild.innerHTML = '▶';
-        s.className = 'sf-dump-compact';
+function toggle(a, recursive) {
+    var s = a.nextSibling || {}, oldClass = s.className, arrow, newClass;
+
+    if ('sf-dump-compact' == oldClass) {
+        arrow = '▼';
+        newClass = 'sf-dump-expanded';
+    } else if ('sf-dump-expanded' == oldClass) {
+        arrow = '▶';
+        newClass = 'sf-dump-compact';
     } else {
         return false;
+    }
+
+    a.lastChild.innerHTML = arrow;
+    s.className = newClass;
+
+    if (recursive) {
+        try {
+            a = s.querySelectorAll('.'+oldClass);
+            for (s = 0; s < a.length; ++s) {
+                if (a[s].className !== newClass) {
+                    a[s].className = newClass;
+                    a[s].previousSibling.lastChild.innerHTML = arrow;
+                }
+            }
+        } catch (e) {
+        }
     }
 
     return true;
@@ -147,7 +177,7 @@ return function (root) {
     root = doc.getElementById(root);
 
     function a(e, f) {
-        root.addEventListener(e, function (e) {
+        addEventListener(root, e, function (e) {
             if ('A' == e.target.tagName) {
                 f(e.target, e);
             } else if ('A' == e.target.parentNode.tagName) {
@@ -155,20 +185,26 @@ return function (root) {
             }
         });
     };
-    root.addEventListener('mouseover', function (e) {
+    function isCtrlKey(e) {
+        return e.ctrlKey || e.metaKey;
+    }
+    addEventListener(root, 'mouseover', function (e) {
         if ('' != refStyle.innerHTML) {
             refStyle.innerHTML = '';
         }
     });
     a('mouseover', function (a) {
         if (a = idRx.exec(a.className)) {
-            refStyle.innerHTML = 'pre.sf-dump .'+a[0]+'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}';
+            try {
+                refStyle.innerHTML = 'pre.sf-dump .'+a[0]+'{background-color: #B729D9; color: #FFF !important; border-radius: 2px}';
+            } catch (e) {
+            }
         }
     });
     a('click', function (a, e) {
         if (/\bsf-dump-toggle\b/.test(a.className)) {
             e.preventDefault();
-            if (!toggle(a)) {
+            if (!toggle(a, isCtrlKey(e))) {
                 var r = doc.getElementById(a.getAttribute('href').substr(1)),
                     s = r.previousSibling,
                     f = r.parentNode,
@@ -182,8 +218,18 @@ return function (root) {
                     r.innerHTML = r.innerHTML.replace(new RegExp('^'+f[0].replace(rxEsc, '\\$1'), 'mg'), t[0]);
                 }
                 if ('sf-dump-compact' == r.className) {
-                    toggle(s);
+                    toggle(s, isCtrlKey(e));
                 }
+            }
+
+            if (doc.getSelection) {
+                try {
+                    doc.getSelection().removeAllRanges();
+                } catch (e) {
+                    doc.getSelection().empty();
+                }
+            } else {
+                doc.selection.empty();
             }
         }
     });
@@ -218,6 +264,7 @@ return function (root) {
             } else {
                 a.innerHTML += ' ';
             }
+            a.title = (a.title ? a.title+'\n[' : '[')+keyHint+'+click] Expand all children';
             a.innerHTML += '<span>▼</span>';
             a.className += ' sf-dump-toggle';
             if ('sf-dump' != elt.parentNode.className) {
@@ -395,30 +442,7 @@ EOHTML;
         }
         $this->lastDepth = $depth;
 
-        // Replaces non-ASCII UTF-8 chars by numeric HTML entities
-        $this->line = preg_replace_callback(
-            '/[\x80-\xFF]+/',
-            function ($m) {
-                $m = unpack('C*', $m[0]);
-                $i = 1;
-                $entities = '';
-
-                while (isset($m[$i])) {
-                    if (0xF0 <= $m[$i]) {
-                        $c = (($m[$i++] - 0xF0) << 18) + (($m[$i++] - 0x80) << 12) + (($m[$i++] - 0x80) << 6) + $m[$i++] - 0x80;
-                    } elseif (0xE0 <= $m[$i]) {
-                        $c = (($m[$i++] - 0xE0) << 12) + (($m[$i++] - 0x80) << 6) + $m[$i++]  - 0x80;
-                    } else {
-                        $c = (($m[$i++] - 0xC0) << 6) + $m[$i++] - 0x80;
-                    }
-
-                    $entities .= '&#'.$c.';';
-                }
-
-                return $entities;
-            },
-            $this->line
-        );
+        $this->line = mb_convert_encoding($this->line, 'HTML-ENTITIES', 'UTF-8');
 
         if (-1 === $depth) {
             AbstractDumper::dumpLine(0);

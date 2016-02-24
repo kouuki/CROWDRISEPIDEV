@@ -11,6 +11,7 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Test;
 
+use Symfony\Component\DependencyInjection\ResettableContainerInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -79,8 +80,12 @@ abstract class KernelTestCase extends \PHPUnit_Framework_TestCase
             if (preg_match('/^-[^ \-]*c$/', $testArg) || $testArg === '--configuration') {
                 $dir = realpath($reversedArgs[$argIndex - 1]);
                 break;
-            } elseif (strpos($testArg, '--configuration=') === 0) {
+            } elseif (0 === strpos($testArg, '--configuration=')) {
                 $argPath = substr($testArg, strlen('--configuration='));
+                $dir = realpath($argPath);
+                break;
+            } elseif (0 === strpos($testArg, '-c')) {
+                $argPath = substr($testArg, strlen('-c'));
                 $dir = realpath($argPath);
                 break;
             }
@@ -171,7 +176,11 @@ abstract class KernelTestCase extends \PHPUnit_Framework_TestCase
     protected static function ensureKernelShutdown()
     {
         if (null !== static::$kernel) {
+            $container = static::$kernel->getContainer();
             static::$kernel->shutdown();
+            if ($container instanceof ResettableContainerInterface) {
+                $container->reset();
+            }
         }
     }
 

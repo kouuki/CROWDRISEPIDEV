@@ -26,12 +26,24 @@ class InitAclCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
+    public function isEnabled()
+    {
+        if (!$this->getContainer()->has('security.acl.dbal.connection')) {
+            return false;
+        }
+
+        return parent::isEnabled();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     protected function configure()
     {
         $this
             ->setName('init:acl')
             ->setDescription('Mounts ACL tables in the database')
-            ->setHelp(<<<EOF
+            ->setHelp(<<<'EOF'
 The <info>%command.name%</info> command mounts ACL tables in the database.
 
   <info>php %command.full_name%</info>

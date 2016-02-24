@@ -1,6 +1,20 @@
 CHANGELOG
 =========
 
+2.8.0
+-----
+
+ * Deprecated the `alias` option of the `form.type_extension` tag in favor of the
+   `extended_type`/`extended-type` option
+ * Deprecated the `alias` option of the `form.type` tag
+ * Deprecated the Shell
+
+2.7.0
+-----
+
+ * Added possibility to extract translation messages from a file or files besides extracting from a directory
+ * Added `TranslationsCacheWarmer` to create catalogues at warmup
+
 2.6.0
 -----
 

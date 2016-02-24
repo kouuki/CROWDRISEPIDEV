@@ -19,8 +19,6 @@ use Symfony\Component\Validator\Violation\LegacyConstraintViolationBuilder;
  * Base class for constraint validators.
  *
  * @author Bernhard Schussek <bschussek@gmail.com>
- *
- * @api
  */
 abstract class ConstraintValidator implements ConstraintValidatorInterface
 {
@@ -61,10 +59,12 @@ abstract class ConstraintValidator implements ConstraintValidatorInterface
      *
      * @return ConstraintViolationBuilderInterface The violation builder
      *
-     * @deprecated This method will be removed in Symfony 3.0.
+     * @deprecated since version 2.5, to be removed in 3.0.
      */
     protected function buildViolation($message, array $parameters = array())
     {
+        @trigger_error('The '.__METHOD__.' is deprecated since version 2.5 and will be removed in 3.0.', E_USER_DEPRECATED);
+
         if ($this->context instanceof ExecutionContextInterface2Dot5) {
             return $this->context->buildViolation($message, $parameters);
         }
@@ -82,10 +82,12 @@ abstract class ConstraintValidator implements ConstraintValidatorInterface
      *
      * @return ConstraintViolationBuilderInterface The violation builder
      *
-     * @deprecated This method will be removed in Symfony 3.0.
+     * @deprecated since version 2.5, to be removed in 3.0.
      */
     protected function buildViolationInContext(ExecutionContextInterface $context, $message, array $parameters = array())
     {
+        @trigger_error('The '.__METHOD__.' is deprecated since version 2.5 and will be removed in 3.0.', E_USER_DEPRECATED);
+
         if ($context instanceof ExecutionContextInterface2Dot5) {
             return $context->buildViolation($message, $parameters);
         }

@@ -78,11 +78,11 @@ class PdoCaster
             }
         }
 
-        $prefix = "\0~\0";
+        $prefix = Caster::PREFIX_VIRTUAL;
         $a += array(
             $prefix.'inTransaction' => method_exists($c, 'inTransaction'),
             $prefix.'errorInfo' => $c->errorInfo(),
-            $prefix.'attributes' => $attr,
+            $prefix.'attributes' => new EnumStub($attr),
         );
 
         if ($a[$prefix.'inTransaction']) {
@@ -102,7 +102,7 @@ class PdoCaster
 
     public static function castPdoStatement(\PDOStatement $c, array $a, Stub $stub, $isNested)
     {
-        $prefix = "\0~\0";
+        $prefix = Caster::PREFIX_VIRTUAL;
         $a[$prefix.'errorInfo'] = $c->errorInfo();
 
         if (!isset($a[$prefix.'errorInfo'][1], $a[$prefix.'errorInfo'][2])) {

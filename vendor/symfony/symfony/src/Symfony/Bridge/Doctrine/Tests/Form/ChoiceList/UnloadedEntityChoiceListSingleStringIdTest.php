@@ -11,8 +11,13 @@
 
 namespace Symfony\Bridge\Doctrine\Tests\Form\ChoiceList;
 
+if (!class_exists('Symfony\Component\Form\Tests\Extension\Core\ChoiceList\AbstractChoiceListTest')) {
+    return;
+}
+
 /**
  * @author Bernhard Schussek <bschussek@gmail.com>
+ * @group legacy
  */
 class UnloadedEntityChoiceListSingleStringIdTest extends AbstractEntityChoiceListSingleStringIdTest
 {

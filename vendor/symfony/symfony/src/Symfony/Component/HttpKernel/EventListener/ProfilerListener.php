@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * ProfilerListener collects data for the current request by listening to the onKernelResponse event.
+ * ProfilerListener collects data for the current request by listening to the kernel events.
  *
  * @author Fabien Potencier <fabien@symfony.com>
  */
@@ -42,13 +42,32 @@ class ProfilerListener implements EventSubscriberInterface
      * Constructor.
      *
      * @param Profiler                     $profiler           A Profiler instance
+     * @param RequestStack                 $requestStack       A RequestStack instance
      * @param RequestMatcherInterface|null $matcher            A RequestMatcher instance
      * @param bool                         $onlyException      true if the profiler only collects data when an exception occurs, false otherwise
      * @param bool                         $onlyMasterRequests true if the profiler only collects data when the request is a master request, false otherwise
-     * @param RequestStack|null            $requestStack       A RequestStack instance
      */
-    public function __construct(Profiler $profiler, RequestMatcherInterface $matcher = null, $onlyException = false, $onlyMasterRequests = false, RequestStack $requestStack = null)
+    public function __construct(Profiler $profiler, $requestStack = null, $matcher = null, $onlyException = false, $onlyMasterRequests = false)
     {
+        if ($requestStack instanceof RequestMatcherInterface || (null !== $matcher && !$matcher instanceof RequestMatcherInterface) || $onlyMasterRequests instanceof RequestStack) {
+            $tmp = $onlyMasterRequests;
+            $onlyMasterRequests = $onlyException;
+            $onlyException = $matcher;
+            $matcher = $requestStack;
+            $requestStack = func_num_args() < 5 ? null : $tmp;
+
+            @trigger_error('The '.__METHOD__.' method now requires a RequestStack to be given as second argument as '.__CLASS__.'::onKernelRequest method will be removed in 3.0.', E_USER_DEPRECATED);
+        } elseif (!$requestStack instanceof RequestStack) {
+            @trigger_error('The '.__METHOD__.' method now requires a RequestStack instance as '.__CLASS__.'::onKernelRequest method will be removed in 3.0.', E_USER_DEPRECATED);
+        }
+
+        if (null !== $requestStack && !$requestStack instanceof RequestStack) {
+            throw new \InvalidArgumentException('RequestStack instance expected.');
+        }
+        if (null !== $matcher && !$matcher instanceof RequestMatcherInterface) {
+            throw new \InvalidArgumentException('Matcher must implement RequestMatcherInterface.');
+        }
+
         $this->profiler = $profiler;
         $this->matcher = $matcher;
         $this->onlyException = (bool) $onlyException;
@@ -73,7 +92,7 @@ class ProfilerListener implements EventSubscriberInterface
     }
 
     /**
-     * @deprecated Deprecated since version 2.4, to be removed in 3.0.
+     * @deprecated since version 2.4, to be removed in 3.0.
      */
     public function onKernelRequest(GetResponseEvent $event)
     {

@@ -25,7 +25,7 @@ use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToTimestampTra
 use Symfony\Component\Form\Extension\Core\DataTransformer\DateTimeToRfc3339Transformer;
 use Symfony\Component\Form\Extension\Core\DataTransformer\ArrayToPartsTransformer;
 use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DateTimeType extends AbstractType
 {
@@ -116,6 +116,7 @@ class DateTimeType extends AbstractType
                 'days',
                 'empty_value',
                 'placeholder',
+                'choice_translation_domain',
                 'required',
                 'translation_domain',
                 'html5',
@@ -131,6 +132,7 @@ class DateTimeType extends AbstractType
                 'with_seconds',
                 'empty_value',
                 'placeholder',
+                'choice_translation_domain',
                 'required',
                 'translation_domain',
                 'html5',
@@ -161,8 +163,8 @@ class DateTimeType extends AbstractType
                         'time' => $timeParts,
                     )),
                 )))
-                ->add('date', 'date', $dateOptions)
-                ->add('time', 'time', $timeOptions)
+                ->add('date', __NAMESPACE__.'\DateType', $dateOptions)
+                ->add('time', __NAMESPACE__.'\TimeType', $timeOptions)
             ;
         }
 
@@ -200,7 +202,7 @@ class DateTimeType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $compound = function (Options $options) {
             return $options['widget'] !== 'single_text';
@@ -245,6 +247,7 @@ class DateTimeType extends AbstractType
         $resolver->setDefined(array(
             'empty_value', // deprecated
             'placeholder',
+            'choice_translation_domain',
             'years',
             'months',
             'days',
@@ -253,32 +256,30 @@ class DateTimeType extends AbstractType
             'seconds',
         ));
 
-        $resolver->setAllowedValues(array(
-            'input' => array(
-                'datetime',
-                'string',
-                'timestamp',
-                'array',
-            ),
-            'date_widget' => array(
-                null, // inherit default from DateType
-                'single_text',
-                'text',
-                'choice',
-            ),
-            'time_widget' => array(
-                null, // inherit default from TimeType
-                'single_text',
-                'text',
-                'choice',
-            ),
-            // This option will overwrite "date_widget" and "time_widget" options
-            'widget' => array(
-                null, // default, don't overwrite options
-                'single_text',
-                'text',
-                'choice',
-            ),
+        $resolver->setAllowedValues('input', array(
+            'datetime',
+            'string',
+            'timestamp',
+            'array',
+        ));
+        $resolver->setAllowedValues('date_widget', array(
+            null, // inherit default from DateType
+            'single_text',
+            'text',
+            'choice',
+        ));
+        $resolver->setAllowedValues('time_widget', array(
+            null, // inherit default from TimeType
+            'single_text',
+            'text',
+            'choice',
+        ));
+        // This option will overwrite "date_widget" and "time_widget" options
+        $resolver->setAllowedValues('widget', array(
+            null, // default, don't overwrite options
+            'single_text',
+            'text',
+            'choice',
         ));
     }
 
@@ -286,6 +287,14 @@ class DateTimeType extends AbstractType
      * {@inheritdoc}
      */
     public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
     {
         return 'datetime';
     }

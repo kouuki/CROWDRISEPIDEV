@@ -1,0 +1,3 @@
+{% set securityRole = role|default(getDefaultSecurityRole()) %}
+{% set permalink = permalink|default(app.request.uri) %}
+{{ render(controller('DCSRatingBundle:Rating:control', {'id' : 5, 'permalink' : url('pidev_crowd_rise_accueil') , 'securityRole' : securityRole, 'params' : params|default({})})) }}

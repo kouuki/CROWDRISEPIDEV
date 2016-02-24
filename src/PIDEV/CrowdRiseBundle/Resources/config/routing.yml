@@ -37,7 +37,9 @@ pidev_crowd_rise_AjouterProjet:
 pidev_crowd_rise_ListProjet:
     path:     /ListeProjet
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ListProjet }
-
+my_image_route:
+    path:     /aff/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:photo }
     
 pidev_crowd_rise_ModifierProjet:
     path:     /ModifierProjet/{id}
@@ -50,3 +52,7 @@ pidev_crowd_rise_RechercherProjet:
 pidev_crowd_rise_SupprimerProjet:
     path:     /SupprimerProjet/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:SupprimerProjet }
+    
+vote:
+    path:     /vote
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:vote }

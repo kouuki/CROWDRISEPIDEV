@@ -16,17 +16,13 @@ use Symfony\Component\Console\Helper\DialogHelper;
 use Symfony\Component\Console\Helper\HelperSet;
 use Symfony\Component\Console\Helper\FormatterHelper;
 use Symfony\Component\Console\Output\StreamOutput;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 
 /**
  * @group legacy
  */
 class LegacyDialogHelperTest extends \PHPUnit_Framework_TestCase
 {
-    protected function setUp()
-    {
-        $this->iniSet('error_reporting', -1 & ~E_USER_DEPRECATED);
-    }
-
     public function testSelect()
     {
         $dialog = new DialogHelper();
@@ -146,7 +142,7 @@ class LegacyDialogHelperTest extends \PHPUnit_Framework_TestCase
         $error = 'This is not a color!';
         $validator = function ($color) use ($error) {
             if (!in_array($color, array('white', 'black'))) {
-                throw new \InvalidArgumentException($error);
+                throw new InvalidArgumentException($error);
             }
 
             return $color;

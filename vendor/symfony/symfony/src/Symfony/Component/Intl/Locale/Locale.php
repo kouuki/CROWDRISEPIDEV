@@ -21,6 +21,8 @@ use Symfony\Component\Intl\Exception\MethodNotImplementedException;
  *
  * @author Eriksen Costa <eriksen.costa@infranology.com.br>
  * @author Bernhard Schussek <bschussek@gmail.com>
+ *
+ * @internal
  */
 class Locale
 {
@@ -306,7 +308,7 @@ class Locale
      *
      * @return bool true on success or false on failure
      *
-     * @see http://www.php.net/manual/en/locale.parselocale.php
+     * @see http://www.php.net/manual/en/locale.setdefault.php
      *
      * @throws MethodNotImplementedException
      */

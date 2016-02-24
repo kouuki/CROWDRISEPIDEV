@@ -1,7 +1,7 @@
 <?php
 
 namespace {
-    //error_reporting(error_reporting() & ~E_USER_DEPRECATED);
+    error_reporting(error_reporting() & ~E_USER_DEPRECATED);
     $loader = require_once __DIR__.'/./autoload.php';
 }
 
@@ -31,19 +31,22 @@ public function add(array $parameters = array())
 {
 $this->parameters = array_replace($this->parameters, $parameters);
 }
-public function get($path, $default = null, $deep = false)
+public function get($key, $default = null, $deep = false)
 {
-if (!$deep || false === $pos = strpos($path,'[')) {
-return array_key_exists($path, $this->parameters) ? $this->parameters[$path] : $default;
+if ($deep) {
+@trigger_error('Using paths to find deeper items in '.__METHOD__.' is deprecated since version 2.8 and will be removed in 3.0. Filter the returned value in your own code instead.', E_USER_DEPRECATED);
 }
-$root = substr($path, 0, $pos);
+if (!$deep || false === $pos = strpos($key,'[')) {
+return array_key_exists($key, $this->parameters) ? $this->parameters[$key] : $default;
+}
+$root = substr($key, 0, $pos);
 if (!array_key_exists($root, $this->parameters)) {
 return $default;
 }
 $value = $this->parameters[$root];
 $currentKey = null;
-for ($i = $pos, $c = strlen($path); $i < $c; ++$i) {
-$char = $path[$i];
+for ($i = $pos, $c = strlen($key); $i < $c; ++$i) {
+$char = $key[$i];
 if ('['=== $char) {
 if (null !== $currentKey) {
 throw new \InvalidArgumentException(sprintf('Malformed path. Unexpected "[" at position %d.', $i));
@@ -92,7 +95,7 @@ return preg_replace('/[^[:alnum:]]/','', $this->get($key, $default, $deep));
 }
 public function getDigits($key, $default ='', $deep = false)
 {
-return str_replace(array('-','+'),'', $this->filter($key, $default, $deep, FILTER_SANITIZE_NUMBER_INT));
+return str_replace(array('-','+'),'', $this->filter($key, $default, FILTER_SANITIZE_NUMBER_INT, array(), $deep));
 }
 public function getInt($key, $default = 0, $deep = false)
 {
@@ -100,10 +103,23 @@ return (int) $this->get($key, $default, $deep);
 }
 public function getBoolean($key, $default = false, $deep = false)
 {
-return $this->filter($key, $default, $deep, FILTER_VALIDATE_BOOLEAN);
+return $this->filter($key, $default, FILTER_VALIDATE_BOOLEAN, array(), $deep);
 }
-public function filter($key, $default = null, $deep = false, $filter = FILTER_DEFAULT, $options = array())
+public function filter($key, $default = null, $filter = FILTER_DEFAULT, $options = array(), $deep = false)
 {
+static $filters = null;
+if (null === $filters) {
+foreach (filter_list() as $tmp) {
+$filters[filter_id($tmp)] = 1;
+}
+}
+if (is_bool($filter) || !isset($filters[$filter]) || is_array($deep)) {
+@trigger_error('Passing the $deep boolean as 3rd argument to the '.__METHOD__.' method is deprecated since version 2.8 and will be removed in 3.0. Remove it altogether as the $deep argument will be removed in 3.0.', E_USER_DEPRECATED);
+$tmp = $deep;
+$deep = $filter;
+$filter = $options;
+$options = $tmp;
+}
 $value = $this->get($key, $default, $deep);
 if (!is_array($options) && $options) {
 $options = array('flags'=> $options);
@@ -172,7 +188,7 @@ $this->set($key, $values);
 }
 public function get($key, $default = null, $first = true)
 {
-$key = strtr(strtolower($key),'_','-');
+$key = str_replace('_','-', strtolower($key));
 if (!array_key_exists($key, $this->headers)) {
 if (null === $default) {
 return $first ? null : array();
@@ -186,7 +202,7 @@ return $this->headers[$key];
 }
 public function set($key, $values, $replace = true)
 {
-$key = strtr(strtolower($key),'_','-');
+$key = str_replace('_','-', strtolower($key));
 $values = array_values((array) $values);
 if (true === $replace || !isset($this->headers[$key])) {
 $this->headers[$key] = $values;
@@ -199,7 +215,7 @@ $this->cacheControl = $this->parseCacheControl($values[0]);
 }
 public function has($key)
 {
-return array_key_exists(strtr(strtolower($key),'_','-'), $this->headers);
+return array_key_exists(str_replace('_','-', strtolower($key)), $this->headers);
 }
 public function contains($key, $value)
 {
@@ -207,7 +223,7 @@ return in_array($value, $this->get($key, null, false));
 }
 public function remove($key)
 {
-$key = strtr(strtolower($key),'_','-');
+$key = str_replace('_','-', strtolower($key));
 unset($this->headers[$key]);
 if ('cache-control'=== $key) {
 $this->cacheControl = array();
@@ -401,6 +417,7 @@ namespace Symfony\Component\HttpFoundation
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 class Request
 {
+const HEADER_FORWARDED ='forwarded';
 const HEADER_CLIENT_IP ='client_ip';
 const HEADER_CLIENT_HOST ='client_host';
 const HEADER_CLIENT_PROTO ='client_proto';
@@ -419,6 +436,7 @@ protected static $trustedProxies = array();
 protected static $trustedHostPatterns = array();
 protected static $trustedHosts = array();
 protected static $trustedHeaders = array(
+self::HEADER_FORWARDED =>'FORWARDED',
 self::HEADER_CLIENT_IP =>'X_FORWARDED_FOR',
 self::HEADER_CLIENT_HOST =>'X_FORWARDED_HOST',
 self::HEADER_CLIENT_PROTO =>'X_FORWARDED_PROTO',
@@ -711,6 +729,9 @@ return self::$httpMethodParameterOverride;
 }
 public function get($key, $default = null, $deep = false)
 {
+if ($deep) {
+@trigger_error('Using paths to find deeper items in '.__METHOD__.' is deprecated since version 2.8 and will be removed in 3.0. Filter the returned value in your own code instead.', E_USER_DEPRECATED);
+}
 if ($this !== $result = $this->query->get($key, $this, $deep)) {
 return $result;
 }
@@ -740,16 +761,19 @@ $this->session = $session;
 }
 public function getClientIps()
 {
+$clientIps = array();
 $ip = $this->server->get('REMOTE_ADDR');
 if (!$this->isFromTrustedProxy()) {
 return array($ip);
 }
-if (!self::$trustedHeaders[self::HEADER_CLIENT_IP] || !$this->headers->has(self::$trustedHeaders[self::HEADER_CLIENT_IP])) {
-return array($ip);
-}
+if (self::$trustedHeaders[self::HEADER_FORWARDED] && $this->headers->has(self::$trustedHeaders[self::HEADER_FORWARDED])) {
+$forwardedHeader = $this->headers->get(self::$trustedHeaders[self::HEADER_FORWARDED]);
+preg_match_all('{(for)=("?\[?)([a-z0-9\.:_\-/]*)}', $forwardedHeader, $matches);
+$clientIps = $matches[3];
+} elseif (self::$trustedHeaders[self::HEADER_CLIENT_IP] && $this->headers->has(self::$trustedHeaders[self::HEADER_CLIENT_IP])) {
 $clientIps = array_map('trim', explode(',', $this->headers->get(self::$trustedHeaders[self::HEADER_CLIENT_IP])));
-$clientIps[] = $ip;
-$ip = $clientIps[0];
+}
+$clientIps[] = $ip; $ip = $clientIps[0];
 foreach ($clientIps as $key => $clientIp) {
 if (preg_match('{((?:\d+\.){3}\d+)\:\d+}', $clientIp, $match)) {
 $clientIps[$key] = $clientIp = $match[1];
@@ -864,6 +888,31 @@ return $this->getSchemeAndHttpHost().$this->getBaseUrl().$this->getPathInfo().$q
 public function getUriForPath($path)
 {
 return $this->getSchemeAndHttpHost().$this->getBaseUrl().$path;
+}
+public function getRelativeUriForPath($path)
+{
+if (!isset($path[0]) ||'/'!== $path[0]) {
+return $path;
+}
+if ($path === $basePath = $this->getPathInfo()) {
+return'';
+}
+$sourceDirs = explode('/', isset($basePath[0]) &&'/'=== $basePath[0] ? substr($basePath, 1) : $basePath);
+$targetDirs = explode('/', isset($path[0]) &&'/'=== $path[0] ? substr($path, 1) : $path);
+array_pop($sourceDirs);
+$targetFile = array_pop($targetDirs);
+foreach ($sourceDirs as $i => $dir) {
+if (isset($targetDirs[$i]) && $dir === $targetDirs[$i]) {
+unset($sourceDirs[$i], $targetDirs[$i]);
+} else {
+break;
+}
+}
+$targetDirs[] = $targetFile;
+$path = str_repeat('../', count($sourceDirs)).implode('/', $targetDirs);
+return !isset($path[0]) ||'/'=== $path[0]
+|| false !== ($colonPos = strpos($path,':')) && ($colonPos < ($slashPos = strpos($path,'/')) || false === $slashPos)
+? "./$path" : $path;
 }
 public function getQueryString()
 {
@@ -1169,8 +1218,8 @@ $requestUri = $this->getRequestUri();
 if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, $baseUrl)) {
 return $prefix;
 }
-if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, rtrim(dirname($baseUrl),'/').'/')) {
-return rtrim($prefix,'/');
+if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, rtrim(dirname($baseUrl),'/'.DIRECTORY_SEPARATOR).'/')) {
+return rtrim($prefix,'/'.DIRECTORY_SEPARATOR);
 }
 $truncatedRequestUri = $requestUri;
 if (false !== $pos = strpos($requestUri,'?')) {
@@ -1183,7 +1232,7 @@ return'';
 if (strlen($requestUri) >= strlen($baseUrl) && (false !== $pos = strpos($requestUri, $baseUrl)) && $pos !== 0) {
 $baseUrl = substr($requestUri, 0, $pos + strlen($baseUrl));
 }
-return rtrim($baseUrl,'/');
+return rtrim($baseUrl,'/'.DIRECTORY_SEPARATOR);
 }
 protected function prepareBasePath()
 {
@@ -1249,7 +1298,7 @@ private static function createRequestFromFactory(array $query = array(), array $
 {
 if (self::$requestFactory) {
 $request = call_user_func(self::$requestFactory, $query, $request, $attributes, $cookies, $files, $server, $content);
-if (!$request instanceof Request) {
+if (!$request instanceof self) {
 throw new \LogicException('The Request factory must return an instance of Symfony\Component\HttpFoundation\Request.');
 }
 return $request;
@@ -1330,7 +1379,6 @@ public static $statusTexts = array(
 303 =>'See Other',
 304 =>'Not Modified',
 305 =>'Use Proxy',
-306 =>'Reserved',
 307 =>'Temporary Redirect',
 308 =>'Permanent Redirect', 400 =>'Bad Request',
 401 =>'Unauthorized',
@@ -1345,10 +1393,10 @@ public static $statusTexts = array(
 410 =>'Gone',
 411 =>'Length Required',
 412 =>'Precondition Failed',
-413 =>'Request Entity Too Large',
-414 =>'Request-URI Too Long',
+413 =>'Payload Too Large',
+414 =>'URI Too Long',
 415 =>'Unsupported Media Type',
-416 =>'Requested Range Not Satisfiable',
+416 =>'Range Not Satisfiable',
 417 =>'Expectation Failed',
 418 =>'I\'m a teapot', 422 =>'Unprocessable Entity', 423 =>'Locked', 424 =>'Failed Dependency', 425 =>'Reserved for WebDAV advanced collections expired proposal', 426 =>'Upgrade Required', 428 =>'Precondition Required', 429 =>'Too Many Requests', 431 =>'Request Header Fields Too Large', 500 =>'Internal Server Error',
 501 =>'Not Implemented',
@@ -1363,9 +1411,6 @@ $this->headers = new ResponseHeaderBag($headers);
 $this->setContent($content);
 $this->setStatusCode($status);
 $this->setProtocolVersion('1.0');
-if (!$this->headers->has('Date')) {
-$this->setDate(new \DateTime(null, new \DateTimeZone('UTC')));
-}
 }
 public static function create($content ='', $status = 200, $headers = array())
 {
@@ -1428,12 +1473,15 @@ public function sendHeaders()
 if (headers_sent()) {
 return $this;
 }
-header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText), true, $this->statusCode);
+if (!$this->headers->has('Date')) {
+$this->setDate(\DateTime::createFromFormat('U', time()));
+}
 foreach ($this->headers->allPreserveCase() as $name => $values) {
 foreach ($values as $value) {
 header($name.': '.$value, false, $this->statusCode);
 }
 }
+header(sprintf('HTTP/%s %s %s', $this->version, $this->statusCode, $this->statusText), true, $this->statusCode);
 foreach ($this->headers->getCookies() as $cookie) {
 setcookie($cookie->getName(), $cookie->getValue(), $cookie->getExpiresTime(), $cookie->getPath(), $cookie->getDomain(), $cookie->isSecure(), $cookie->isHttpOnly());
 }
@@ -1483,7 +1531,7 @@ if ($this->isInvalid()) {
 throw new \InvalidArgumentException(sprintf('The HTTP status code "%s" is not valid.', $code));
 }
 if (null === $text) {
-$this->statusText = isset(self::$statusTexts[$code]) ? self::$statusTexts[$code] :'';
+$this->statusText = isset(self::$statusTexts[$code]) ? self::$statusTexts[$code] :'unknown status';
 return $this;
 }
 if (false === $text) {
@@ -1538,11 +1586,14 @@ return $this;
 }
 public function mustRevalidate()
 {
-return $this->headers->hasCacheControlDirective('must-revalidate') || $this->headers->has('proxy-revalidate');
+return $this->headers->hasCacheControlDirective('must-revalidate') || $this->headers->hasCacheControlDirective('proxy-revalidate');
 }
 public function getDate()
 {
-return $this->headers->getDate('Date', new \DateTime());
+if (!$this->headers->has('Date')) {
+$this->setDate(\DateTime::createFromFormat('U', time()));
+}
+return $this->headers->getDate('Date');
 }
 public function setDate(\DateTime $date)
 {
@@ -1843,7 +1894,7 @@ $this->set('Cache-Control','');
 public function set($key, $values, $replace = true)
 {
 parent::set($key, $values, $replace);
-$uniqueKey = strtr(strtolower($key),'_','-');
+$uniqueKey = str_replace('_','-', strtolower($key));
 $this->headerNames[$uniqueKey] = $key;
 if (in_array($uniqueKey, array('cache-control','etag','last-modified','expires'))) {
 $computed = $this->computeCacheControlValue();
@@ -1855,7 +1906,7 @@ $this->computedCacheControl = $this->parseCacheControl($computed);
 public function remove($key)
 {
 parent::remove($key);
-$uniqueKey = strtr(strtolower($key),'_','-');
+$uniqueKey = str_replace('_','-', strtolower($key));
 unset($this->headerNames[$uniqueKey]);
 if ('cache-control'=== $uniqueKey) {
 $this->computedCacheControl = array();
@@ -1991,15 +2042,23 @@ public function initialized($id);
 }
 namespace Symfony\Component\DependencyInjection
 {
+interface ResettableContainerInterface extends ContainerInterface
+{
+public function reset();
+}
+}
+namespace Symfony\Component\DependencyInjection
+{
 use Symfony\Component\DependencyInjection\Exception\InactiveScopeException;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Symfony\Component\DependencyInjection\Exception\LogicException;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 use Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBag;
 use Symfony\Component\DependencyInjection\ParameterBag\FrozenParameterBag;
-class Container implements IntrospectableContainerInterface
+class Container implements IntrospectableContainerInterface, ResettableContainerInterface
 {
 protected $parameterBag;
 protected $services = array();
@@ -2042,6 +2101,9 @@ $this->parameterBag->set($name, $value);
 }
 public function set($id, $service, $scope = self::SCOPE_CONTAINER)
 {
+if (!in_array($scope, array('container','request')) || ('request'=== $scope &&'request'!== $id)) {
+@trigger_error('The concept of container scopes is deprecated since version 2.8 and will be removed in 3.0. Omit the third parameter.', E_USER_DEPRECATED);
+}
 if (self::SCOPE_PROTOTYPE === $scope) {
 throw new InvalidArgumentException(sprintf('You cannot set service "%s" of scope "prototype".', $id));
 }
@@ -2125,9 +2187,7 @@ try {
 $service = $this->$method();
 } catch (\Exception $e) {
 unset($this->loading[$id]);
-if (array_key_exists($id, $this->services)) {
 unset($this->services[$id]);
-}
 if ($e instanceof InactiveScopeException && self::EXCEPTION_ON_INVALID_REFERENCE !== $invalidBehavior) {
 return;
 }
@@ -2148,6 +2208,13 @@ $id = $this->aliases[$id];
 }
 return isset($this->services[$id]) || array_key_exists($id, $this->services);
 }
+public function reset()
+{
+if (!empty($this->scopedServices)) {
+throw new LogicException('Resetting the container is not allowed when a scope is active.');
+}
+$this->services = array();
+}
 public function getServiceIds()
 {
 $ids = array();
@@ -2162,6 +2229,9 @@ return array_unique(array_merge($ids, array_keys($this->services)));
 }
 public function enterScope($name)
 {
+if ('request'!== $name) {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.8 and will be removed in 3.0.', E_USER_DEPRECATED);
+}
 if (!isset($this->scopes[$name])) {
 throw new InvalidArgumentException(sprintf('The scope "%s" does not exist.', $name));
 }
@@ -2188,6 +2258,9 @@ $this->scopedServices[$name] = array();
 }
 public function leaveScope($name)
 {
+if ('request'!== $name) {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.8 and will be removed in 3.0.', E_USER_DEPRECATED);
+}
 if (!isset($this->scopedServices[$name])) {
 throw new InvalidArgumentException(sprintf('The scope "%s" is not active.', $name));
 }
@@ -2217,6 +2290,9 @@ public function addScope(ScopeInterface $scope)
 {
 $name = $scope->getName();
 $parentScope = $scope->getParentName();
+if ('request'!== $name) {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.8 and will be removed in 3.0.', E_USER_DEPRECATED);
+}
 if (self::SCOPE_CONTAINER === $name || self::SCOPE_PROTOTYPE === $name) {
 throw new InvalidArgumentException(sprintf('The scope "%s" is reserved.', $name));
 }
@@ -2235,10 +2311,14 @@ $parentScope = $this->scopes[$parentScope];
 }
 public function hasScope($name)
 {
+if ('request'!== $name) {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.8 and will be removed in 3.0.', E_USER_DEPRECATED);
+}
 return isset($this->scopes[$name]);
 }
 public function isScopeActive($name)
 {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.8 and will be removed in 3.0.', E_USER_DEPRECATED);
 return isset($this->scopedServices[$name]);
 }
 public static function camelize($id)
@@ -2247,7 +2327,10 @@ return strtr(ucwords(strtr($id, array('_'=>' ','.'=>'_ ','\\'=>'_ '))), array(' 
 }
 public static function underscore($id)
 {
-return strtolower(preg_replace(array('/([A-Z]+)([A-Z][a-z])/','/([a-z\d])([A-Z])/'), array('\\1_\\2','\\1_\\2'), strtr($id,'_','.')));
+return strtolower(preg_replace(array('/([A-Z]+)([A-Z][a-z])/','/([a-z\d])([A-Z])/'), array('\\1_\\2','\\1_\\2'), str_replace('_','.', $id)));
+}
+private function __clone()
+{
 }
 }
 }
@@ -2309,6 +2392,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\DependencyInjection\Loader\IniFileLoader;
 use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
+use Symfony\Component\DependencyInjection\Loader\DirectoryLoader;
 use Symfony\Component\DependencyInjection\Loader\ClosureLoader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -2333,12 +2417,14 @@ protected $booted = false;
 protected $name;
 protected $startTime;
 protected $loadClassCache;
-const VERSION ='2.6.13';
-const VERSION_ID ='20613';
-const MAJOR_VERSION ='2';
-const MINOR_VERSION ='6';
-const RELEASE_VERSION ='13';
+const VERSION ='2.8.2';
+const VERSION_ID = 20802;
+const MAJOR_VERSION = 2;
+const MINOR_VERSION = 8;
+const RELEASE_VERSION = 2;
 const EXTRA_VERSION ='';
+const END_OF_MAINTENANCE ='11/2018';
+const END_OF_LIFE ='11/2019';
 public function __construct($environment, $debug)
 {
 $this->environment = $environment;
@@ -2348,10 +2434,16 @@ $this->name = $this->getName();
 if ($this->debug) {
 $this->startTime = microtime(true);
 }
+$defClass = new \ReflectionMethod($this,'init');
+$defClass = $defClass->getDeclaringClass()->name;
+if (__CLASS__ !== $defClass) {
+@trigger_error(sprintf('Calling the %s::init() method is deprecated since version 2.3 and will be removed in 3.0. Move your logic to the constructor method instead.', $defClass), E_USER_DEPRECATED);
 $this->init();
+}
 }
 public function init()
 {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.3 and will be removed in 3.0. Move your logic to the constructor method instead.', E_USER_DEPRECATED);
 }
 public function __clone()
 {
@@ -2415,6 +2507,7 @@ return $this->bundles;
 }
 public function isClassInActiveBundle($class)
 {
+@trigger_error('The '.__METHOD__.' method is deprecated since version 2.6 and will be removed in version 3.0.', E_USER_DEPRECATED);
 foreach ($this->getBundles() as $bundle) {
 if (0 === strpos($class, $bundle->getNamespace())) {
 return true;
@@ -2496,7 +2589,7 @@ public function getRootDir()
 {
 if (null === $this->rootDir) {
 $r = new \ReflectionObject($this);
-$this->rootDir = str_replace('\\','/', dirname($r->getFileName()));
+$this->rootDir = dirname($r->getFileName());
 }
 return $this->rootDir;
 }
@@ -2595,7 +2688,7 @@ $container->compile();
 $this->dumpContainer($cache, $container, $class, $this->getContainerBaseClass());
 $fresh = false;
 }
-require_once $cache;
+require_once $cache->getPath();
 $this->container = new $class();
 $this->container->set('kernel', $this);
 if (!$fresh && $this->container->has('cache_warmer')) {
@@ -2674,9 +2767,9 @@ protected function dumpContainer(ConfigCache $cache, ContainerBuilder $container
 {
 $dumper = new PhpDumper($container);
 if (class_exists('ProxyManager\Configuration') && class_exists('Symfony\Bridge\ProxyManager\LazyProxy\PhpDumper\ProxyDumper')) {
-$dumper->setProxyDumper(new ProxyDumper(md5((string) $cache)));
+$dumper->setProxyDumper(new ProxyDumper(md5($cache->getPath())));
 }
-$content = $dumper->dump(array('class'=> $class,'base_class'=> $baseClass,'file'=> (string) $cache));
+$content = $dumper->dump(array('class'=> $class,'base_class'=> $baseClass,'file'=> $cache->getPath()));
 if (!$this->debug) {
 $content = static::stripComments($content);
 }
@@ -2690,6 +2783,7 @@ new XmlFileLoader($container, $locator),
 new YamlFileLoader($container, $locator),
 new IniFileLoader($container, $locator),
 new PhpFileLoader($container, $locator),
+new DirectoryLoader($container, $locator),
 new ClosureLoader($container),
 ));
 return new DelegatingLoader($resolver);
@@ -2804,27 +2898,17 @@ public function getNamespace();
 public function getPath();
 }
 }
-namespace Symfony\Component\DependencyInjection
-{
-abstract class ContainerAware implements ContainerAwareInterface
-{
-protected $container;
-public function setContainer(ContainerInterface $container = null)
-{
-$this->container = $container;
-}
-}
-}
 namespace Symfony\Component\HttpKernel\Bundle
 {
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-abstract class Bundle extends ContainerAware implements BundleInterface
+abstract class Bundle implements BundleInterface
 {
+protected $container;
 protected $name;
 protected $extension;
 protected $path;
@@ -2837,14 +2921,17 @@ public function shutdown()
 public function build(ContainerBuilder $container)
 {
 }
+public function setContainer(ContainerInterface $container = null)
+{
+$this->container = $container;
+}
 public function getContainerExtension()
 {
 if (null === $this->extension) {
-$class = $this->getContainerExtensionClass();
-if (class_exists($class)) {
-$extension = new $class();
+$extension = $this->createContainerExtension();
+if (null !== $extension) {
 if (!$extension instanceof ExtensionInterface) {
-throw new \LogicException(sprintf('Extension %s must implement Symfony\Component\DependencyInjection\Extension\ExtensionInterface.', $class));
+throw new \LogicException(sprintf('Extension %s must implement Symfony\Component\DependencyInjection\Extension\ExtensionInterface.', get_class($extension)));
 }
 $basename = preg_replace('/Bundle$/','', $this->getName());
 $expectedAlias = Container::underscore($basename);
@@ -2892,13 +2979,16 @@ public function registerCommands(Application $application)
 if (!is_dir($dir = $this->getPath().'/Command')) {
 return;
 }
+if (!class_exists('Symfony\Component\Finder\Finder')) {
+throw new \RuntimeException('You need the symfony/finder component to register bundle commands.');
+}
 $finder = new Finder();
 $finder->files()->name('*Command.php')->in($dir);
 $prefix = $this->getNamespace().'\\Command';
 foreach ($finder as $file) {
 $ns = $prefix;
 if ($relativePath = $file->getRelativePath()) {
-$ns .='\\'.strtr($relativePath,'/','\\');
+$ns .='\\'.str_replace('/','\\', $relativePath);
 }
 $class = $ns.'\\'.$file->getBasename('.php');
 if ($this->container) {
@@ -2918,6 +3008,22 @@ protected function getContainerExtensionClass()
 $basename = preg_replace('/Bundle$/','', $this->getName());
 return $this->getNamespace().'\\DependencyInjection\\'.$basename.'Extension';
 }
+protected function createContainerExtension()
+{
+if (class_exists($class = $this->getContainerExtensionClass())) {
+return new $class();
+}
+}
+}
+}
+namespace Symfony\Component\Config
+{
+use Symfony\Component\Config\Resource\ResourceInterface;
+interface ConfigCacheInterface
+{
+public function getPath();
+public function isFresh();
+public function write($content, array $metadata = null);
 }
 }
 namespace Symfony\Component\Config
@@ -2925,16 +3031,16 @@ namespace Symfony\Component\Config
 use Symfony\Component\Config\Resource\ResourceInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
-class ConfigCache
+class ResourceCheckerConfigCache implements ConfigCacheInterface
 {
-private $debug;
 private $file;
-public function __construct($file, $debug)
+private $resourceCheckers;
+public function __construct($file, array $resourceCheckers = array())
 {
 $this->file = $file;
-$this->debug = (bool) $debug;
+$this->resourceCheckers = $resourceCheckers;
 }
-public function __toString()
+public function getPath()
 {
 return $this->file;
 }
@@ -2943,19 +3049,21 @@ public function isFresh()
 if (!is_file($this->file)) {
 return false;
 }
-if (!$this->debug) {
-return true;
-}
+if (!$this->resourceCheckers) {
+return true; }
 $metadata = $this->getMetaFile();
 if (!is_file($metadata)) {
-return false;
+return true;
 }
 $time = filemtime($this->file);
 $meta = unserialize(file_get_contents($metadata));
 foreach ($meta as $resource) {
-if (!$resource->isFresh($time)) {
-return false;
-}
+foreach ($this->resourceCheckers as $checker) {
+if (!$checker->supports($resource)) {
+continue; }
+if ($checker->isFresh($resource, $time)) {
+break; }
+return false; }
 }
 return true;
 }
@@ -2969,7 +3077,7 @@ try {
 $filesystem->chmod($this->file, $mode, $umask);
 } catch (IOException $e) {
 }
-if (null !== $metadata && true === $this->debug) {
+if (null !== $metadata) {
 $filesystem->dumpFile($this->getMetaFile(), serialize($metadata), null);
 try {
 $filesystem->chmod($this->getMetaFile(), $mode, $umask);
@@ -2980,6 +3088,35 @@ $filesystem->chmod($this->getMetaFile(), $mode, $umask);
 private function getMetaFile()
 {
 return $this->file.'.meta';
+}
+}
+}
+namespace Symfony\Component\Config
+{
+use Symfony\Component\Config\Resource\BCResourceInterfaceChecker;
+use Symfony\Component\Config\Resource\SelfCheckingResourceChecker;
+class ConfigCache extends ResourceCheckerConfigCache
+{
+private $debug;
+public function __construct($file, $debug)
+{
+parent::__construct($file, array(
+new SelfCheckingResourceChecker(),
+new BCResourceInterfaceChecker(),
+));
+$this->debug = (bool) $debug;
+}
+public function __toString()
+{
+@trigger_error('ConfigCache::__toString() is deprecated since version 2.7 and will be removed in 3.0. Use the getPath() method instead.', E_USER_DEPRECATED);
+return $this->getPath();
+}
+public function isFresh()
+{
+if (!$this->debug && is_file($this->getPath())) {
+return true;
+}
+return parent::isFresh();
 }
 }
 }
@@ -3012,6 +3149,7 @@ $this->requestStack = $requestStack ?: new RequestStack();
 }
 public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
 {
+$request->headers->set('X-Php-Ob-Level', ob_get_level());
 try {
 return $this->handleRaw($request, $type);
 } catch (\Exception $e) {
@@ -3148,9 +3286,12 @@ use Symfony\Component\DependencyInjection\Scope;
 class ContainerAwareHttpKernel extends HttpKernel
 {
 protected $container;
-public function __construct(EventDispatcherInterface $dispatcher, ContainerInterface $container, ControllerResolverInterface $controllerResolver, RequestStack $requestStack = null)
+public function __construct(EventDispatcherInterface $dispatcher, ContainerInterface $container, ControllerResolverInterface $controllerResolver, RequestStack $requestStack = null, $triggerDeprecation = true)
 {
 parent::__construct($dispatcher, $controllerResolver, $requestStack);
+if ($triggerDeprecation) {
+@trigger_error('The '.__CLASS__.' class is deprecated since version 2.7 and will be removed in 3.0. Use the Symfony\Component\HttpKernel\HttpKernel class instead.', E_USER_DEPRECATED);
+}
 $this->container = $container;
 if (!$container->hasScope('request')) {
 $container->addScope(new Scope('request'));
@@ -3158,7 +3299,6 @@ $container->addScope(new Scope('request'));
 }
 public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
 {
-$request->headers->set('X-Php-Ob-Level', ob_get_level());
 $this->container->enterScope('request');
 $this->container->set('request', $request,'request');
 try {

@@ -177,6 +177,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ListProjetAction',  '_route' => 'pidev_crowd_rise_ListProjet',);
         }
 
+        // my_image_route
+        if (0 === strpos($pathinfo, '/aff') && preg_match('#^/aff/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'my_image_route')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::photoAction',));
+        }
+
         // pidev_crowd_rise_ModifierProjet
         if (0 === strpos($pathinfo, '/ModifierProjet') && preg_match('#^/ModifierProjet/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_ModifierProjet')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::ModifierProjetAction',));
@@ -190,6 +195,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // pidev_crowd_rise_SupprimerProjet
         if (0 === strpos($pathinfo, '/SupprimerProjet') && preg_match('#^/SupprimerProjet/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_SupprimerProjet')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::SupprimerProjetAction',));
+        }
+
+        // vote
+        if ($pathinfo === '/vote') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProjetController::voteAction',  '_route' => 'vote',);
         }
 
         // homepage
@@ -382,6 +392,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'FOS\\UserBundle\\Controller\\ChangePasswordController::changePasswordAction',  '_route' => 'fos_user_change_password',);
         }
         not_fos_user_change_password:
+
+        // dcs_rating_add_vote
+        if (0 === strpos($pathinfo, '/Routing/vote/add') && preg_match('#^/Routing/vote/add/(?P<id>[^/]++)/(?P<value>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'dcs_rating_add_vote')), array (  '_controller' => 'DCS\\RatingBundle\\Controller\\RatingController::addVoteAction',));
+        }
 
         // _welcome
         if (rtrim($pathinfo, '/') === '') {

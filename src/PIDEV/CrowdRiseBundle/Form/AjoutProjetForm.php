@@ -5,6 +5,8 @@ namespace PIDEV\CrowdRiseBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+use PIDEV\CrowdRiseBundle\Form\MediaType;
+
 class AjoutProjetForm extends AbstractType {
 
     public function buildForm(FormBuilderInterface
@@ -31,9 +33,12 @@ class AjoutProjetForm extends AbstractType {
                     'years' => range(date('Y'), 2050),
                     'widget' => 'choice',
                     'data' => new \DateTime("now")))
-                ->add('image_projet', 'file')
+                
+                
+                ->add('image_projet', new MediaType())
                 ->add('fichier_projet', 'file')
                 ->add('video_projet', 'url')
+                
                 ->add('Ajouter', 'submit');
         // ->setMethod("GET");
     }
@@ -41,5 +46,6 @@ class AjoutProjetForm extends AbstractType {
     public function getName() {
         return 'Projet';
     }
+ 
 
 }

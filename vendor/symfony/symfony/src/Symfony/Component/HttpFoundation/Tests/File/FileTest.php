@@ -45,6 +45,9 @@ class FileTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('gif', $file->guessExtension());
     }
 
+    /**
+     * @requires extension fileinfo
+     */
     public function testGuessExtensionWithReset()
     {
         $file = new File(__DIR__.'/Fixtures/other-file.example');
@@ -159,12 +162,6 @@ class FileTest extends \PHPUnit_Framework_TestCase
         @unlink($sourcePath);
         @unlink($targetPath);
         @rmdir($targetDir);
-    }
-
-    public function testGetExtension()
-    {
-        $file = new File(__DIR__.'/Fixtures/test.gif');
-        $this->assertEquals('gif', $file->getExtension());
     }
 
     protected function createMockGuesser($path, $mimeType)

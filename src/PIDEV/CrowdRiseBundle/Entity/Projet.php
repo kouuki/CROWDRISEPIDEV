@@ -1,6 +1,7 @@
 <?php
 
 namespace PIDEV\CrowdRiseBundle\Entity;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,10 +9,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Projet
  *
  * @ORM\Table(name="projet")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PIDEV\CrowdRiseBundle\Entity\ProjetRepository")
  */
-class Projet
-{
+class Projet {
+
     /**
      * @var integer
      *
@@ -56,14 +57,15 @@ class Projet
      */
     private $deadlineProjet;
 
+    
     /**
      * @var string
      *
-     * @ORM\Column(name="fichier_projet", type="text")
+     * @ORM\Column(name="fichierProjet", type="string", length=50)
      */
     private $fichierProjet;
 
-   /**
+    /**
      * @var integer
      * @ORM\ManyToOne(targetEntity="Membre")
      * @ORM\JoinColumns({
@@ -72,25 +74,25 @@ class Projet
      */
     private $MembreId;
 
-    /**
-     * @var string
-     * 
-     * @ORM\Column(name="image_projet", type="text")
+     /**
+     * @ORM\OneToOne(targetEntity="PIDEV\CrowdRiseBundle\Entity\Media", cascade={"persist","remove"},mappedBy="PIDEV\CrowdRiseBundle\Entity\Projet")
+     *  @ORM\JoinColumn(name="imageProjet", referencedColumnName="id")
      */
     private $imageProjet;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="video_projet", type="text"))
+     * @ORM\Column(name="video_projet", type="text")
      */
     private $videoProjet;
-     /**
+
+    /**
      *  @var Categorie
      * @ORM\ManyToOne(targetEntity="Categorie")
      */
-    
     private $idcat;
+  
     /**
      * 
      * @Assert\File(maxSize="6000000")
@@ -104,8 +106,7 @@ class Projet
         $this->idcat = $idcat;
     }
 
-    
-                function getIdProjet() {
+    function getIdProjet() {
         return $this->idProjet;
     }
 
@@ -137,9 +138,6 @@ class Projet
         return $this->MembreId;
     }
 
-    function getImageProjet() {
-        return $this->imageProjet;
-    }
 
     function getVideoProjet() {
         return $this->videoProjet;
@@ -177,14 +175,29 @@ class Projet
         $this->MembreId = $MembreId;
     }
 
-    function setImageProjet($imageProjet) {
-        $this->imageProjet = $imageProjet;
-    }
+  
 
     function setVideoProjet($videoProjet) {
         $this->videoProjet = $videoProjet;
     }
-
-
-
+  /**
+     * Set image
+     *
+     * @param \PIDEV\CrowdRiseBundle\Entity\Media $image
+     * @return Produits
+     */
+    public function setImageProjet(\PIDEV\CrowdRiseBundle\Entity\Media $image)
+    {
+        $this->imageProjet = $image;
+        return $this;
+    }
+    /**
+     * Get image
+     *
+     * @return \PIDEV\CrowdRiseBundle\Entity\Media
+     */
+    public function getImageProjet()
+    {
+        return $this->imageProjet;
+    }
 }

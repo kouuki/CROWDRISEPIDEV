@@ -34,6 +34,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
     private $clonesIndex = 0;
     private $rootRefs;
     private $charset;
+    private $requestStack;
     private $dumper;
     private $dumperIsInjected;
 
@@ -69,7 +70,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
             $this->isCollected = false;
         }
 
-        $trace = PHP_VERSION_ID >= 50306 ? DEBUG_BACKTRACE_PROVIDE_OBJECT | DEBUG_BACKTRACE_IGNORE_ARGS : true;
+        $trace = DEBUG_BACKTRACE_PROVIDE_OBJECT | DEBUG_BACKTRACE_IGNORE_ARGS;
         if (PHP_VERSION_ID >= 50400) {
             $trace = debug_backtrace($trace, 7);
         } else {
@@ -98,9 +99,9 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
                     } elseif (isset($trace[$i]['object']) && $trace[$i]['object'] instanceof \Twig_Template) {
                         $info = $trace[$i]['object'];
                         $name = $info->getTemplateName();
-                        $src = $info->getEnvironment()->getLoader()->getSource($name);
+                        $src = method_exists($info, 'getSource') ? $info->getSource() : $info->getEnvironment()->getLoader()->getSource($name);
                         $info = $info->getDebugInfo();
-                        if (isset($info[$trace[$i - 1]['line']])) {
+                        if (null !== $src && isset($info[$trace[$i - 1]['line']])) {
                             $file = false;
                             $line = $info[$trace[$i - 1]['line']];
                             $src = explode("\n", $src);
@@ -120,7 +121,7 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         }
 
         if (false === $name) {
-            $name = strtr($file, '\\', '/');
+            $name = str_replace('\\', '/', $file);
             $name = substr($name, strrpos($name, '/') + 1);
         }
 
@@ -204,7 +205,12 @@ class DumpDataCollector extends DataCollector implements DataDumperInterface
         $dumps = array();
 
         foreach ($this->data as $dump) {
-            $dumper->dump($dump['data']->getLimitedClone($maxDepthLimit, $maxItemsPerDepth));
+            if (method_exists($dump['data'], 'withMaxDepth')) {
+                $dumper->dump($dump['data']->withMaxDepth($maxDepthLimit)->withMaxItemsPerDepth($maxItemsPerDepth));
+            } else {
+                // getLimitedClone is @deprecated, to be removed in 3.0
+                $dumper->dump($dump['data']->getLimitedClone($maxDepthLimit, $maxItemsPerDepth));
+            }
             rewind($data);
             $dump['data'] = stream_get_contents($data);
             ftruncate($data, 0);

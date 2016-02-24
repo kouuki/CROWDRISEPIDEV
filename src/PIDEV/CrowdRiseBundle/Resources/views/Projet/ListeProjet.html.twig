@@ -1,6 +1,6 @@
 {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
 {% block content %}
-    LISTER
+
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
 
@@ -12,37 +12,53 @@
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
                     <h2>Ajoutez votre solution</h2>
 
+
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
-                           <h1>Liste Des projets</h1>
-<table border="1">
-    <tr>
-        <th>titre</th>
-        <th>description</th>
-        <th>typeFinancement</th>
-        
-        <th>Image</th>
-        
-       
-    </tr>
-    {% for projet in projets %}
-    <tr>
-        <td>{{projet.titre}}</td>
-        <td>{{projet.description}}</td>
-        <td>{{projet.typeFinancement}}</td>
-        <td></td>
-       {# <td><img height="150px" src="{{ asset(path('my_image_route', {'id': projet.idProjet})) }}"/> </td>#}
-         <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}">Modifier</a></td>
-          <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}">Supprimer</a></td>
-        
-        
-        
-        
-        
-    </tr>
-    {% endfor %}
-</table>
+                            <h1>Liste Des projets</h1>
+                            <table class="table table-striped col-lg-4">
+                                <thead>
+
+
+
+                                    <tr>
+                                        <th>Titre</th>
+                                        <th>Description</th>
+                                        <th>Financement</th>
+                                        <th>Image</th>
+                                        
+                                        <th>Modifer</th>
+                                        <th>Supprimer</th>
+                                        <th>Rate</th>  
+
+                                    </tr>
+                                </thead>
+                                <tbody class="searchable">
+                                    {% for projet in projets %}
+                                        <tr>
+                                            <td>{{projet.titre}}</td>
+                                            <td>{{projet.description}}</td>
+                                            <td>{{projet.typeFinancement}}</td>
+                                            <td>{{projet.nom}}</td>
+                                           
+
+
+                                  
+                                    
+                                    <td> <img height="150px" src="{{ asset('Uploads/' ~ projet.path ) }}"/> </td> 
+                                    <a href="{{ asset('Uploads/' ~ projet.path ) }}">View brochure (PDF)</a>
+                                    <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                    <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}"><i class="glyphicon glyphicon-erase"></i></a></td>
+ <td>{% include 'DCSRatingBundle:Rating:rating.html.twig' with {'id' : 'YOUR_UNIQUE_ID'} %}</td>
+
+
+
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

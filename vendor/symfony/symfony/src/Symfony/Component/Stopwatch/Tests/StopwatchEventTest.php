@@ -13,12 +13,12 @@ namespace Symfony\Component\Stopwatch\Tests;
 
 use Symfony\Component\Stopwatch\StopwatchEvent;
 
-require_once __DIR__.'/ClockMock.php';
-
 /**
  * StopwatchEventTest.
  *
  * @author Fabien Potencier <fabien@symfony.com>
+ *
+ * @group time-sensitive
  */
 class StopwatchEventTest extends \PHPUnit_Framework_TestCase
 {
@@ -159,5 +159,17 @@ class StopwatchEventTest extends \PHPUnit_Framework_TestCase
     public function testInvalidOriginThrowsAnException()
     {
         new StopwatchEvent('abc');
+    }
+
+    public function testHumanRepresentation()
+    {
+        $event = new StopwatchEvent(microtime(true) * 1000);
+        $this->assertEquals('default: 0.00 MiB - 0 ms', (string) $event);
+        $event->start();
+        $event->stop();
+        $this->assertEquals(1, preg_match('/default: [0-9\.]+ MiB - [0-9]+ ms/', (string) $event));
+
+        $event = new StopwatchEvent(microtime(true) * 1000, 'foo');
+        $this->assertEquals('foo: 0.00 MiB - 0 ms', (string) $event);
     }
 }

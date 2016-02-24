@@ -13,6 +13,7 @@ namespace Symfony\Component\Console\Helper;
 
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Exception\LogicException;
 
 /**
  * The Progress class provides helpers to display progress output.
@@ -20,7 +21,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author Chris Jones <leeked@gmail.com>
  * @author Fabien Potencier <fabien@symfony.com>
  *
- * @deprecated Deprecated since 2.5, to be removed in 3.0; use ProgressBar instead.
+ * @deprecated since version 2.5, to be removed in 3.0
+ *             Use {@link ProgressBar} instead.
  */
 class ProgressHelper extends Helper
 {
@@ -116,6 +118,13 @@ class ProgressHelper extends Helper
         array(129600, '1 day'),
         array(604800, 'days', 86400),
     );
+
+    public function __construct($triggerDeprecationError = true)
+    {
+        if ($triggerDeprecationError) {
+            @trigger_error('The '.__CLASS__.' class is deprecated since version 2.5 and will be removed in 3.0. Use the Symfony\Component\Console\Helper\ProgressBar class instead.', E_USER_DEPRECATED);
+        }
+    }
 
     /**
      * Sets the progress bar width.
@@ -228,7 +237,7 @@ class ProgressHelper extends Helper
      * @param int  $step   Number of steps to advance
      * @param bool $redraw Whether to redraw or not
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function advance($step = 1, $redraw = false)
     {
@@ -241,18 +250,18 @@ class ProgressHelper extends Helper
      * @param int  $current The current progress
      * @param bool $redraw  Whether to redraw or not
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function setCurrent($current, $redraw = false)
     {
         if (null === $this->startTime) {
-            throw new \LogicException('You must start the progress bar before calling setCurrent().');
+            throw new LogicException('You must start the progress bar before calling setCurrent().');
         }
 
         $current = (int) $current;
 
         if ($current < $this->current) {
-            throw new \LogicException('You can\'t regress the progress bar');
+            throw new LogicException('You can\'t regress the progress bar');
         }
 
         if (0 === $this->current) {
@@ -274,12 +283,12 @@ class ProgressHelper extends Helper
      *
      * @param bool $finish Forces the end result
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function display($finish = false)
     {
         if (null === $this->startTime) {
-            throw new \LogicException('You must start the progress bar before calling display().');
+            throw new LogicException('You must start the progress bar before calling display().');
         }
 
         $message = $this->format;
@@ -307,7 +316,7 @@ class ProgressHelper extends Helper
     public function finish()
     {
         if (null === $this->startTime) {
-            throw new \LogicException('You must start the progress bar before calling finish().');
+            throw new LogicException('You must start the progress bar before calling finish().');
         }
 
         if (null !== $this->startTime) {

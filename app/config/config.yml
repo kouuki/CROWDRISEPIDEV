@@ -76,3 +76,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: PIDEV\CrowdRiseBundle\Entity\Membre
+    
+dcs_rating:
+    db_driver: orm
+    base_path_to_redirect: / # when the permalink is not configured
+    max_value: 5 # maximum value for the vote (stars displayed)
+    model:
+        rating: PIDEV\CrowdRiseBundle\Entity\Rating
+        vote: PIDEV\CrowdRiseBundle\Entity\Vote

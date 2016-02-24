@@ -52,7 +52,7 @@
     <services>
         <service id="security.authentication.listener.anonymous" class="%security.authentication.listener.anonymous.class%" public="false">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument /> <!-- Key -->
             <argument type="service" id="logger" on-invalid="null" />
             <argument type="service" id="security.authentication.manager" />
@@ -82,7 +82,7 @@
 
         <service id="security.context_listener" class="%security.context_listener.class%" public="false">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="collection" />
             <argument /> <!-- Provider Key -->
             <argument type="service" id="logger" on-invalid="null" />
@@ -90,7 +90,7 @@
         </service>
 
         <service id="security.logout_listener" class="%security.logout_listener.class%" public="false" abstract="true">
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.http_utils" />
             <argument type="service" id="security.logout.success_handler" />
             <argument /> <!-- Options -->
@@ -111,7 +111,7 @@
 
         <service id="security.authentication.listener.abstract" abstract="true" public="false">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.manager" />
             <argument type="service" id="security.authentication.session_strategy" />
             <argument type="service" id="security.http_utils" />
@@ -168,16 +168,17 @@
 
         <service id="security.authentication.listener.simple_preauth" class="%security.authentication.listener.simple_preauth.class%" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.manager" />
             <argument /> <!-- Provider-shared Key -->
             <argument /> <!-- Authenticator -->
             <argument type="service" id="logger" on-invalid="null" />
+            <argument type="service" id="event_dispatcher" on-invalid="null"/>
         </service>
 
         <service id="security.authentication.listener.x509" class="%security.authentication.listener.x509.class%" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.manager" />
             <argument /> <!-- Provider-shared Key -->
             <argument /> <!-- x509 user -->
@@ -188,7 +189,7 @@
 
         <service id="security.authentication.listener.remote_user" class="Symfony\Component\Security\Http\Firewall\RemoteUserAuthenticationListener" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.manager" />
             <argument /> <!-- Provider-shared Key -->
             <argument /> <!-- REMOTE_USER server env var -->
@@ -198,7 +199,7 @@
 
         <service id="security.authentication.listener.basic" class="%security.authentication.listener.basic.class%" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.manager" />
             <argument /> <!-- Provider-shared Key -->
             <argument /> <!-- Entry Point -->
@@ -207,7 +208,7 @@
 
         <service id="security.authentication.listener.digest" class="%security.authentication.listener.digest.class%" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument /> <!-- User Provider -->
             <argument /> <!-- Provider-shared Key -->
             <argument /> <!-- Entry Point -->
@@ -216,9 +217,18 @@
 
         <service id="security.authentication.provider.dao" class="%security.authentication.provider.dao.class%" abstract="true" public="false">
             <argument /> <!-- User Provider -->
-            <argument type="service" id="security.user_checker" />
+            <argument /> <!-- User Checker -->
             <argument /> <!-- Provider-shared Key -->
             <argument type="service" id="security.encoder_factory" />
+            <argument>%security.authentication.hide_user_not_found%</argument>
+        </service>
+
+        <service id="security.authentication.provider.ldap_bind" class="Symfony\Component\Security\Core\Authentication\Provider\LdapBindAuthenticationProvider" public="false" abstract="true">
+            <argument /> <!-- User Provider -->
+            <argument /> <!-- UserChecker -->
+            <argument /> <!-- Provider-shared Key -->
+            <argument /> <!-- LDAP -->
+            <argument /> <!-- Base DN -->
             <argument>%security.authentication.hide_user_not_found%</argument>
         </service>
 
@@ -230,12 +240,12 @@
 
         <service id="security.authentication.provider.pre_authenticated" class="%security.authentication.provider.pre_authenticated.class%" abstract="true" public="false">
             <argument /> <!-- User Provider -->
-            <argument type="service" id="security.user_checker" />
+            <argument /> <!-- User Checker -->
         </service>
 
         <service id="security.exception_listener" class="%security.exception_listener.class%" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.authentication.trust_resolver" />
             <argument type="service" id="security.http_utils" />
             <argument />
@@ -243,13 +253,14 @@
             <argument>%security.access.denied_url%</argument>
             <argument type="service" id="security.access.denied_handler" on-invalid="null" />
             <argument type="service" id="logger" on-invalid="null" />
+            <argument>false</argument> <!-- Stateless -->
         </service>
 
         <service id="security.authentication.switchuser_listener" class="%security.authentication.switchuser_listener.class%" public="false" abstract="true">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument /> <!-- User Provider -->
-            <argument type="service" id="security.user_checker" />
+            <argument /> <!-- User Checker -->
             <argument /> <!--  Provider Key -->
             <argument type="service" id="security.access.decision_manager" />
             <argument type="service" id="logger" on-invalid="null" />
@@ -260,7 +271,7 @@
 
         <service id="security.access_listener" class="%security.access_listener.class%" public="false">
             <tag name="monolog.logger" channel="security" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
             <argument type="service" id="security.access.decision_manager" />
             <argument type="service" id="security.access_map" />
             <argument type="service" id="security.authentication.manager" />

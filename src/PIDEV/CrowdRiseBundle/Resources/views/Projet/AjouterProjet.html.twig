@@ -25,16 +25,16 @@
                                     </div>
 
                                 </div>
-                                <form method="post">  
+                                <form {{form_enctype(Form)}} method="post">  
                                     <table>
-                                        <tr> <td>titre: </td> <td> {{ form_widget(Form.titre) }} </td> </tr>      {#form fct prédéfinie twig   Form label #}
+                                       {# <tr> <td>titre: </td> <td> {{ form_widget(Form.titre) }} </td> </tr>  #}    {#form fct prédéfinie twig   Form label 
                                         <tr> <td>description:</td> <td> {{ form_widget(Form.description) }} </td> </tr>
                                         <tr> <td>typeFinancement:</td> <td> {{ form_widget(Form.typeFinancement) }} </td> </tr>
                                         <tr> <td>Catégorie:</td> <td> {{ form_widget(Form.idcat) }} </td> </tr>
                                         <tr> <td>deadlineProjet:</td> <td> {{ form_widget(Form.deadlineProjet) }} </td> </tr>
-                                        <tr> <td>image_projet:</td> <td> {{ form_widget(Form.image_projet) }} </td> </tr>
+                                        <tr> <td>image_projet:</td> <td>  {{ form_row(Form.image_projet) }}  </td> </tr>
                                         <tr> <td>fichier_projet:</td> <td> {{ form_widget(Form.fichier_projet) }} </td> </tr>
-                                        <tr> <td>video_projet:</td> <td> {{ form_widget(Form.video_projet) }} </td> </tr>
+                                        <tr> <td>video_projet:</td> <td> {{ form_widget(Form.video_projet) }} </td> </tr>#}
                                         <tr> <td>{{ form_rest(Form) }} </td> </tr>
                                     </table>
                                 </form>

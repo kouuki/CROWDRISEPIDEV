@@ -11,6 +11,8 @@
 
 namespace Symfony\Component\Console\Question;
 
+use Symfony\Component\Console\Exception\InvalidArgumentException;
+
 /**
  * Represents a choice question.
  *
@@ -36,7 +38,7 @@ class ChoiceQuestion extends Question
 
         $this->choices = $choices;
         $this->setValidator($this->getDefaultValidator());
-        $this->setAutocompleterValues(array_keys($choices));
+        $this->setAutocompleterValues($choices);
     }
 
     /**
@@ -117,15 +119,16 @@ class ChoiceQuestion extends Question
         $choices = $this->choices;
         $errorMessage = $this->errorMessage;
         $multiselect = $this->multiselect;
+        $isAssoc = $this->isAssoc($choices);
 
-        return function ($selected) use ($choices, $errorMessage, $multiselect) {
+        return function ($selected) use ($choices, $errorMessage, $multiselect, $isAssoc) {
             // Collapse all spaces.
             $selectedChoices = str_replace(' ', '', $selected);
 
             if ($multiselect) {
                 // Check for a separated comma values
                 if (!preg_match('/^[a-zA-Z0-9_-]+(?:,[a-zA-Z0-9_-]+)*$/', $selectedChoices, $matches)) {
-                    throw new \InvalidArgumentException(sprintf($errorMessage, $selected));
+                    throw new InvalidArgumentException(sprintf($errorMessage, $selected));
                 }
                 $selectedChoices = explode(',', $selectedChoices);
             } else {
@@ -134,18 +137,41 @@ class ChoiceQuestion extends Question
 
             $multiselectChoices = array();
             foreach ($selectedChoices as $value) {
-                if (empty($choices[$value])) {
-                    throw new \InvalidArgumentException(sprintf($errorMessage, $value));
+                $results = array();
+                foreach ($choices as $key => $choice) {
+                    if ($choice === $value) {
+                        $results[] = $key;
+                    }
                 }
 
-                $multiselectChoices[] = $choices[$value];
+                if (count($results) > 1) {
+                    throw new InvalidArgumentException(sprintf('The provided answer is ambiguous. Value should be one of %s.', implode(' or ', $results)));
+                }
+
+                $result = array_search($value, $choices);
+
+                if (!$isAssoc) {
+                    if (false !== $result) {
+                        $result = $choices[$result];
+                    } elseif (isset($choices[$value])) {
+                        $result = $choices[$value];
+                    }
+                } elseif (false === $result && isset($choices[$value])) {
+                    $result = $value;
+                }
+
+                if (false === $result) {
+                    throw new InvalidArgumentException(sprintf($errorMessage, $value));
+                }
+
+                $multiselectChoices[] = (string) $result;
             }
 
             if ($multiselect) {
                 return $multiselectChoices;
             }
 
-            return $choices[$selected];
+            return current($multiselectChoices);
         };
     }
 }

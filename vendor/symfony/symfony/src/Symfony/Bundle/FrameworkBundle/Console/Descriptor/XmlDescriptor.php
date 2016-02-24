@@ -331,16 +331,18 @@ class XmlDescriptor extends Descriptor
 
         $serviceXML->setAttribute('class', $definition->getClass());
 
-        if ($definition->getFactoryClass()) {
-            $serviceXML->setAttribute('factory-class', $definition->getFactoryClass());
-        }
+        if (method_exists($definition, 'getFactoryMethod')) {
+            if ($definition->getFactoryClass(false)) {
+                $serviceXML->setAttribute('factory-class', $definition->getFactoryClass(false));
+            }
 
-        if ($definition->getFactoryService()) {
-            $serviceXML->setAttribute('factory-service', $definition->getFactoryService());
-        }
+            if ($definition->getFactoryService(false)) {
+                $serviceXML->setAttribute('factory-service', $definition->getFactoryService(false));
+            }
 
-        if ($definition->getFactoryMethod()) {
-            $serviceXML->setAttribute('factory-method', $definition->getFactoryMethod());
+            if ($definition->getFactoryMethod(false)) {
+                $serviceXML->setAttribute('factory-method', $definition->getFactoryMethod(false));
+            }
         }
 
         if ($factory = $definition->getFactory()) {
@@ -360,12 +362,22 @@ class XmlDescriptor extends Descriptor
             }
         }
 
-        $serviceXML->setAttribute('scope', $definition->getScope());
+        $serviceXML->setAttribute('scope', $definition->getScope(false));
         $serviceXML->setAttribute('public', $definition->isPublic() ? 'true' : 'false');
         $serviceXML->setAttribute('synthetic', $definition->isSynthetic() ? 'true' : 'false');
         $serviceXML->setAttribute('lazy', $definition->isLazy() ? 'true' : 'false');
-        $serviceXML->setAttribute('synchronized', $definition->isSynchronized() ? 'true' : 'false');
+        if (method_exists($definition, 'isShared')) {
+            $serviceXML->setAttribute('shared', $definition->isShared() ? 'true' : 'false');
+        }
+        if (method_exists($definition, 'isSynchronized')) {
+            $serviceXML->setAttribute('synchronized', $definition->isSynchronized(false) ? 'true' : 'false');
+        }
         $serviceXML->setAttribute('abstract', $definition->isAbstract() ? 'true' : 'false');
+
+        if (method_exists($definition, 'isAutowired')) {
+            $serviceXML->setAttribute('autowired', $definition->isAutowired() ? 'true' : 'false');
+        }
+
         $serviceXML->setAttribute('file', $definition->getFile());
 
         if (!$omitTags) {
@@ -444,11 +456,7 @@ class XmlDescriptor extends Descriptor
 
         $registeredListeners = $eventDispatcher->getListeners($event);
         if (null !== $event) {
-            foreach ($registeredListeners as $listener) {
-                $callableXML = $this->getCallableDocument($listener);
-
-                $eventDispatcherXML->appendChild($eventDispatcherXML->ownerDocument->importNode($callableXML->childNodes->item(0), true));
-            }
+            $this->appendEventListenerDocument($eventDispatcher, $event, $eventDispatcherXML, $registeredListeners);
         } else {
             ksort($registeredListeners);
 
@@ -456,15 +464,25 @@ class XmlDescriptor extends Descriptor
                 $eventDispatcherXML->appendChild($eventXML = $dom->createElement('event'));
                 $eventXML->setAttribute('name', $eventListened);
 
-                foreach ($eventListeners as $eventListener) {
-                    $callableXML = $this->getCallableDocument($eventListener);
-
-                    $eventXML->appendChild($eventXML->ownerDocument->importNode($callableXML->childNodes->item(0), true));
-                }
+                $this->appendEventListenerDocument($eventDispatcher, $eventListened, $eventXML, $eventListeners);
             }
         }
 
         return $dom;
+    }
+
+    /**
+     * @param \DOMElement $element
+     * @param array       $eventListeners
+     */
+    private function appendEventListenerDocument(EventDispatcherInterface $eventDispatcher, $event, \DOMElement $element, array $eventListeners)
+    {
+        foreach ($eventListeners as $listener) {
+            $callableXML = $this->getCallableDocument($listener);
+            $callableXML->childNodes->item(0)->setAttribute('priority', $eventDispatcher->getListenerPriority($event, $listener));
+
+            $element->appendChild($element->ownerDocument->importNode($callableXML->childNodes->item(0), true));
+        }
     }
 
     /**

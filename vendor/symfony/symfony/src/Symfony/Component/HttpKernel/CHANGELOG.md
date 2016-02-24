@@ -1,6 +1,16 @@
 CHANGELOG
 =========
 
+2.8.0
+-----
+
+ * deprecated `Profiler::import` and `Profiler::export`
+
+2.7.0
+-----
+
+ * added the HTTP status code to profiles
+
 2.6.0
 -----
 

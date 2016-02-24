@@ -11,13 +11,17 @@
 
 namespace Symfony\Component\Security\Core\Authorization\Voter;
 
+@trigger_error('The '.__NAMESPACE__.'\AbstractVoter class is deprecated since version 2.8, to be removed in 3.0. Upgrade to Symfony\Component\Security\Core\Authorization\Voter\Voter instead.', E_USER_DEPRECATED);
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 /**
- * Abstract Voter implementation that reduces boilerplate code required to create a custom Voter
+ * Abstract Voter implementation that reduces boilerplate code required to create a custom Voter.
  *
  * @author Roman Marintšenko <inoryy@gmail.com>
+ *
+ * @deprecated since version 2.8, to be removed in 3.0. Upgrade to Symfony\Component\Security\Core\Authorization\Voter\Voter instead.
  */
 abstract class AbstractVoter implements VoterInterface
 {
@@ -44,7 +48,7 @@ abstract class AbstractVoter implements VoterInterface
     }
 
     /**
-     * Iteratively check all given attributes by calling isGranted
+     * Iteratively check all given attributes by calling isGranted.
      *
      * This method terminates as soon as it is able to return ACCESS_GRANTED
      * If at least one attribute is supported, but access not granted, then ACCESS_DENIED is returned
@@ -83,14 +87,14 @@ abstract class AbstractVoter implements VoterInterface
     }
 
     /**
-     * Return an array of supported classes. This will be called by supportsClass
+     * Return an array of supported classes. This will be called by supportsClass.
      *
      * @return array an array of supported classes, i.e. array('Acme\DemoBundle\Model\Product')
      */
     abstract protected function getSupportedClasses();
 
     /**
-     * Return an array of supported attributes. This will be called by supportsAttribute
+     * Return an array of supported attributes. This will be called by supportsAttribute.
      *
      * @return array an array of supported attributes, i.e. array('CREATE', 'READ')
      */
@@ -101,7 +105,7 @@ abstract class AbstractVoter implements VoterInterface
      * It is safe to assume that $attribute and $object's class pass supportsAttribute/supportsClass
      * $user can be one of the following:
      *   a UserInterface object (fully authenticated user)
-     *   a string               (anonymously authenticated user)
+     *   a string               (anonymously authenticated user).
      *
      * @param string               $attribute
      * @param object               $object

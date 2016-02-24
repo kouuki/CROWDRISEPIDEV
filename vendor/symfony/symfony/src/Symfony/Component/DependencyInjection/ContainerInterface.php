@@ -20,8 +20,6 @@ use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Johannes M. Schmitt <schmittjoh@gmail.com>
- *
- * @api
  */
 interface ContainerInterface
 {
@@ -34,11 +32,11 @@ interface ContainerInterface
     /**
      * Sets a service.
      *
+     * Note: The $scope parameter is deprecated since version 2.8 and will be removed in 3.0.
+     *
      * @param string $id      The service identifier
      * @param object $service The service instance
      * @param string $scope   The scope of the service
-     *
-     * @api
      */
     public function set($id, $service, $scope = self::SCOPE_CONTAINER);
 
@@ -54,8 +52,6 @@ interface ContainerInterface
      * @throws ServiceNotFoundException          When the service is not defined
      *
      * @see Reference
-     *
-     * @api
      */
     public function get($id, $invalidBehavior = self::EXCEPTION_ON_INVALID_REFERENCE);
 
@@ -65,8 +61,6 @@ interface ContainerInterface
      * @param string $id The service identifier
      *
      * @return bool true if the service is defined, false otherwise
-     *
-     * @api
      */
     public function has($id);
 
@@ -78,8 +72,6 @@ interface ContainerInterface
      * @return mixed The parameter value
      *
      * @throws InvalidArgumentException if the parameter is not defined
-     *
-     * @api
      */
     public function getParameter($name);
 
@@ -89,8 +81,6 @@ interface ContainerInterface
      * @param string $name The parameter name
      *
      * @return bool The presence of parameter in container
-     *
-     * @api
      */
     public function hasParameter($name);
 
@@ -99,8 +89,6 @@ interface ContainerInterface
      *
      * @param string $name  The parameter name
      * @param mixed  $value The parameter value
-     *
-     * @api
      */
     public function setParameter($name, $value);
 
@@ -109,7 +97,7 @@ interface ContainerInterface
      *
      * @param string $name
      *
-     * @api
+     * @deprecated since version 2.8, to be removed in 3.0.
      */
     public function enterScope($name);
 
@@ -118,7 +106,7 @@ interface ContainerInterface
      *
      * @param string $name
      *
-     * @api
+     * @deprecated since version 2.8, to be removed in 3.0.
      */
     public function leaveScope($name);
 
@@ -127,7 +115,7 @@ interface ContainerInterface
      *
      * @param ScopeInterface $scope
      *
-     * @api
+     * @deprecated since version 2.8, to be removed in 3.0.
      */
     public function addScope(ScopeInterface $scope);
 
@@ -138,7 +126,7 @@ interface ContainerInterface
      *
      * @return bool
      *
-     * @api
+     * @deprecated since version 2.8, to be removed in 3.0.
      */
     public function hasScope($name);
 
@@ -151,7 +139,7 @@ interface ContainerInterface
      *
      * @return bool
      *
-     * @api
+     * @deprecated since version 2.8, to be removed in 3.0.
      */
     public function isScopeActive($name);
 }
