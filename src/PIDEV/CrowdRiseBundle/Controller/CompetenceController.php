@@ -27,8 +27,9 @@ class CompetenceController extends Controller
 
     public function afficheAction($id){
         $em = $this->getDoctrine()->getManager();
-        $competence = $em->getRepository('PIDEVCrowdRiseBundle:Competence')->find($id);
-        return $this->render('PIDEVCrowdRiseBundle:Competence:afficheCompetence.html.twig',array('competence' => $competence));
+        $competence = $em->getRepository('PIDEVCrowdRiseBundle:Competence')->findAll();
+        $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
+        return $this->render('PIDEVCrowdRiseBundle:Competence:afficheCompetence.html.twig',array('competence' => $competence, 'profil'=>$profil));
 
     }
 }

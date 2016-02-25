@@ -29,11 +29,9 @@ class Competence
     private $idProfil;
 
     /**
-     * @var integer
-     * @ORM\OneToOne(targetEntity="Profil")
-     * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="idProfil", referencedColumnName="id" , onDelete="CASCADE")
-     * })
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 

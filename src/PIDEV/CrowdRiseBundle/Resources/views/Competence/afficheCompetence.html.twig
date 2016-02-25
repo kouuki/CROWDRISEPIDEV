@@ -45,15 +45,15 @@
                                             {#<h3>Date :
                                                 <small> {{ profil.date_de_naissance |date("Y-m-d") }} </small>
                                             </h3>#}
-                                            <h3>Adresse :
-                                                <small> {{ profil.adresse |capitalize }}</small>
+                                            <h2>Les compétences</h2>
+                                            {% for competences in competence %}
+                                            <h3>Competence :
+                                                <small> {{ competences.nom |capitalize }}</small>
                                             </h3>
-                                            <h3>Pseudo :
-                                                <small>  {{ profil.pseudo }} </small>
+                                            <h3>Description :
+                                                <small>  {{ competences.description }}</small>
                                             </h3>
-                                            <h3>Profession :
-                                                <small>  {{ profil.profession }}</small>
-                                            </h3>
+                                            {% endfor %}
                                         </div>
                                     </div>
                                 </div>
