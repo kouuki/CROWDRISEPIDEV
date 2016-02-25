@@ -1,0 +1,56 @@
+{# empty Twig template #}
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    <section id="portfolio-section" class="page bg-style1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio">
+                        <!-- Begin page header-->
+                        <div class="page">
+                            <div class="container">
+                                <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
+                                    <h2>Votre notification</h2>
+                                </div>
+                            </div>
+                            <!-- End page header-->
+                            <div>
+                                <div class="portfolio_content">
+                                    <div class="row" id="portfolio">
+
+                                        <div class="col-xs-12 col-sm-4  role">
+                                            <div class="portfolio_single_content">
+                                                <img src={{ asset('img/portfolio/p7.jpg') }} alt="title"/>
+
+                                                <div>
+                                                    <a href="#">Créateur</a>
+                                                    <span>Créer des projets à financer</span>
+                                                    <center><input type="radio" name="role" value="créateur"></center>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-4  role">
+                                            {% for notifications in notification %}
+                                               <fieldset>
+                                                <h3>Producer :
+                                                    <small>{{ notifications.producer }}</small>
+                                                </h3>
+                                                <h3>Receiver :
+                                                    <small>{{ notifications.receiver }}</small>
+                                                </h3>
+                                                <h3>Message :
+                                                    <small> {{ notifications.message }} </small>
+                                                </h3>
+                                               </fieldset>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}

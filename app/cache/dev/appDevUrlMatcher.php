@@ -158,11 +158,26 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_afficher')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::afficheAction',));
             }
 
-            // homepage
-            if ($pathinfo === '/app/example') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
-            }
+        }
 
+        // create_notification
+        if ($pathinfo === '/createNotification') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\NotificationController::createNotificationAction',  '_route' => 'create_notification',);
+        }
+
+        // list_notification
+        if ($pathinfo === '/listNotification') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\NotificationController::listNotificationAction',  '_route' => 'list_notification',);
+        }
+
+        // pidev_profil_modifier
+        if (0 === strpos($pathinfo, '/modifierProfil') && preg_match('#^/modifierProfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_modifier')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::modifierAction',));
+        }
+
+        // homepage
+        if ($pathinfo === '/app/example') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
         if (0 === strpos($pathinfo, '/log')) {

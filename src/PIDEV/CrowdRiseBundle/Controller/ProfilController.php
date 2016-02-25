@@ -30,6 +30,14 @@ class ProfilController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($profil);
             $em->flush();
+            /*$notification = $this->get('notification_controller');*/
+            /*$notification->createNotificationAction($profil->getId(),'Salut');*/
+            return $this->forward('PIDEVCrowdRiseBundle:Notification:createNotification', array(
+                'producer'  => $nom,
+                'receiver'  => $prenom,
+                'message' => $nom.' a ajouté un nouveau profil',
+                'render' => 'PIDEVCrowdRiseBundle:Profil:ajouter.html.twig'
+            ));
             //$this->redirectToRoute('pidev_profil_affiche',$id);
         }
 
@@ -47,5 +55,9 @@ class ProfilController extends Controller
         $em = $this->getDoctrine()->getManager();
         $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
 
+    }
+
+    public function modifierProfilAction($id){
+        return $this->render('PIDEVCrowdRiseBundle:Profil:modifier.html.twig',$id);
     }
 }

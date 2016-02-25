@@ -3106,7 +3106,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56caf7ea351cf4.49333515</argument>
+            <argument>56cee4d92fa1d4.83298145</argument>
           </service>
         </argument>
       </argument>
@@ -3385,7 +3385,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>56caf7ea351cf4.49333515</argument>
+            <argument>56cee4d92fa1d4.83298145</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4027,6 +4027,7 @@
       <argument type="service" id="security.token_storage" on-invalid="null"/>
       <argument type="service" id="security.authorization_checker" on-invalid="null"/>
     </service>
+    <service id="notification_controller" class="PIDEV\CrowdRiseBundle\Controller\NotificationController"/>
     <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="fos_user.user_manager"/>

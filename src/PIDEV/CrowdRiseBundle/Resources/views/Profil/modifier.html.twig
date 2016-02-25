@@ -1,0 +1,69 @@
+{# empty Twig template #}
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    <section id="portfolio-section" class="page bg-style1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio">
+                        <!-- Begin page header-->
+                        <div class="page">
+                            <div class="container">
+                                <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
+                                    <h2>Modification du profil</h2>
+                                </div>
+                            </div>
+                            <!-- End page header-->
+                            <div>
+                                <div class=" col-xs-12 col-md-4 personnal">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Nom</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="nom"
+                                               placeholder="Nom">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Prénom</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" name="prenom"
+                                               placeholder="Prénom">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">Photo de profil</label>
+                                        <input type="file" id="exampleInputFile" name="image">
+
+                                        <p class="help-block">Example block-level help text here.</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputDateNaissance">Date de naissance</label>
+                                        <input type="date" class="" name="dateNaissance">
+                                    </div>
+                                    <button type="submit" class="btn btn-default">Submit</button>
+                                </div>
+                                <div class="col-xs-12 col-md-4 personnal">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Pseudo</label>
+                                        <input type="text" class="form-control" name="pseudo" id="exampleInputEmail1"
+                                               placeholder="Pseudo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Adresse</label>
+                                        <input type="text" class="form-control" name="adresse" id="exampleInputEmail1"
+                                               placeholder="Adresse">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Profession</label>
+                                        <input type="text" class="form-control" name="profession"
+                                               id="exampleInputEmail1" placeholder="Profession">
+                                    </div>
+                                </div>
+                            </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}

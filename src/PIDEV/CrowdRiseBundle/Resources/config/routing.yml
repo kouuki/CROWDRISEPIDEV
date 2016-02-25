@@ -21,3 +21,14 @@ pidev_profil_ajouter:
 pidev_profil_afficher:
     path:     /afficheProfil/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Profil:affiche}
+
+create_notification:
+    path:     /createNotification
+    defaults: { _controller: PIDEVCrowdRiseBundle:Notification:createNotification }
+
+list_notification:
+    path:     /listNotification
+    defaults: { _controller: PIDEVCrowdRiseBundle:Notification:listNotification }
+pidev_profil_modifier:
+    path:     /modifierProfil/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Profil:modifier}
