@@ -168,11 +168,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_afficher_competence')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\CompetenceController::afficheAction',));
             }
 
-            // homepage
-            if ($pathinfo === '/app/example') {
-                return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
-            }
+        }
 
+        // pidev_profil_modifier_competence
+        if (0 === strpos($pathinfo, '/modifierCompetence') && preg_match('#^/modifierCompetence/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_modifier_competence')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\CompetenceController::modifierAction',));
+        }
+
+        // homepage
+        if ($pathinfo === '/app/example') {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
         }
 
         if (0 === strpos($pathinfo, '/log')) {

@@ -29,3 +29,6 @@ pidev_profil_ajouter_competence:
 pidev_profil_afficher_competence:
     path:     /afficherCompetence/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Competence:affiche}
+pidev_profil_modifier_competence:
+    path:     /modifierCompetence/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Competence:modifier}

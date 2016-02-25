@@ -32,4 +32,24 @@ class CompetenceController extends Controller
         return $this->render('PIDEVCrowdRiseBundle:Competence:afficheCompetence.html.twig',array('competence' => $competence, 'profil'=>$profil));
 
     }
+
+    public function modifierAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $competence = $em->getRepository('PIDEVCrowdRiseBundle:Competence')->find($id);
+        $idp = $competence->getIdProfil() ;
+        $idProfil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($idp);
+        $request = $this->get('request');
+        if ($request->getMethod() == "POST") {
+            $nom = $request->get('nom');
+            $description = $request->get('description');
+            $competence->setNom($nom);
+            $competence->setDescription($description);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($competence);
+            $em->flush();
+            /*return $this->render('PIDEVCrowdRiseBundle:Competence:afficheCompetence.html.twig',array('competence'=>$competence,'profil'=>$idProfil));*/
+        }
+        return $this->render('PIDEVCrowdRiseBundle:Competence:modifierComptence.html.twig',array('competence'=> $competence));
+    }
 }

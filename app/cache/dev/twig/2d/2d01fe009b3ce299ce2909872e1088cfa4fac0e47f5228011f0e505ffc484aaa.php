@@ -87,26 +87,24 @@ class __TwigTemplate_1cd1e76ce4ae43fd2e38534b3ca0c657920c351da2436c76cae2ca06652
         $context['_seq'] = twig_ensure_traversable((isset($context["competence"]) ? $context["competence"] : $this->getContext($context, "competence")));
         foreach ($context['_seq'] as $context["_key"] => $context["competences"]) {
             // line 50
-            echo "                                                <ul>
-                                            <li><h3>Competence :
+            echo "                                            <h3>Competence :
                                                 <small> ";
-            // line 52
+            // line 51
             echo twig_escape_filter($this->env, twig_capitalize_string_filter($this->env, $this->getAttribute($context["competences"], "nom", array())), "html", null, true);
             echo "</small>
-                                            </h3></li>
-                                            <li><h3>Description :
+                                            </h3>
+                                            <h3>Description :
                                                 <small>  ";
-            // line 55
+            // line 54
             echo twig_escape_filter($this->env, $this->getAttribute($context["competences"], "description", array()), "html", null, true);
             echo "</small>
-                                            </h3></li>
-                                                </ul>
+                                            </h3>
                                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['competences'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 59
+        // line 57
         echo "                                        </div>
                                     </div>
                                 </div>
@@ -132,7 +130,7 @@ class __TwigTemplate_1cd1e76ce4ae43fd2e38534b3ca0c657920c351da2436c76cae2ca06652
 
     public function getDebugInfo()
     {
-        return array (  110 => 59,  100 => 55,  94 => 52,  90 => 50,  86 => 49,  83 => 48,  78 => 43,  72 => 40,  58 => 29,  31 => 4,  28 => 3,  11 => 2,);
+        return array (  108 => 57,  99 => 54,  93 => 51,  90 => 50,  86 => 49,  83 => 48,  78 => 43,  72 => 40,  58 => 29,  31 => 4,  28 => 3,  11 => 2,);
     }
 }
 /* {# empty Twig template #}*/
@@ -184,14 +182,12 @@ class __TwigTemplate_1cd1e76ce4ae43fd2e38534b3ca0c657920c351da2436c76cae2ca06652
 /*                                             </h3>#}*/
 /*                                             <h2>Les compétences</h2>*/
 /*                                             {% for competences in competence %}*/
-/*                                                 <ul>*/
-/*                                             <li><h3>Competence :*/
+/*                                             <h3>Competence :*/
 /*                                                 <small> {{ competences.nom |capitalize }}</small>*/
-/*                                             </h3></li>*/
-/*                                             <li><h3>Description :*/
+/*                                             </h3>*/
+/*                                             <h3>Description :*/
 /*                                                 <small>  {{ competences.description }}</small>*/
-/*                                             </h3></li>*/
-/*                                                 </ul>*/
+/*                                             </h3>*/
 /*                                             {% endfor %}*/
 /*                                         </div>*/
 /*                                     </div>*/
