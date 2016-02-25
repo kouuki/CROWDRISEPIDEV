@@ -447,3 +447,16 @@ d4d019,::1,GET,http://localhost/pidev/web/app_dev.php/supprimerProfil/11,1456404
 499fbf,::1,GET,http://localhost/pidev/web/app_dev.php/afficheProfil/12,1456404374,
 108a44,::1,GET,http://localhost/pidev/web/app_dev.php/createNotification,1456409973,51a0d6
 51a0d6,::1,GET,http://localhost/pidev/web/app_dev.php/createNotification,1456409973,
+e68a1d,::1,GET,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456412739,
+3f8e33,::1,POST,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456412959,c2dd27
+c2dd27,::1,POST,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456412959,
+4dc334,::1,GET,http://localhost/pidev/web/app_dev.php/listNotification,1456412983,
+6d34a3,::1,GET,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456413233,
+0e571f,::1,GET,http://localhost/pidev/web/app_dev.php/afficheProfil/20,1456413285,
+cda846,::1,GET,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456413311,
+eeb19d,::1,POST,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456413921,a51cf2
+a51cf2,::1,POST,http://localhost/pidev/web/app_dev.php/ajoutProfil,1456413921,
+2e0b40,::1,GET,http://localhost/pidev/web/app_dev.php/afficheProfil/37,1456413940,
+c709d2,::1,GET,http://localhost/pidev/web/app_dev.php/modifierProfil/37,1456413945,
+19b3ad,::1,POST,http://localhost/pidev/web/app_dev.php/modifierProfil/37,1456413953,
+7dec1d,::1,GET,http://localhost/pidev/web/app_dev.php/supprimerProfil/37,1456413960,

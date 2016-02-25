@@ -49,7 +49,7 @@ class __TwigTemplate_326c35957a2adc1e0a3fde0061116532eeb3f3010fbc44870a145cca1f7
                                             <div class=\"portfolio_single_content\">
                                                 <img src=";
         // line 23
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/portfolio/p7.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("img/portfolio/p3.jpg"), "html", null, true);
         echo " alt=\"title\"/>
 
                                                 <div>
@@ -151,7 +151,7 @@ class __TwigTemplate_326c35957a2adc1e0a3fde0061116532eeb3f3010fbc44870a145cca1f7
 /* */
 /*                                         <div class="col-xs-12 col-sm-4  role">*/
 /*                                             <div class="portfolio_single_content">*/
-/*                                                 <img src={{ asset('img/portfolio/p7.jpg') }} alt="title"/>*/
+/*                                                 <img src={{ asset('img/portfolio/p3.jpg') }} alt="title"/>*/
 /* */
 /*                                                 <div>*/
 /*                                                     <a href="#">Créateur</a>*/
