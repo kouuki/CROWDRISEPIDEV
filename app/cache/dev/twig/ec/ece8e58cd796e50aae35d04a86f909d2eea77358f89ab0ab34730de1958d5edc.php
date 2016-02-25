@@ -92,6 +92,15 @@ class __TwigTemplate_326c35957a2adc1e0a3fde0061116532eeb3f3010fbc44870a145cca1f7
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["profil"]) ? $context["profil"] : $this->getContext($context, "profil")), "profession", array()), "html", null, true);
         echo "</small>
                                             </h3>
+                                            <br>
+                                            <button class=\"btn btn-success\" onclick=location.href=\"";
+        // line 52
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pidev_profil_modifier", array("id" => $this->getAttribute((isset($context["profil"]) ? $context["profil"] : $this->getContext($context, "profil")), "id", array()))), "html", null, true);
+        echo "\">Modifier profil</button>
+                                            <button class=\"btn btn-danger\" onclick=location.href=\"";
+        // line 53
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pidev_profil_supprimer", array("id" => $this->getAttribute((isset($context["profil"]) ? $context["profil"] : $this->getContext($context, "profil")), "id", array()))), "html", null, true);
+        echo "\">Supprimer profil</button>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +126,7 @@ class __TwigTemplate_326c35957a2adc1e0a3fde0061116532eeb3f3010fbc44870a145cca1f7
 
     public function getDebugInfo()
     {
-        return array (  92 => 49,  86 => 46,  80 => 43,  77 => 42,  72 => 37,  66 => 34,  52 => 23,  31 => 4,  28 => 3,  11 => 2,);
+        return array (  102 => 53,  98 => 52,  92 => 49,  86 => 46,  80 => 43,  77 => 42,  72 => 37,  66 => 34,  52 => 23,  31 => 4,  28 => 3,  11 => 2,);
     }
 }
 /* {# empty Twig template #}*/
@@ -170,6 +179,9 @@ class __TwigTemplate_326c35957a2adc1e0a3fde0061116532eeb3f3010fbc44870a145cca1f7
 /*                                             <h3>Profession :*/
 /*                                                 <small>  {{ profil.profession }}</small>*/
 /*                                             </h3>*/
+/*                                             <br>*/
+/*                                             <button class="btn btn-success" onclick=location.href="{{path('pidev_profil_modifier',{'id':profil.id})}}">Modifier profil</button>*/
+/*                                             <button class="btn btn-danger" onclick=location.href="{{path('pidev_profil_supprimer',{'id':profil.id})}}">Supprimer profil</button>*/
 /*                                         </div>*/
 /*                                     </div>*/
 /*                                 </div>*/

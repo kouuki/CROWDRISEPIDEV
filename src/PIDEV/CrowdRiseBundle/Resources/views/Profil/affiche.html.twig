@@ -48,6 +48,9 @@
                                             <h3>Profession :
                                                 <small>  {{ profil.profession }}</small>
                                             </h3>
+                                            <br>
+                                            <button class="btn btn-success" onclick=location.href="{{path('pidev_profil_modifier',{'id':profil.id})}}">Modifier profil</button>
+                                            <button class="btn btn-danger" onclick=location.href="{{path('pidev_profil_supprimer',{'id':profil.id})}}">Supprimer profil</button>
                                         </div>
                                     </div>
                                 </div>

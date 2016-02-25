@@ -172,7 +172,12 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         // pidev_profil_modifier
         if (0 === strpos($pathinfo, '/modifierProfil') && preg_match('#^/modifierProfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_modifier')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::modifierAction',));
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_modifier')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::modifierProfilAction',));
+        }
+
+        // pidev_profil_supprimer
+        if (0 === strpos($pathinfo, '/supprimerProfil') && preg_match('#^/supprimerProfil/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_profil_supprimer')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\ProfilController::supprimerProfilAction',));
         }
 
         // homepage

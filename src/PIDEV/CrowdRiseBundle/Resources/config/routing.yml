@@ -31,4 +31,8 @@ list_notification:
     defaults: { _controller: PIDEVCrowdRiseBundle:Notification:listNotification }
 pidev_profil_modifier:
     path:     /modifierProfil/{id}
-    defaults: { _controller: PIDEVCrowdRiseBundle:Profil:modifier}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Profil:modifierProfil}
+
+pidev_profil_supprimer:
+    path:     /supprimerProfil/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Profil:supprimerProfil}

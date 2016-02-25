@@ -14,45 +14,46 @@
                                 </div>
                             </div>
                             <!-- End page header-->
+                            <form method="POST" action="">
                             <div>
-                                <div class=" col-xs-12 col-md-4 personnal">
+                                <div class=" col-xs-12 col-md-6 personnal">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nom</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="nom"
-                                               placeholder="Nom">
+                                               placeholder="Nom" value={{ profil.nom }}>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Prénom</label>
                                         <input type="text" class="form-control" id="exampleInputPassword1" name="prenom"
-                                               placeholder="Prénom">
+                                               placeholder="Prénom" value={{ profil.prenom }}>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputFile">Photo de profil</label>
-                                        <input type="file" id="exampleInputFile" name="image">
+                                        <input type="file" id="exampleInputFile" name="image" value={{ profil.image }}>
 
                                         <p class="help-block">Example block-level help text here.</p>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputDateNaissance">Date de naissance</label>
-                                        <input type="date" class="" name="dateNaissance">
+                                        <input type="date" class="" name="dateNaissance" value="19/02/2016">
                                     </div>
                                     <button type="submit" class="btn btn-default">Submit</button>
                                 </div>
-                                <div class="col-xs-12 col-md-4 personnal">
+                                <div class="col-xs-12 col-md-6 personnal">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Pseudo</label>
                                         <input type="text" class="form-control" name="pseudo" id="exampleInputEmail1"
-                                               placeholder="Pseudo">
+                                               placeholder="Pseudo" value={{ profil.pseudo }}>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Adresse</label>
                                         <input type="text" class="form-control" name="adresse" id="exampleInputEmail1"
-                                               placeholder="Adresse">
+                                               placeholder="Adresse" value={{ profil.adresse }}>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Profession</label>
                                         <input type="text" class="form-control" name="profession"
-                                               id="exampleInputEmail1" placeholder="Profession">
+                                               id="exampleInputEmail1" placeholder="Profession" value={{ profil.profession }}>
                                     </div>
                                 </div>
                             </div>
