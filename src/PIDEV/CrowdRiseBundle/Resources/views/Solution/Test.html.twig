@@ -1,0 +1,18 @@
+{# empty Twig template #}
+<h1 align="center">AFFICHE MODEL</h1>
+ <h1> Ici on va voir le contenu du parking</h1>
+ <br/>
+ <table border="1" align="center">
+        <tr>
+            <th> Id </th>
+            <th> Libelle </th>
+            <th> Pays </th>
+        <tr>
+            {% for model in models %}
+            <tr>
+                <td> {{model.getCredit()}} </td>
+                
+            </tr>
+        {% endfor %}
+        </tr>
+    </table>

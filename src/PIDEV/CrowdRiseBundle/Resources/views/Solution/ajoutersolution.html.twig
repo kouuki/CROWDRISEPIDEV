@@ -16,38 +16,16 @@
                         <div class="panel-body pan">
                             <form action="" method="post">
                                 <div class="form-body pal">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-
-                                                <h3> {{solution.ProblemeId.getTitre()}}</h3>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    
                                     <div class="form-group">
-                                        <div class="input-icon">
-                                            <i class="glyphicon glyphicon-pencil"></i>
-                                            <input type="text" class="form-control" required="required" {{ form_widget(Form.titre)}}
-                                        </div>
+                                       
+                                        {{ form_row(Form.file) }}
+                                        
                                     </div>
-
-                                    <div class="form-group">
-
-                                        <div class="input-icon">
-                                            <i class="glyphicon glyphicon-edit"></i>
-                                            <textarea rows="10" class="form-control" required="required" {{ form_widget(Form.description)}} </textarea></div>
+                                    <hr />
+                                    <div class="form-actions text-right pal">
+                                        {{ form_widget(Form.Enregistrer,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                        {{ form_rest(Form) }}
                                     </div>
-                                </div>
-                                <hr />
-                                <div class="form-group">
-                                    <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" name="fichierSolution"/>
-                                </div>
-                                 <div class="form-actions text-right pal">
-                                  <div action={{ form_rest(Form) }}
-                                </div>
                             </form>
                         </div>
                     </div>

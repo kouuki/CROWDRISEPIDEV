@@ -41,11 +41,11 @@ class Solution
      * @ORM\Column(name="description", type="text", nullable=false)
      */
     private $description;
-
+    
     /**
      * @var string
-     * 
-     * @ORM\Column(name="fichier_solution", type="blob", nullable=false)
+     *
+     * @ORM\Column(name="fichier_solution", type="string", length=50, nullable=false)
      */
     private $fichierSolution;
 

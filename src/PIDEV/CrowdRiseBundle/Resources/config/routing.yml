@@ -33,3 +33,11 @@ pidev_crowd_rise_deleteSolution:
 pidev_crowd_rise_updateSolution:
     path:     /updateSolution/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:updateSolution }
+    
+pidev_crowd_rise_consulterOffreSolution:
+    path:     /offreSolution
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterOffreSubmitter }
+    
+pidev_crowd_rise_credit:
+    path:     /rechargeCredit/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Finance:ajoutCredit }
