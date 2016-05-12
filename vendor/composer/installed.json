@@ -565,176 +565,6 @@
         ]
     },
     {
-        "name": "paragonie/random_compat",
-        "version": "v1.2.0",
-        "version_normalized": "1.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/paragonie/random_compat.git",
-            "reference": "b0e69d10852716b2ccbdff69c75c477637220790"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b0e69d10852716b2ccbdff69c75c477637220790",
-            "reference": "b0e69d10852716b2ccbdff69c75c477637220790",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "4.*|5.*"
-        },
-        "suggest": {
-            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-        },
-        "time": "2016-02-06 03:52:05",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/random.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Paragon Initiative Enterprises",
-                "email": "security@paragonie.com",
-                "homepage": "https://paragonie.com"
-            }
-        ],
-        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-        "keywords": [
-            "csprng",
-            "pseudorandom",
-            "random"
-        ]
-    },
-    {
-        "name": "symfony/symfony",
-        "version": "v2.6.13",
-        "version_normalized": "2.6.13.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/symfony.git",
-            "reference": "240e9648af3daa5ed19580fdec74d768e30692a6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/symfony/zipball/240e9648af3daa5ed19580fdec74d768e30692a6",
-            "reference": "240e9648af3daa5ed19580fdec74d768e30692a6",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": "~2.3",
-            "paragonie/random_compat": "~1.0",
-            "php": ">=5.3.3",
-            "psr/log": "~1.0",
-            "twig/twig": "~1.12,>=1.12.3"
-        },
-        "replace": {
-            "symfony/browser-kit": "self.version",
-            "symfony/class-loader": "self.version",
-            "symfony/config": "self.version",
-            "symfony/console": "self.version",
-            "symfony/css-selector": "self.version",
-            "symfony/debug": "self.version",
-            "symfony/debug-bundle": "self.version",
-            "symfony/dependency-injection": "self.version",
-            "symfony/doctrine-bridge": "self.version",
-            "symfony/dom-crawler": "self.version",
-            "symfony/event-dispatcher": "self.version",
-            "symfony/expression-language": "self.version",
-            "symfony/filesystem": "self.version",
-            "symfony/finder": "self.version",
-            "symfony/form": "self.version",
-            "symfony/framework-bundle": "self.version",
-            "symfony/http-foundation": "self.version",
-            "symfony/http-kernel": "self.version",
-            "symfony/intl": "self.version",
-            "symfony/locale": "self.version",
-            "symfony/monolog-bridge": "self.version",
-            "symfony/options-resolver": "self.version",
-            "symfony/process": "self.version",
-            "symfony/propel1-bridge": "self.version",
-            "symfony/property-access": "self.version",
-            "symfony/proxy-manager-bridge": "self.version",
-            "symfony/routing": "self.version",
-            "symfony/security": "self.version",
-            "symfony/security-acl": "self.version",
-            "symfony/security-bundle": "self.version",
-            "symfony/security-core": "self.version",
-            "symfony/security-csrf": "self.version",
-            "symfony/security-http": "self.version",
-            "symfony/serializer": "self.version",
-            "symfony/stopwatch": "self.version",
-            "symfony/swiftmailer-bridge": "self.version",
-            "symfony/templating": "self.version",
-            "symfony/translation": "self.version",
-            "symfony/twig-bridge": "self.version",
-            "symfony/twig-bundle": "self.version",
-            "symfony/validator": "self.version",
-            "symfony/var-dumper": "self.version",
-            "symfony/web-profiler-bundle": "self.version",
-            "symfony/yaml": "self.version"
-        },
-        "require-dev": {
-            "doctrine/data-fixtures": "1.0.*",
-            "doctrine/dbal": "~2.2",
-            "doctrine/doctrine-bundle": "~1.2",
-            "doctrine/orm": "~2.2,>=2.2.3",
-            "egulias/email-validator": "~1.2",
-            "ircmaxell/password-compat": "~1.0",
-            "monolog/monolog": "~1.11",
-            "ocramius/proxy-manager": "~0.4|~1.0",
-            "propel/propel1": "~1.6",
-            "symfony/phpunit-bridge": "~2.7"
-        },
-        "time": "2016-01-14 10:11:35",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.6-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Symfony\\": "src/"
-            },
-            "classmap": [
-                "src/Symfony/Component/HttpFoundation/Resources/stubs",
-                "src/Symfony/Component/Intl/Resources/stubs"
-            ],
-            "files": [
-                "src/Symfony/Component/Intl/Resources/stubs/functions.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-            }
-        ],
-        "description": "The Symfony PHP framework",
-        "homepage": "https://symfony.com",
-        "keywords": [
-            "framework"
-        ]
-    },
-    {
         "name": "doctrine/dbal",
         "version": "v2.4.5",
         "version_normalized": "2.4.5.0",
@@ -1179,133 +1009,6 @@
         ]
     },
     {
-        "name": "symfony/assetic-bundle",
-        "version": "v2.7.1",
-        "version_normalized": "2.7.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/assetic-bundle.git",
-            "reference": "d885ec8451d5a7b077bda81bb19ac9fbff9cdc76"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/d885ec8451d5a7b077bda81bb19ac9fbff9cdc76",
-            "reference": "d885ec8451d5a7b077bda81bb19ac9fbff9cdc76",
-            "shasum": ""
-        },
-        "require": {
-            "kriswallsmith/assetic": "~1.3",
-            "php": ">=5.3.0",
-            "symfony/console": "~2.3|~3.0",
-            "symfony/dependency-injection": "~2.3|~3.0",
-            "symfony/framework-bundle": "~2.3|~3.0",
-            "symfony/yaml": "~2.3|~3.0"
-        },
-        "conflict": {
-            "kriswallsmith/spork": "<=0.2",
-            "twig/twig": "<1.20"
-        },
-        "require-dev": {
-            "kriswallsmith/spork": "~0.3",
-            "patchwork/jsqueeze": "~1.0",
-            "symfony/class-loader": "~2.3|~3.0",
-            "symfony/css-selector": "~2.3|~3.0",
-            "symfony/dom-crawler": "~2.3|~3.0",
-            "symfony/phpunit-bridge": "~2.7|~3.0",
-            "symfony/twig-bundle": "~2.3|~3.0"
-        },
-        "suggest": {
-            "kriswallsmith/spork": "to be able to dump assets in parallel",
-            "symfony/twig-bundle": "to use the Twig integration"
-        },
-        "time": "2015-11-17 09:45:47",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.7-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Bundle\\AsseticBundle\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Kris Wallsmith",
-                "email": "kris.wallsmith@gmail.com",
-                "homepage": "http://kriswallsmith.net/"
-            }
-        ],
-        "description": "Integrates Assetic into Symfony2",
-        "homepage": "https://github.com/symfony/AsseticBundle",
-        "keywords": [
-            "assets",
-            "compression",
-            "minification"
-        ]
-    },
-    {
-        "name": "swiftmailer/swiftmailer",
-        "version": "v5.4.1",
-        "version_normalized": "5.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/swiftmailer/swiftmailer.git",
-            "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/0697e6aa65c83edf97bb0f23d8763f94e3f11421",
-            "reference": "0697e6aa65c83edf97bb0f23d8763f94e3f11421",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.1,<0.9.4"
-        },
-        "time": "2015-06-06 14:19:39",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "5.4-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "lib/swift_required.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Chris Corbyn"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Swiftmailer, free feature-rich PHP mailer",
-        "homepage": "http://swiftmailer.org",
-        "keywords": [
-            "email",
-            "mail",
-            "mailer"
-        ]
-    },
-    {
         "name": "symfony/swiftmailer-bundle",
         "version": "v2.3.11",
         "version_normalized": "2.3.11.0",
@@ -1365,146 +1068,6 @@
         "homepage": "http://symfony.com"
     },
     {
-        "name": "monolog/monolog",
-        "version": "1.17.2",
-        "version_normalized": "1.17.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Seldaek/monolog.git",
-            "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
-            "reference": "bee7f0dc9c3e0b69a6039697533dca1e845c8c24",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0",
-            "psr/log": "~1.0"
-        },
-        "provide": {
-            "psr/log-implementation": "1.0.0"
-        },
-        "require-dev": {
-            "aws/aws-sdk-php": "^2.4.9",
-            "doctrine/couchdb": "~1.0@dev",
-            "graylog2/gelf-php": "~1.0",
-            "jakub-onderka/php-parallel-lint": "0.9",
-            "php-console/php-console": "^3.1.3",
-            "phpunit/phpunit": "~4.5",
-            "phpunit/phpunit-mock-objects": "2.3.0",
-            "raven/raven": "^0.13",
-            "ruflin/elastica": ">=0.90 <3.0",
-            "swiftmailer/swiftmailer": "~5.3",
-            "videlalvaro/php-amqplib": "~2.4"
-        },
-        "suggest": {
-            "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
-            "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
-            "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
-            "ext-mongo": "Allow sending log messages to a MongoDB server",
-            "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
-            "php-console/php-console": "Allow sending log messages to Google Chrome",
-            "raven/raven": "Allow sending log messages to a Sentry server",
-            "rollbar/rollbar": "Allow sending log messages to Rollbar",
-            "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-            "videlalvaro/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib"
-        },
-        "time": "2015-10-14 12:51:02",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.16.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Monolog\\": "src/Monolog"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jordi Boggiano",
-                "email": "j.boggiano@seld.be",
-                "homepage": "http://seld.be"
-            }
-        ],
-        "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
-        "homepage": "http://github.com/Seldaek/monolog",
-        "keywords": [
-            "log",
-            "logging",
-            "psr-3"
-        ]
-    },
-    {
-        "name": "symfony/monolog-bundle",
-        "version": "v2.8.2",
-        "version_normalized": "2.8.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/symfony/monolog-bundle.git",
-            "reference": "84785c4d44801c4dd82829fa2e1820cacfe2c46f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/84785c4d44801c4dd82829fa2e1820cacfe2c46f",
-            "reference": "84785c4d44801c4dd82829fa2e1820cacfe2c46f",
-            "shasum": ""
-        },
-        "require": {
-            "monolog/monolog": "~1.8",
-            "php": ">=5.3.2",
-            "symfony/config": "~2.3|~3.0",
-            "symfony/dependency-injection": "~2.3|~3.0",
-            "symfony/http-kernel": "~2.3|~3.0",
-            "symfony/monolog-bridge": "~2.3|~3.0"
-        },
-        "require-dev": {
-            "symfony/console": "~2.3|~3.0",
-            "symfony/yaml": "~2.3|~3.0"
-        },
-        "time": "2015-11-17 10:02:29",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.8.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Symfony\\Bundle\\MonologBundle\\": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Symfony MonologBundle",
-        "homepage": "http://symfony.com",
-        "keywords": [
-            "log",
-            "logging"
-        ]
-    },
-    {
         "name": "sensiolabs/security-checker",
         "version": "v3.0.2",
         "version_normalized": "3.0.2.0",
@@ -1549,68 +1112,6 @@
             }
         ],
         "description": "A security checker for your composer.lock"
-    },
-    {
-        "name": "sensio/distribution-bundle",
-        "version": "v3.0.35",
-        "version_normalized": "3.0.35.0",
-        "target-dir": "Sensio/Bundle/DistributionBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-            "reference": "abc5b0ce28f72f838922aa0e0a107ba270dbabb5"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/abc5b0ce28f72f838922aa0e0a107ba270dbabb5",
-            "reference": "abc5b0ce28f72f838922aa0e0a107ba270dbabb5",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.3",
-            "sensiolabs/security-checker": "~3.0",
-            "symfony/class-loader": "~2.2",
-            "symfony/framework-bundle": "~2.3",
-            "symfony/process": "~2.2"
-        },
-        "require-dev": {
-            "symfony/form": "~2.2",
-            "symfony/validator": "~2.2",
-            "symfony/yaml": "~2.2"
-        },
-        "suggest": {
-            "symfony/form": "If you want to use the configurator",
-            "symfony/validator": "If you want to use the configurator",
-            "symfony/yaml": "If you want to use  the configurator"
-        },
-        "time": "2015-12-08 17:53:19",
-        "type": "symfony-bundle",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.0.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Sensio\\Bundle\\DistributionBundle": ""
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Base bundle for Symfony Distributions",
-        "keywords": [
-            "configuration",
-            "distribution"
-        ]
     },
     {
         "name": "incenteev/composer-parameter-handler",
@@ -1787,18 +1288,344 @@
         ]
     },
     {
-        "name": "sensio/framework-extra-bundle",
-        "version": "v3.0.13",
-        "version_normalized": "3.0.13.0",
+        "name": "paragonie/random_compat",
+        "version": "v1.4.1",
+        "version_normalized": "1.4.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
-            "reference": "bf6be511f4f66d368baeb2cab617203d73cccf4e"
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/bf6be511f4f66d368baeb2cab617203d73cccf4e",
-            "reference": "bf6be511f4f66d368baeb2cab617203d73cccf4e",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+            "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2016-03-18 20:34:03",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/random.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
+        "name": "symfony/assetic-bundle",
+        "version": "v2.8.0",
+        "version_normalized": "2.8.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/assetic-bundle.git",
+            "reference": "aa5b4f8b712f38745928fa845ddb73300bb2af6d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/assetic-bundle/zipball/aa5b4f8b712f38745928fa845ddb73300bb2af6d",
+            "reference": "aa5b4f8b712f38745928fa845ddb73300bb2af6d",
+            "shasum": ""
+        },
+        "require": {
+            "kriswallsmith/assetic": "~1.3",
+            "php": ">=5.3.0",
+            "symfony/console": "~2.3|~3.0",
+            "symfony/dependency-injection": "~2.3|~3.0",
+            "symfony/framework-bundle": "~2.3|~3.0",
+            "symfony/yaml": "~2.3|~3.0"
+        },
+        "conflict": {
+            "kriswallsmith/spork": "<=0.2",
+            "twig/twig": "<1.20"
+        },
+        "require-dev": {
+            "kriswallsmith/spork": "~0.3",
+            "patchwork/jsqueeze": "~1.0",
+            "symfony/class-loader": "~2.3|~3.0",
+            "symfony/css-selector": "~2.3|~3.0",
+            "symfony/dom-crawler": "~2.3|~3.0",
+            "symfony/phpunit-bridge": "~2.7|~3.0",
+            "symfony/twig-bundle": "~2.3|~3.0"
+        },
+        "suggest": {
+            "kriswallsmith/spork": "to be able to dump assets in parallel",
+            "symfony/twig-bundle": "to use the Twig integration"
+        },
+        "time": "2015-12-28 13:12:39",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.7-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Bundle\\AsseticBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kris Wallsmith",
+                "email": "kris.wallsmith@gmail.com",
+                "homepage": "http://kriswallsmith.net/"
+            }
+        ],
+        "description": "Integrates Assetic into Symfony2",
+        "homepage": "https://github.com/symfony/AsseticBundle",
+        "keywords": [
+            "assets",
+            "compression",
+            "minification"
+        ]
+    },
+    {
+        "name": "monolog/monolog",
+        "version": "1.19.0",
+        "version_normalized": "1.19.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Seldaek/monolog.git",
+            "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5f56ed5212dc509c8dc8caeba2715732abb32dbf",
+            "reference": "5f56ed5212dc509c8dc8caeba2715732abb32dbf",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0",
+            "psr/log": "~1.0"
+        },
+        "provide": {
+            "psr/log-implementation": "1.0.0"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "^2.4.9",
+            "doctrine/couchdb": "~1.0@dev",
+            "graylog2/gelf-php": "~1.0",
+            "jakub-onderka/php-parallel-lint": "0.9",
+            "php-amqplib/php-amqplib": "~2.4",
+            "php-console/php-console": "^3.1.3",
+            "phpunit/phpunit": "~4.5",
+            "phpunit/phpunit-mock-objects": "2.3.0",
+            "raven/raven": "^0.13",
+            "ruflin/elastica": ">=0.90 <3.0",
+            "swiftmailer/swiftmailer": "~5.3"
+        },
+        "suggest": {
+            "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
+            "doctrine/couchdb": "Allow sending log messages to a CouchDB server",
+            "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
+            "ext-mongo": "Allow sending log messages to a MongoDB server",
+            "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
+            "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+            "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
+            "php-console/php-console": "Allow sending log messages to Google Chrome",
+            "raven/raven": "Allow sending log messages to a Sentry server",
+            "rollbar/rollbar": "Allow sending log messages to Rollbar",
+            "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
+        },
+        "time": "2016-04-12 18:29:35",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Monolog\\": "src/Monolog"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Jordi Boggiano",
+                "email": "j.boggiano@seld.be",
+                "homepage": "http://seld.be"
+            }
+        ],
+        "description": "Sends your logs to files, sockets, inboxes, databases and various web services",
+        "homepage": "http://github.com/Seldaek/monolog",
+        "keywords": [
+            "log",
+            "logging",
+            "psr-3"
+        ]
+    },
+    {
+        "name": "symfony/monolog-bundle",
+        "version": "2.11.1",
+        "version_normalized": "2.11.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/monolog-bundle.git",
+            "reference": "e7caf4936c7be82bc6d68df87f1d23a0d5bf6e00"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/monolog-bundle/zipball/e7caf4936c7be82bc6d68df87f1d23a0d5bf6e00",
+            "reference": "e7caf4936c7be82bc6d68df87f1d23a0d5bf6e00",
+            "shasum": ""
+        },
+        "require": {
+            "monolog/monolog": "~1.18",
+            "php": ">=5.3.2",
+            "symfony/config": "~2.3|~3.0",
+            "symfony/dependency-injection": "~2.3|~3.0",
+            "symfony/http-kernel": "~2.3|~3.0",
+            "symfony/monolog-bridge": "~2.3|~3.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^4.8",
+            "symfony/console": "~2.3|~3.0",
+            "symfony/yaml": "~2.3|~3.0"
+        },
+        "time": "2016-04-13 16:21:01",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Bundle\\MonologBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Symfony MonologBundle",
+        "homepage": "http://symfony.com",
+        "keywords": [
+            "log",
+            "logging"
+        ]
+    },
+    {
+        "name": "sensio/distribution-bundle",
+        "version": "v3.0.36",
+        "version_normalized": "3.0.36.0",
+        "target-dir": "Sensio/Bundle/DistributionBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
+            "reference": "964a56e855acac38d4a81920b3a86543f7e8492f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/964a56e855acac38d4a81920b3a86543f7e8492f",
+            "reference": "964a56e855acac38d4a81920b3a86543f7e8492f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "sensiolabs/security-checker": "~3.0",
+            "symfony/class-loader": "~2.2",
+            "symfony/framework-bundle": "~2.3",
+            "symfony/process": "~2.2"
+        },
+        "require-dev": {
+            "symfony/form": "~2.2",
+            "symfony/validator": "~2.2",
+            "symfony/yaml": "~2.2"
+        },
+        "suggest": {
+            "symfony/form": "If you want to use the configurator",
+            "symfony/validator": "If you want to use the configurator",
+            "symfony/yaml": "If you want to use  the configurator"
+        },
+        "time": "2016-04-25 20:46:43",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Sensio\\Bundle\\DistributionBundle": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Base bundle for Symfony Distributions",
+        "keywords": [
+            "configuration",
+            "distribution"
+        ]
+    },
+    {
+        "name": "sensio/framework-extra-bundle",
+        "version": "v3.0.16",
+        "version_normalized": "3.0.16.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+            "reference": "507a15f56fa7699f6cc8c2c7de4080b19ce22546"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/507a15f56fa7699f6cc8c2c7de4080b19ce22546",
+            "reference": "507a15f56fa7699f6cc8c2c7de4080b19ce22546",
             "shasum": ""
         },
         "require": {
@@ -1821,7 +1648,7 @@
             "symfony/psr-http-message-bridge": "To use the PSR-7 converters",
             "symfony/security-bundle": ""
         },
-        "time": "2016-02-12 08:17:23",
+        "time": "2016-03-25 17:08:27",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
@@ -1852,17 +1679,17 @@
     },
     {
         "name": "knplabs/knp-components",
-        "version": "1.3.2",
-        "version_normalized": "1.3.2.0",
+        "version": "1.3.3",
+        "version_normalized": "1.3.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/KnpLabs/knp-components.git",
-            "reference": "4503275e4f1a0e9667aa65b0ebed842ef2d8d8ba"
+            "reference": "bc49e739d1cce94d783b1e23bc5b263b38dc47da"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/4503275e4f1a0e9667aa65b0ebed842ef2d8d8ba",
-            "reference": "4503275e4f1a0e9667aa65b0ebed842ef2d8d8ba",
+            "url": "https://api.github.com/repos/KnpLabs/knp-components/zipball/bc49e739d1cce94d783b1e23bc5b263b38dc47da",
+            "reference": "bc49e739d1cce94d783b1e23bc5b263b38dc47da",
             "shasum": ""
         },
         "require": {
@@ -1871,6 +1698,8 @@
         "require-dev": {
             "doctrine/mongodb-odm": "~1.0@beta",
             "doctrine/orm": "~2.4",
+            "doctrine/phpcr-odm": "~1.2",
+            "jackalope/jackalope-doctrine-dbal": "~1.2",
             "phpunit/phpunit": "~4.2",
             "ruflin/elastica": "~1.0",
             "symfony/event-dispatcher": "~2.5"
@@ -1879,11 +1708,12 @@
             "doctrine/common": "to allow usage pagination with Doctrine ArrayCollection",
             "doctrine/mongodb-odm": "to allow usage pagination with Doctrine ODM MongoDB",
             "doctrine/orm": "to allow usage pagination with Doctrine ORM",
+            "doctrine/phpcr-odm": "to allow usage pagination with Doctrine ODM PHPCR",
             "propel/propel1": "to allow usage pagination with Propel ORM",
             "ruflin/Elastica": "to allow usage pagination with ElasticSearch Client",
             "solarium/solarium": "to allow usage pagination with Solarium Client"
         },
-        "time": "2015-09-01 10:54:53",
+        "time": "2016-04-21 06:26:20",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1922,17 +1752,17 @@
     },
     {
         "name": "knplabs/knp-paginator-bundle",
-        "version": "2.5.1",
-        "version_normalized": "2.5.1.0",
+        "version": "2.5.3",
+        "version_normalized": "2.5.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/KnpLabs/KnpPaginatorBundle.git",
-            "reference": "5147740faff4d32e6f42acf64475314c35320fa4"
+            "reference": "c988761005504007c6c87d6a557641281194a0e5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/5147740faff4d32e6f42acf64475314c35320fa4",
-            "reference": "5147740faff4d32e6f42acf64475314c35320fa4",
+            "url": "https://api.github.com/repos/KnpLabs/KnpPaginatorBundle/zipball/c988761005504007c6c87d6a557641281194a0e5",
+            "reference": "c988761005504007c6c87d6a557641281194a0e5",
             "shasum": ""
         },
         "require": {
@@ -1944,11 +1774,11 @@
         "require-dev": {
             "symfony/expression-language": "~2.4|~3.0"
         },
-        "time": "2015-11-23 17:51:40",
+        "time": "2016-04-20 11:40:30",
         "type": "symfony-bundle",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.4.x-dev"
+                "dev-master": "2.5.x-dev"
             }
         },
         "installation-source": "dist",
@@ -1981,6 +1811,181 @@
             "pager",
             "pagination",
             "paginator"
+        ]
+    },
+    {
+        "name": "swiftmailer/swiftmailer",
+        "version": "v5.4.2",
+        "version_normalized": "5.4.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/swiftmailer/swiftmailer.git",
+            "reference": "d8db871a54619458a805229a057ea2af33c753e8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
+            "reference": "d8db871a54619458a805229a057ea2af33c753e8",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.1,<0.9.4"
+        },
+        "time": "2016-05-01 08:45:47",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "5.4-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "lib/swift_required.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Chris Corbyn"
+            },
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Swiftmailer, free feature-rich PHP mailer",
+        "homepage": "http://swiftmailer.org",
+        "keywords": [
+            "email",
+            "mail",
+            "mailer"
+        ]
+    },
+    {
+        "name": "symfony/symfony",
+        "version": "v2.6.13",
+        "version_normalized": "2.6.13.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/symfony.git",
+            "reference": "240e9648af3daa5ed19580fdec74d768e30692a6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/symfony/zipball/240e9648af3daa5ed19580fdec74d768e30692a6",
+            "reference": "240e9648af3daa5ed19580fdec74d768e30692a6",
+            "shasum": ""
+        },
+        "require": {
+            "doctrine/common": "~2.3",
+            "paragonie/random_compat": "~1.0",
+            "php": ">=5.3.3",
+            "psr/log": "~1.0",
+            "twig/twig": "~1.12,>=1.12.3"
+        },
+        "replace": {
+            "symfony/browser-kit": "self.version",
+            "symfony/class-loader": "self.version",
+            "symfony/config": "self.version",
+            "symfony/console": "self.version",
+            "symfony/css-selector": "self.version",
+            "symfony/debug": "self.version",
+            "symfony/debug-bundle": "self.version",
+            "symfony/dependency-injection": "self.version",
+            "symfony/doctrine-bridge": "self.version",
+            "symfony/dom-crawler": "self.version",
+            "symfony/event-dispatcher": "self.version",
+            "symfony/expression-language": "self.version",
+            "symfony/filesystem": "self.version",
+            "symfony/finder": "self.version",
+            "symfony/form": "self.version",
+            "symfony/framework-bundle": "self.version",
+            "symfony/http-foundation": "self.version",
+            "symfony/http-kernel": "self.version",
+            "symfony/intl": "self.version",
+            "symfony/locale": "self.version",
+            "symfony/monolog-bridge": "self.version",
+            "symfony/options-resolver": "self.version",
+            "symfony/process": "self.version",
+            "symfony/propel1-bridge": "self.version",
+            "symfony/property-access": "self.version",
+            "symfony/proxy-manager-bridge": "self.version",
+            "symfony/routing": "self.version",
+            "symfony/security": "self.version",
+            "symfony/security-acl": "self.version",
+            "symfony/security-bundle": "self.version",
+            "symfony/security-core": "self.version",
+            "symfony/security-csrf": "self.version",
+            "symfony/security-http": "self.version",
+            "symfony/serializer": "self.version",
+            "symfony/stopwatch": "self.version",
+            "symfony/swiftmailer-bridge": "self.version",
+            "symfony/templating": "self.version",
+            "symfony/translation": "self.version",
+            "symfony/twig-bridge": "self.version",
+            "symfony/twig-bundle": "self.version",
+            "symfony/validator": "self.version",
+            "symfony/var-dumper": "self.version",
+            "symfony/web-profiler-bundle": "self.version",
+            "symfony/yaml": "self.version"
+        },
+        "require-dev": {
+            "doctrine/data-fixtures": "1.0.*",
+            "doctrine/dbal": "~2.2",
+            "doctrine/doctrine-bundle": "~1.2",
+            "doctrine/orm": "~2.2,>=2.2.3",
+            "egulias/email-validator": "~1.2",
+            "ircmaxell/password-compat": "~1.0",
+            "monolog/monolog": "~1.11",
+            "ocramius/proxy-manager": "~0.4|~1.0",
+            "propel/propel1": "~1.6",
+            "symfony/phpunit-bridge": "~2.7"
+        },
+        "time": "2016-01-14 10:11:35",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.6-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Symfony\\": "src/"
+            },
+            "classmap": [
+                "src/Symfony/Component/HttpFoundation/Resources/stubs",
+                "src/Symfony/Component/Intl/Resources/stubs"
+            ],
+            "files": [
+                "src/Symfony/Component/Intl/Resources/stubs/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "The Symfony PHP framework",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "framework"
         ]
     }
 ]

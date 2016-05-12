@@ -42,52 +42,27 @@ class __TwigTemplate_65e1879426a5d0ba6e42701ef428d7d778e6238eb780cf1ddbc1aa2f2d5
                     <div class=\"panel panel-grey wow bounceInLeft\">
                         <div class=\"panel-heading\"></div>
                         <div class=\"panel-body pan\">
-                            <form action=\"\" method=\"post\">
+                            <form action=\"\" method=\"post\" enctype=\"multipart/form-data\">
                                 <div class=\"form-body pal\">
-                                    <div class=\"row\">
-                                        <div class=\"col-md-12\">
-                                            <div class=\"form-group\">
-
-                                                <h3> ";
-        // line 23
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["solution"]) ? $context["solution"] : $this->getContext($context, "solution")), "ProblemeId", array()), "getTitre", array(), "method"), "html", null, true);
-        echo "</h3>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    
                                     <div class=\"form-group\">
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-pencil\"></i>
-                                            <input type=\"text\" class=\"form-control\" required=\"required\" ";
-        // line 33
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "titre", array()), 'widget');
+                                       
+                                        ";
+        // line 21
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "file", array()), 'row');
         echo "
-                                        </div>
+                                        
                                     </div>
-
-                                    <div class=\"form-group\">
-
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-edit\"></i>
-                                            <textarea rows=\"10\" class=\"form-control\" required=\"required\" ";
-        // line 41
-        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "description", array()), 'widget');
-        echo " </textarea></div>
-                                    </div>
-                                </div>
-                                <hr />
-                                <div class=\"form-group\">
-                                    <input id=\"inputIncludeFile\" type=\"file\" placeholder=\"Inlcude some file\" name=\"fichierSolution\"/>
-                                </div>
-                                 <div class=\"form-actions text-right pal\">
-                                  <div action=";
-        // line 49
+                                    <hr />
+                                    <div class=\"form-actions text-right pal\">
+                                        ";
+        // line 26
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "Enregistrer", array()), 'widget', array("attr" => array("class" => "btn btn-primary", "style" => "background-color: #363940")));
+        echo "
+                                        ";
+        // line 27
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), 'rest');
         echo "
-                                </div>
+                                    </div>
                             </form>
                         </div>
                     </div>
@@ -110,7 +85,7 @@ class __TwigTemplate_65e1879426a5d0ba6e42701ef428d7d778e6238eb780cf1ddbc1aa2f2d5
 
     public function getDebugInfo()
     {
-        return array (  88 => 49,  77 => 41,  66 => 33,  53 => 23,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  63 => 27,  59 => 26,  51 => 21,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}*/
@@ -129,40 +104,18 @@ class __TwigTemplate_65e1879426a5d0ba6e42701ef428d7d778e6238eb780cf1ddbc1aa2f2d5
 /*                     <div class="panel panel-grey wow bounceInLeft">*/
 /*                         <div class="panel-heading"></div>*/
 /*                         <div class="panel-body pan">*/
-/*                             <form action="" method="post">*/
+/*                             <form action="" method="post" enctype="multipart/form-data">*/
 /*                                 <div class="form-body pal">*/
-/*                                     <div class="row">*/
-/*                                         <div class="col-md-12">*/
-/*                                             <div class="form-group">*/
-/* */
-/*                                                 <h3> {{solution.ProblemeId.getTitre()}}</h3>*/
-/*                                             </div>*/
-/*                                         </div>*/
-/* */
-/*                                     </div>*/
-/* */
-/*                                     */
 /*                                     <div class="form-group">*/
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-pencil"></i>*/
-/*                                             <input type="text" class="form-control" required="required" {{ form_widget(Form.titre)}}*/
-/*                                         </div>*/
+/*                                        */
+/*                                         {{ form_row(Form.file) }}*/
+/*                                         */
 /*                                     </div>*/
-/* */
-/*                                     <div class="form-group">*/
-/* */
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-edit"></i>*/
-/*                                             <textarea rows="10" class="form-control" required="required" {{ form_widget(Form.description)}} </textarea></div>*/
+/*                                     <hr />*/
+/*                                     <div class="form-actions text-right pal">*/
+/*                                         {{ form_widget(Form.Enregistrer,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}*/
+/*                                         {{ form_rest(Form) }}*/
 /*                                     </div>*/
-/*                                 </div>*/
-/*                                 <hr />*/
-/*                                 <div class="form-group">*/
-/*                                     <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" name="fichierSolution"/>*/
-/*                                 </div>*/
-/*                                  <div class="form-actions text-right pal">*/
-/*                                   <div action={{ form_rest(Form) }}*/
-/*                                 </div>*/
 /*                             </form>*/
 /*                         </div>*/
 /*                     </div>*/

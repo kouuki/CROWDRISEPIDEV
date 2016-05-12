@@ -64,10 +64,10 @@ class Membre extends \PIDEV\CrowdRiseBundle\Entity\Membre implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'nom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'prenom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'adresse', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+            return ['__isInitialized__', 'id', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'nom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'prenom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'adresse', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'credit', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
         }
 
-        return ['__isInitialized__', 'id', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'nom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'prenom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'adresse', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
+        return ['__isInitialized__', 'id', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'nom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'prenom', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'adresse', '' . "\0" . 'PIDEV\\CrowdRiseBundle\\Entity\\Membre' . "\0" . 'credit', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'locked', 'expired', 'expiresAt', 'roles', 'credentialsExpired', 'credentialsExpireAt'];
     }
 
     /**
@@ -263,6 +263,28 @@ class Membre extends \PIDEV\CrowdRiseBundle\Entity\Membre implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdresse', [$adresse]);
 
         return parent::setAdresse($adresse);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCredit()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCredit', []);
+
+        return parent::getCredit();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCredit($credit)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCredit', [$credit]);
+
+        return parent::setCredit($credit);
     }
 
     /**

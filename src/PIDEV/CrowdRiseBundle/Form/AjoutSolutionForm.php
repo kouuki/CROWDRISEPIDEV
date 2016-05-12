@@ -13,7 +13,7 @@ class AjoutSolutionForm  extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('fichierSolution', new MediaType())
+                ->add('file')
                 ->add('Enregistrer', 'submit')
                
             ;

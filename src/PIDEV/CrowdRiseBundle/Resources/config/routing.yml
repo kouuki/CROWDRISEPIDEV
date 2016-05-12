@@ -41,3 +41,7 @@ pidev_crowd_rise_consulterOffreSolution:
 pidev_crowd_rise_credit:
     path:     /rechargeCredit/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Finance:ajoutCredit }
+    
+pidev_crowd_rise_upload:
+    path:     /uploadFile/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Upload:create }

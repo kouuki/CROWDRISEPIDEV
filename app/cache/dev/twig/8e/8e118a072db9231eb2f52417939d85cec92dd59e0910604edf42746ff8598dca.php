@@ -33,7 +33,7 @@ class __TwigTemplate_66f417cce7bc453176b1d7efa881f97f056a01346c6e57223a5fbeb5e0f
                 // line 26
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath((isset($context["route"]) ? $context["route"] : $this->getContext($context, "route")), twig_array_merge((isset($context["query"]) ? $context["query"] : $this->getContext($context, "query")), array((isset($context["pageParameterName"]) ? $context["pageParameterName"] : $this->getContext($context, "pageParameterName")) => (isset($context["previous"]) ? $context["previous"] : $this->getContext($context, "previous"))))), "html", null, true);
                 echo "\">&laquo;&nbsp;";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Précédent"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Previous"), "html", null, true);
                 echo "</a>
         </li>
     ";
@@ -42,7 +42,7 @@ class __TwigTemplate_66f417cce7bc453176b1d7efa881f97f056a01346c6e57223a5fbeb5e0f
                 echo "        <li class=\"disabled\">
             <span>&laquo;&nbsp;";
                 // line 30
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Précédent"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Previous"), "html", null, true);
                 echo "</span>
         </li>
     ";
@@ -171,7 +171,7 @@ class __TwigTemplate_66f417cce7bc453176b1d7efa881f97f056a01346c6e57223a5fbeb5e0f
                 // line 81
                 echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath((isset($context["route"]) ? $context["route"] : $this->getContext($context, "route")), twig_array_merge((isset($context["query"]) ? $context["query"] : $this->getContext($context, "query")), array((isset($context["pageParameterName"]) ? $context["pageParameterName"] : $this->getContext($context, "pageParameterName")) => (isset($context["next"]) ? $context["next"] : $this->getContext($context, "next"))))), "html", null, true);
                 echo "\">";
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Suivant"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Next"), "html", null, true);
                 echo "&nbsp;&raquo;</a>
         </li>
     ";
@@ -180,7 +180,7 @@ class __TwigTemplate_66f417cce7bc453176b1d7efa881f97f056a01346c6e57223a5fbeb5e0f
                 echo "        <li class=\"disabled\">
             <span>";
                 // line 85
-                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Suivant"), "html", null, true);
+                echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("Next"), "html", null, true);
                 echo "&nbsp;&raquo;</span>
         </li>
     ";
@@ -232,11 +232,11 @@ class __TwigTemplate_66f417cce7bc453176b1d7efa881f97f056a01346c6e57223a5fbeb5e0f
 /* */
 /*     {% if previous is defined %}*/
 /*         <li>*/
-/*             <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&laquo;&nbsp;{{ 'Précédent'|trans }}</a>*/
+/*             <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&laquo;&nbsp;{{ 'Previous'|trans }}</a>*/
 /*         </li>*/
 /*     {% else %}*/
 /*         <li class="disabled">*/
-/*             <span>&laquo;&nbsp;{{ 'Précédent'|trans }}</span>*/
+/*             <span>&laquo;&nbsp;{{ 'Previous'|trans }}</span>*/
 /*         </li>*/
 /*     {% endif %}*/
 /* */
@@ -287,11 +287,11 @@ class __TwigTemplate_66f417cce7bc453176b1d7efa881f97f056a01346c6e57223a5fbeb5e0f
 /* */
 /*     {% if next is defined %}*/
 /*         <li>*/
-/*             <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">{{ 'Suivant'|trans }}&nbsp;&raquo;</a>*/
+/*             <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">{{ 'Next'|trans }}&nbsp;&raquo;</a>*/
 /*         </li>*/
 /*     {% else %}*/
 /*         <li class="disabled">*/
-/*             <span>{{ 'Suivant'|trans }}&nbsp;&raquo;</span>*/
+/*             <span>{{ 'Next'|trans }}&nbsp;&raquo;</span>*/
 /*         </li>*/
 /*     {% endif %}*/
 /*     </ul>*/

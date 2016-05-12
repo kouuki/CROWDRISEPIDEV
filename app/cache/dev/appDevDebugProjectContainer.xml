@@ -350,6 +350,7 @@
     <parameter key="monolog.handler.console.class">Symfony\Bridge\Monolog\Handler\ConsoleHandler</parameter>
     <parameter key="monolog.handler.group.class">Monolog\Handler\GroupHandler</parameter>
     <parameter key="monolog.handler.buffer.class">Monolog\Handler\BufferHandler</parameter>
+    <parameter key="monolog.handler.deduplication.class">Monolog\Handler\DeduplicationHandler</parameter>
     <parameter key="monolog.handler.rotating_file.class">Monolog\Handler\RotatingFileHandler</parameter>
     <parameter key="monolog.handler.syslog.class">Monolog\Handler\SyslogHandler</parameter>
     <parameter key="monolog.handler.syslogudp.class">Monolog\Handler\SyslogUdpHandler</parameter>
@@ -384,6 +385,7 @@
     <parameter key="monolog.mongo.client.class">MongoClient</parameter>
     <parameter key="monolog.handler.elasticsearch.class">Monolog\Handler\ElasticSearchHandler</parameter>
     <parameter key="monolog.elastica.client.class">Elastica\Client</parameter>
+    <parameter key="monolog.use_microseconds">true</parameter>
     <parameter key="monolog.swift_mailer.handlers" type="collection"/>
     <parameter key="monolog.handlers_to_channels" type="collection">
       <parameter key="monolog.handler.console_very_verbose" type="collection">
@@ -3161,7 +3163,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>56cc361958ef63.81332011</argument>
+            <argument>57350d4e1009f6.25593873</argument>
           </service>
         </argument>
       </argument>
@@ -3440,7 +3442,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>56cc361958ef63.81332011</argument>
+            <argument>57350d4e1009f6.25593873</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -4628,6 +4630,9 @@
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
       <argument>app</argument>
+      <call method="useMicrosecondTimestamps">
+        <argument>true</argument>
+      </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.console"/>
       </call>

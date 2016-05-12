@@ -172,6 +172,21 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_updateSolution')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::updateSolutionAction',));
         }
 
+        // pidev_crowd_rise_consulterOffreSolution
+        if ($pathinfo === '/offreSolution') {
+            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterOffreSubmitterAction',  '_route' => 'pidev_crowd_rise_consulterOffreSolution',);
+        }
+
+        // pidev_crowd_rise_credit
+        if (0 === strpos($pathinfo, '/rechargeCredit') && preg_match('#^/rechargeCredit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_credit')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\FinanceController::ajoutCreditAction',));
+        }
+
+        // pidev_crowd_rise_upload
+        if (0 === strpos($pathinfo, '/uploadFile') && preg_match('#^/uploadFile/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_upload')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\UploadController::createAction',));
+        }
+
         // homepage
         if ($pathinfo === '/app/example') {
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::indexAction',  '_route' => 'homepage',);
