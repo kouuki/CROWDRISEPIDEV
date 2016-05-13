@@ -221,4 +221,13 @@ class Solution
     $this->file = null;
 }
 
+function getPath() {
+    return $this->path;
+}
+
+function setPath($path) {
+    $this->path = $path;
+}
+
+
 }

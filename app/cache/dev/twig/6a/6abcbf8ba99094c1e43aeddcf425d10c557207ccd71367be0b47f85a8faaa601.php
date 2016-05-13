@@ -53,37 +53,46 @@ class __TwigTemplate_ef52e627d2ca377c671366363264f5f6f8e60440f883eac54a1af079e0d
         // line 24
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "titre", array()), 'widget');
         echo " </div>
-                                                    
-                                                    <div class=\"extra-space-m\" style=\"background-color: white\"></div>
-                                                    
-                                            </div>
-                                        </div>
+                                                <div class=\"extra-space-m\" style=\"background-color: white\"></div>
+                                                <div class=\"form-group\">
 
-                                    </div>
-
-
-                                    <div class=\"form-group\">
-
-                                        <div class=\"input-icon\">
-                                            <i class=\"glyphicon glyphicon-edit\"></i>
-                                            <textarea rows=\"5\" placeholder=\"Ajoutez une description\" class=\"form-control\" required=\"required\"  ";
-        // line 38
+                                                    <div class=\"input-icon\">
+                                                        <i class=\"glyphicon glyphicon-edit\"></i>
+                                                        <textarea rows=\"5\" placeholder=\"Ajoutez une description\" class=\"form-control\" required=\"required\" ";
+        // line 30
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "description", array()), 'widget');
-        echo "</textarea></div>
+        echo " </textarea></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
                                     </div>
+
                                 </div>
+
+                                <div class=\"extra-space-m\" style=\"background-color: white\"></div>
+
                                 <div class=\"form-actions text-right pal\">
-                                  <div action=";
-        // line 42
+                                    ";
+        // line 43
+        echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getAttribute((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), "Enregistrer", array()), 'widget', array("attr" => array("class" => "btn btn-primary", "style" => "background-color: #363940")));
+        echo "
+                                    ";
+        // line 44
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock((isset($context["Form"]) ? $context["Form"] : $this->getContext($context, "Form")), 'rest');
         echo "
+
                                 </div>
-                            </form>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
-    </section>
+        </div>
+    </div>
+</div>
+</section>
 ";
     }
 
@@ -99,7 +108,7 @@ class __TwigTemplate_ef52e627d2ca377c671366363264f5f6f8e60440f883eac54a1af079e0d
 
     public function getDebugInfo()
     {
-        return array (  78 => 42,  71 => 38,  54 => 24,  31 => 3,  28 => 2,  11 => 1,);
+        return array (  83 => 44,  79 => 43,  63 => 30,  54 => 24,  31 => 3,  28 => 2,  11 => 1,);
     }
 }
 /* {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}*/
@@ -126,31 +135,37 @@ class __TwigTemplate_ef52e627d2ca377c671366363264f5f6f8e60440f883eac54a1af079e0d
 /*                                                 <div class="input-icon">*/
 /*                                                     <i class="glyphicon glyphicon-pencil"></i>*/
 /*                                                     <input type="text" placeholder="Entrez un titre" class="form-control" required="required" {{ form_widget(Form.titre)}} </div>*/
-/*                                                     */
-/*                                                     <div class="extra-space-m" style="background-color: white"></div>*/
-/*                                                     */
+/*                                                 <div class="extra-space-m" style="background-color: white"></div>*/
+/*                                                 <div class="form-group">*/
+/* */
+/*                                                     <div class="input-icon">*/
+/*                                                         <i class="glyphicon glyphicon-edit"></i>*/
+/*                                                         <textarea rows="5" placeholder="Ajoutez une description" class="form-control" required="required" {{ form_widget(Form.description)}} </textarea></div>*/
+/*                                                 </div>*/
 /*                                             </div>*/
+/* */
+/* */
 /*                                         </div>*/
-/* */
 /*                                     </div>*/
 /* */
-/* */
-/*                                     <div class="form-group">*/
-/* */
-/*                                         <div class="input-icon">*/
-/*                                             <i class="glyphicon glyphicon-edit"></i>*/
-/*                                             <textarea rows="5" placeholder="Ajoutez une description" class="form-control" required="required"  {{ form_widget(Form.description)}}</textarea></div>*/
-/*                                     </div>*/
 /*                                 </div>*/
+/* */
+/*                                 <div class="extra-space-m" style="background-color: white"></div>*/
+/* */
 /*                                 <div class="form-actions text-right pal">*/
-/*                                   <div action={{ form_rest(Form) }}*/
+/*                                     {{ form_widget(Form.Enregistrer,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}*/
+/*                                     {{ form_rest(Form) }}*/
+/* */
 /*                                 </div>*/
-/*                             </form>*/
 /*                         </div>*/
 /*                     </div>*/
+/*                     </form>*/
 /*                 </div>*/
 /*             </div>*/
-/*     </section>*/
+/*         </div>*/
+/*     </div>*/
+/* </div>*/
+/* </section>*/
 /* {% endblock %}*/
 /* */
 /* */

@@ -11,7 +11,7 @@
         <div class = "container slider-content">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                    <h2>Consulter les solutions</h2>
+                    <h2>Consulter les solutions acceptées</h2>
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan" style="background-color: white">
@@ -34,10 +34,10 @@
                                 </thead>
                                 <tbody class="searchable">
                                     {% for solution in solutions %}
-
+                                        {% if solution.getEtat() == 'Acceptee' %}
                                         <tr>
                                             <td>
-                                                <a href="#"><h6> {{solution.getTitre()}} <i class="glyphicon glyphicon-save small"></i></h6></a>
+                                                <a href="#"><h6> {{solution.getTitre()}} <i class=""></i></h6></a>
                                                 <div class="item">
                                                     {{solution.getDescription()}}
                                                 </div>
@@ -46,10 +46,11 @@
 
                                                 <a href="#">  {{solution.ProblemeId.getTitre()}}</a>
                                             </td>
-                                            <td><a href="{{ path('pidev_crowd_rise_updateSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                            <td>{{solution.getSalaire()}}</td>
                                             <td><a href="{{ path('pidev_crowd_rise_deleteSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-trash"></i></a></td>
 
                                         </tr>
+                                        {% endif %}
                                     {% endfor %}
 
 

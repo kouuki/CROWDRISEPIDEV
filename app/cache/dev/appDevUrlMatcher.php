@@ -173,8 +173,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // pidev_crowd_rise_consulterOffreSolution
-        if ($pathinfo === '/offreSolution') {
-            return array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterOffreSubmitterAction',  '_route' => 'pidev_crowd_rise_consulterOffreSolution',);
+        if (0 === strpos($pathinfo, '/offreSolution') && preg_match('#^/offreSolution/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'pidev_crowd_rise_consulterOffreSolution')), array (  '_controller' => 'PIDEV\\CrowdRiseBundle\\Controller\\SolutionController::consulterOffreSubmitterAction',));
         }
 
         // pidev_crowd_rise_credit

@@ -71,7 +71,7 @@ class __TwigTemplate_4f1f2f50f597a864374d058437c3e2749d8c4c1d312929c4b6b6f635afc
                                                 <a href=\"#\"><h6> ";
             // line 39
             echo twig_escape_filter($this->env, $this->getAttribute($context["solution"], "getTitre", array(), "method"), "html", null, true);
-            echo " <i class=\"glyphicon glyphicon-save small\"></i></h6></a>
+            echo " <i class=\"\"></i></h6></a>
                                                 <div class=\"item\">
                                                     ";
             // line 41
@@ -182,7 +182,7 @@ class __TwigTemplate_4f1f2f50f597a864374d058437c3e2749d8c4c1d312929c4b6b6f635afc
 /* */
 /*                                         <tr>*/
 /*                                             <td>*/
-/*                                                 <a href="#"><h6> {{solution.getTitre()}} <i class="glyphicon glyphicon-save small"></i></h6></a>*/
+/*                                                 <a href="#"><h6> {{solution.getTitre()}} <i class=""></i></h6></a>*/
 /*                                                 <div class="item">*/
 /*                                                     {{solution.getDescription()}}*/
 /*                                                 </div>*/

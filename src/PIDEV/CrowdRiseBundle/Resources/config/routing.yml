@@ -35,7 +35,7 @@ pidev_crowd_rise_updateSolution:
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:updateSolution }
     
 pidev_crowd_rise_consulterOffreSolution:
-    path:     /offreSolution
+    path:     /offreSolution/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterOffreSubmitter }
     
 pidev_crowd_rise_credit:

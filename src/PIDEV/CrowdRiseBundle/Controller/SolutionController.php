@@ -81,72 +81,12 @@ class SolutionController extends Controller {
         return $this->render('PIDEVCrowdRiseBundle:Solution:modifiersolution.html.twig', array('Form' => $form->createView()));
     }
 
-//    public function ajouterSolutionAction($id) {
-//
-////        $em = $this->getDoctrine()->getManager();
-////        $solution = new Solution();
-////        $form = $this->createForm(new AjoutSolutionForm());
-////
-////        $request = $this->get('request_stack')->getCurrentRequest();
-////        $req = $this->getRequest();
-////        $form->handleRequest($request);
-////        if ($request->getMethod() == "POST") {
-////            $solution->setFichierSolution($request->get('fichierSolution'));
-////            $em->persist($solution);
-////            $em->flush();
-////            return $this->redirectToRoute('pidev_crowd_rise_accueil');
-////        }
-//        $em = $this->getDoctrine()->getManager();
-//        $form = $this->createForm(new MediaType());
-//        $request = $this->get('request_stack')->getCurrentRequest();
-//        $request = $this->getRequest();
-//        $form->handleRequest($request);
-//        $solution = new Solution();
-//        $solution = $em->getRepository('PIDEVCrowdRiseBundle:Solution')->find($id);
-//
-//        if ($form->isValid()) {
-//
-//            $file = new \Symfony\Component\Validator\Constraints\File();
-//            $file = $request->files->get("file");
-//
-////            $myfiles = fopen($file, 'rb');
-//            $myfilec = fopen('../web/Uploads/Solutions' . '/' . $request->get("file"), 'x+');
-//            $filec = copy(stream_get_contents($myfiles), '../web/Uploads/Solutions' . '/' . $request->get("file"));
-//            echo $myfilec;
-//            die();
-//            //$file= move_uploaded_file($request->get("file"),'..\web\Uploads\Solutions');
-//            // $myfile = fopen('../web/Uploads/Solutions'.'/'.$request->get("file"), 'x+');
-//            // $mycopy= copy($file,'../web/Uploads/Solutions'.'/'.$request->get("file"));
-//            //$myfile=$file;
-//            $solution->setFichierSolution('../web/Uploads/Solutions' . '/' . $request->get("file"));
-//            //$media->setName($fileName);
-//            //$media->setFile($file);
-//            $em->persist($solution);
-//            $em->flush();
-//
-//
-//            return $this->redirect($this->generateUrl('pidev_crowd_rise_accueil'));
-//        }
-//
-//        return $this->render('PIDEVCrowdRiseBundle:Solution:ajoutersolution.html.twig', array('Form' => $form->createView()));
-//    }
-    
-
-    public function consulterOffreSubmitterAction(Request $request) {
-        $etat="En attente";
-
+    public function consulterOffreSubmitterAction(Request $request, $id) {
+        $etat = "En attente";
+        $solutions = new Solution();
         $em = $this->get('doctrine.orm.entity_manager');
-
-        $query = $em->createQuery('select s from PIDEVCrowdRiseBundle:Solution s '
-                                      . 'join PIDEVCrowdRiseBundle:Membre m  '
-                                      . 'where s.Membre_id=m.id');
-         
-//        $query->setParameter('etat', $etat);
-        $solutions = $query->getResult();
-         die();
-    echo $solutions[0];
-       
-
+        $query = $em->createQuery('select s from PIDEVCrowdRiseBundle:Solution s join PIDEVCrowdRiseBundle:Membre m where m.id=s.MembreId and m.id='.$id)->getResult(); //id_membre
+  
         $paginator = $this->get('knp_paginator');
         $solutions = $paginator->paginate(
                 $query, $request->query->get('page', 1), 5
