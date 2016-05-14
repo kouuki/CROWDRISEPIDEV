@@ -8,9 +8,14 @@
 -->
 <html lang="en-US">
     <head>
-
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
         <title>CrowdRise</title>
         <meta name="description" content="CrowdRise">
         <meta name="keywords" content="HTML5, Bootsrtrap, One Page, Responsive, Template, Portfolio" />
@@ -79,45 +84,48 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_accueil') }}">Acceuil</a></li>
-                                <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_projet') }}">Lancer Un Projet</a></li>
+
+                                <li><a class="page-scroll" href="{{ path('ajouter_problem') }}">Déposer Problème</a></li>
+                                <li><a class="page-scroll" href="{{ path('afficher') }}">Consulter Problème</a></li>
+                                <li><a class="page-scroll" href="{{ path('pidev_mail_sendmail') }}">CONTACTEZ-NOUS</a></li>
                                 <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="">Se connecter </a></li>
                             </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container -->
+                        </div><!-- /.navbar-collapse -->  
+                    </div><!-- /.container -->   
                 </nav>
                 <!-- End Navbar -->
                 <div class="modal scroll-fix fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                     <div class="modal-dialog  modal-sm">
                         <div class="modal-content">
-                            
-                                <div class=" page-scroll">
 
-                                    <div class="panel-footer col-sm-12 col-md-12 ">
-                                        <p class="lead"><strong>Se connecter</strong></p>
-                                    </div>
-                                    <div class="panel-footer col-sm-12 col-md-12 ">
+                            <div class=" page-scroll">
 
-                                        <ul class="list-group text-center">
-                                            <li class="list-group-item">E-mail: </li>
-                                            <li >
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="E-mail">
-                                                </div></li>
-                                            <li class="list-group-item">Mot de passe: </li>
-                                            <li ><div class="form-group">
-                                                    <input type="password" class="form-control" placeholder="Mot de passe">
-                                                </div></li>
+                                <div class="panel-footer col-sm-12 col-md-12 ">
+                                    <p class="lead"><strong>Se connecter</strong></p>
+                                </div>
+                                <div class="panel-footer col-sm-12 col-md-12 ">
 
-                                        </ul>
-                                    </div>
-                                    <div class="panel-footer text-center col-sm-12 col-md-12">
-                                        <ul>
-                                            <li> <a class="col-sm-6 col-md-12 btn btn-default" href="#">Se connecter</a></li>
-                                            <li> <a class="col-sm-6 col-md-12 btn btn-link" href="#">S'inscrire</a></li>
-                                        </ul>
-                                    </div>
-                                </div>										
-                        
+                                    <ul class="list-group text-center">
+                                        <li class="list-group-item">E-mail: </li>
+                                        <li >
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" placeholder="E-mail">
+                                            </div></li>
+                                        <li class="list-group-item">Mot de passe: </li>
+                                        <li ><div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Mot de passe">
+                                            </div></li>
+
+                                    </ul>
+                                </div>
+                                <div class="panel-footer text-center col-sm-12 col-md-12">
+                                    <ul>
+                                        <li> <a class="col-sm-6 col-md-12 btn btn-default" href="#">Se connecter</a></li>
+                                        <li> <a class="col-sm-6 col-md-12 btn btn-link" href="#">S'inscrire</a></li>
+                                    </ul>
+                                </div>
+                            </div>										
+
                         </div>
                     </div>
                 </div>
@@ -185,7 +193,17 @@
 
         </div><!-- body ends -->
 
-
+        <script>$(document).ready(function () {
+                (function ($) {
+                    $('#filter').keyup(function () {
+                        var rex = new RegExp($(this).val(), 'i');
+                        $('.searchable tr').hide();
+                        $('.searchable tr').filter(function () {
+                            return rex.test($(this).text());
+                        }).show();
+                    })
+                }(jQuery));
+            });</script>
 
 
         <!-- Plugins JS -->

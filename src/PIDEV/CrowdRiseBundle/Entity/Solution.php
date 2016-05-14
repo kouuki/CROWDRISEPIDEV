@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="solution")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PIDEV\CrowdRiseBundle\Entity\SolutionRepository")
+
  */
 class Solution
 {
