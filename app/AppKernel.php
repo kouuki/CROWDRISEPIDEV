@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new PIDEV\CrowdRiseBundle\PIDEVCrowdRiseBundle(),
             
             new FOS\UserBundle\FOSUserBundle(),
+            new Pidev\MailBundle\PidevMailBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
