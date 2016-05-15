@@ -9,5 +9,10 @@
             <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
             {% if targetUrl %}
                 <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-            {% endif %}</div></div>
+            {% endif %}
+            <button class="btn btn-info"><a href="{{ path('pidev_profil_ajouter') }}" class="button" role="button">Ajouter Votre Profil</a></button>
+        </div>
+    </div>
+            <div></div>
         {% endblock content %}
+        

@@ -39,7 +39,7 @@ class Membre extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="adresse", type="string", length=255, nullable=false)
+     * @ORM\Column(name="adresse", type="string", length=255, nullable=true)
      */
     private $adresse;
 
@@ -55,7 +55,7 @@ class Membre extends BaseUser {
     /**
      * @var float
      *
-     * @ORM\Column(name="credit", type="float")
+     * @ORM\Column(name="credit", type="float", nullable=true)
      */
     private $credit;
 

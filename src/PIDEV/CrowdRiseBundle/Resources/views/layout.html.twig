@@ -50,15 +50,15 @@
                 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
                 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-		
-		{#link du notification#}
-    <script type="text/javascript" src={{ asset('Notification/js/jquery.min.js') }}></script>
-    {# /link du notification#}
 
-    {# Notifications List Script#}
-    <script type="text/javascript" src={{ asset('Notification/NotificationAffichage.js') }}></script>
-    <link rel="stylesheet" href={{ asset('Notification/NotificationStyle.css') }}>
-    {#/Notification Liste#}
+        {#link du notification#}
+        <script type="text/javascript" src={{ asset('Notification/js/jquery.min.js') }}></script>
+        {# /link du notification#}
+
+        {# Notifications List Script#}
+        <script type="text/javascript" src={{ asset('Notification/NotificationAffichage.js') }}></script>
+        <link rel="stylesheet" href={{ asset('Notification/NotificationStyle.css') }}>
+        {#/Notification Liste#}
 
     </head>
 
@@ -86,41 +86,41 @@
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
-						
+
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right" id="nav">
                                 <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_accueil') }}">Acceuil</a></li>
                                 <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_AjouterProjet') }}">Lancer Un Projet</a></li>
                                     {% if (app.user) %}
-                                    <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_accueil') }}">hi {{ app.user.username }}</a></li>
+                                    <li><a class="page-scroll" href="{{ path('pidev_profil_afficher',{'id':app.user.id}) }}">hi {{ app.user.username }}</a></li>
                                     <li><a  href="{{ path('fos_user_security_logout')}}">Déconnexion </a></li>
-                                      {% else %}
-                                      <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="{{ path('fos_user_security_login')}}">Se connecter </a></li>
+                                    {% else %}
+                                    <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="{{ path('fos_user_security_login')}}">Se connecter </a></li>
                                     {% endif %}
                                 <li id="notification_li">
-                            <span id="notification_count">
-                                {% block NotificationNumber %}
-                                    5
-                                {% endblock %}
-                            </span>
-                            <a href="{{ path('notification_user',{'id':'Ketata'}) }}" id="notificationLink">Notifications</a>
-                            <div id="notificationContainer">
-                                <div id="notificationTitle">Notifications</div>
-                                <div id="notificationsBody" class="notifications">
-                                    {#{% block NotificationContent %}
-                                    {% endblock %}#}
-                                    <ul>
-                                    {#{% for Notif in NotificationContent %}
-                                        <li id="NotificationListe">
-                                            <h5>{{ Notif.message }}</h5>
-                                        </li>
-                                    {% endfor %}#}
-                                    </ul>
-                                </div>
-                                <div id="notificationFooter"><a href="#">See All</a></div>
-                            </div>
+                                    <span id="notification_count">
+                                        {% block NotificationNumber %}
+                                            0
+                                        {% endblock %}
+                                    </span>
+                                    <a href="{{ path('notification_user',{'id':'Ketata'}) }}" id="notificationLink">Notifications</a>
+                                    <div id="notificationContainer">
+                                        <div id="notificationTitle">Notifications</div>
+                                        <div id="notificationsBody" class="notifications">
+                                            {#{% block NotificationContent %}
+                                            {% endblock %}#}
+                                            <ul>
+                                                {#{% for Notif in NotificationContent %}
+                                                    <li id="NotificationListe">
+                                                        <h5>{{ Notif.message }}</h5>
+                                                    </li>
+                                                {% endfor %}#}
+                                            </ul>
+                                        </div>
+                                        <div id="notificationFooter"><a href="#">See All</a></div>
+                                    </div>
 
-                        </li>
+                                </li>
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container -->
@@ -130,22 +130,22 @@
                     <div class="modal-dialog  modal-sm">
                         <div class="modal-content">
 
-                            
 
-                                <div class="panel-footer col-sm-12 col-md-12 ">
-                                   
-                                </div>
-                                <div>
+
+                            <div class="panel-footer col-sm-12 col-md-12 ">
+
+                            </div>
+                            <div>
                                 {% block formulaire %}
                                 {% endblock %}
-                                </div>
-                                <div class="panel-footer text-center col-sm-12 col-md-12">
-                                    
-                                        {#<li> <a class="col-sm-6 col-md-12 btn btn-link" href="fos_user_registration_register">S'inscrire</a></li>#}
-                                    </ul>
-                                </div>
-                           										
-                                
+                            </div>
+                            <div class="panel-footer text-center col-sm-12 col-md-12">
+
+                                {#<li> <a class="col-sm-6 col-md-12 btn btn-link" href="fos_user_registration_register">S'inscrire</a></li>#}
+                                </ul>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -192,102 +192,99 @@
                                 <div class="single-tweet">
                                     <div class="tweet-content"><span>@Unika</span> Excepteur sint occaecat cupidatat non proident</div>
                                     <div class="tweet-date">1 Hour ago</div>
-                                <div class="single-tweet">
-                                    <div class="tweet-content"><span>@Unika</span> Excepteur sint occaecat cupidatat non proident uku shumaru</div>
-                                    <div class="tweet-date">1 Hour ago</div>
+                                    <div class="single-tweet">
+                                        <div class="tweet-content"><span>@Unika</span> Excepteur sint occaecat cupidatat non proident uku shumaru</div>
+                                        <div class="tweet-date">1 Hour ago</div>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>    </div>
-                                <div class="single-tweet">
-                                    <div class="tweet-content"><span>@Unika</span> Excepteur sint occaecat cupidatat non proident uku shumaru</div>
-                                    <div class="tweet-date">1 Hour ago</div>
-                                </div>
-                            </div>
+                            </div>    </div>
+                       
+                    </div>
 
-                        </div> <!-- /.row -->
+                </div> <!-- /.row -->
 
-                    </div> <!-- /.container -->
-                </div>
+        </div> <!-- /.container -->
+    </div>
 
 
 
-            </footer>
+</footer>
 
-            <!-- End footer -->
+<!-- End footer -->
 
-            <a href="#" class="scrolltotop"><i class="fa fa-arrow-up"></i></a> <!-- Scroll to top button -->
+<a href="#" class="scrolltotop"><i class="fa fa-arrow-up"></i></a> <!-- Scroll to top button -->
 
-        </div><!-- body ends -->
-
-        
+</div><!-- body ends -->
 
 
-        <!-- Plugins JS -->
-        <script src={{ asset('inc/jquery/jquery-1.11.1.min.js') }}></script>
-        <script src={{ asset('inc/bootstrap/js/bootstrap.min.js') }}></script>
-        <script src={{ asset('inc/owl-carousel/js/owl.carousel.min.js') }}></script>
-        <script src={{ asset('inc/stellar/js/jquery.stellar.min.js') }}></script>
-        <script src={{ asset('inc/animations/js/wow.min.js') }}></script>
-        <script src={{ asset('inc/waypoints.min.js') }}></script>
-        <script src={{ asset('inc/isotope.pkgd.min.js') }}></script>
-        <script src={{ asset('inc/classie.js') }}></script>
-        <script src={{ asset('inc/jquery.easing.min.js') }}></script>
-        <script src={{ asset('inc/jquery.counterup.min.js') }}></script>
-        <script src={{ asset('inc/smoothscroll.js') }}></script>
-        <script src="{{ asset('bundles/dcsrating/js/rating.js') }}"></script>
-        <!-- Theme JS -->
-        <script src={{ asset('js/theme.js') }}></script>
 
 
-        <script>$(document).ready(function () {
+<!-- Plugins JS -->
+<script src={{ asset('inc/jquery/jquery-1.11.1.min.js') }}></script>
+<script src={{ asset('inc/bootstrap/js/bootstrap.min.js') }}></script>
+<script src={{ asset('inc/owl-carousel/js/owl.carousel.min.js') }}></script>
+<script src={{ asset('inc/stellar/js/jquery.stellar.min.js') }}></script>
+<script src={{ asset('inc/animations/js/wow.min.js') }}></script>
+<script src={{ asset('inc/waypoints.min.js') }}></script>
+<script src={{ asset('inc/isotope.pkgd.min.js') }}></script>
+<script src={{ asset('inc/classie.js') }}></script>
+<script src={{ asset('inc/jquery.easing.min.js') }}></script>
+<script src={{ asset('inc/jquery.counterup.min.js') }}></script>
+<script src={{ asset('inc/smoothscroll.js') }}></script>
+<script src="{{ asset('bundles/dcsrating/js/rating.js') }}"></script>
+<!-- Theme JS -->
+<script src={{ asset('js/theme.js') }}></script>
 
-                (function ($) {
 
-                    $('#filter').keyup(function () {
+<script>$(document).ready(function () {
 
-                        var rex = new RegExp($(this).val(), 'i');
-                        $('.searchable tr').hide();
-                        $('.searchable tr').filter(function () {
-                            return rex.test($(this).text());
-                        }).show();
+        (function ($) {
 
-                    })
+            $('#filter').keyup(function () {
 
-                }(jQuery));
+                var rex = new RegExp($(this).val(), 'i');
+                $('.searchable tr').hide();
+                $('.searchable tr').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
 
-        });</script>
+            })
+
+        }(jQuery));
+
+    });</script>
 
 <script>
-$(function(){ /* to make sure the script runs after page load */
+    $(function () { /* to make sure the script runs after page load */
 
-	$('.item').each(function(event){ /* select all divs with the item class */
-	
-		var max_length = 150; /* set the max content length before a read more link will be added */
-		
-		if($(this).html().length > max_length){ /* check for content length */
-			
-			var short_content 	= $(this).html().substr(0,max_length); /* split the content in two parts */
-			var long_content	= $(this).html().substr(max_length);
-			
-			$(this).html(short_content+
-						 '<a href="#" class="read_more"><br/>Afficher la suite</a>'+
-						 '<span class="more_text" style="display:none;">'+long_content+'</span>'); /* Alter the html to allow the read more functionality */
-						 
-			$(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
- 
-				event.preventDefault(); /* prevent the a from changing the url */
-				$(this).hide(); /* hide the read more button */
-				$(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
-		 
-			});
-			
-		}
-		
-	});
-});
+        $('.item').each(function (event) { /* select all divs with the item class */
+
+            var max_length = 150; /* set the max content length before a read more link will be added */
+
+            if ($(this).html().length > max_length) { /* check for content length */
+
+                var short_content = $(this).html().substr(0, max_length); /* split the content in two parts */
+                var long_content = $(this).html().substr(max_length);
+
+                $(this).html(short_content +
+                        '<a href="#" class="read_more"><br/>Afficher la suite</a>' +
+                        '<span class="more_text" style="display:none;">' + long_content + '</span>'); /* Alter the html to allow the read more functionality */
+
+                $(this).find('a.read_more').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
+
+                    event.preventDefault(); /* prevent the a from changing the url */
+                    $(this).hide(); /* hide the read more button */
+                    $(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+
+                });
+
+            }
+
+        });
+    });
 </script>
-    </body> 
+</body> 
 
 
 </html>
