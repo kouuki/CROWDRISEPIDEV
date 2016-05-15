@@ -10,7 +10,14 @@
                         <div class="page">
                             <div class="container">
                                 <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
-                                    <h2>Modification du profil</h2>
+                                    <h2>Suppression du profil</h2>
+                                    {% block javascript %}
+                                        <script>
+                                            setTimeout(function(){
+                                                window.location = "{{path('pidev_crowd_rise_accueil')}}";
+                                            }, 5000);
+                                        </script>
+                                    {% endblock %}
                                 </div>
                             </div>
                             <!-- End page header-->

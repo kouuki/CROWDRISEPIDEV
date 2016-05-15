@@ -30,25 +30,27 @@ class ProfilController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($profil);
             $em->flush();
-            /*$notification = $this->get('notification_controller');*/
-            /*$notification->createNotificationAction($profil->getId(),'Salut');*/
             return $this->forward('PIDEVCrowdRiseBundle:Notification:createNotification', array(
                 'producer' => $nom,
                 'receiver' => $prenom,
                 'message' => $nom . ' a ajouté un nouveau profil',
-                'render' => 'PIDEVCrowdRiseBundle:Profil:ajouter.html.twig'
+                'render' => 'PIDEVCrowdRiseBundle:Accueil:accueil.html.twig'
             ));
-            //$this->redirectToRoute('pidev_profil_affiche',$id);
+            /*$notification = $this->get('notification_controller');*/
+            /*$notification->createNotificationAction($profil->getId(),'Salut');*/
         }
 
-        return $this->render('PIDEVCrowdRiseBundle:Profil:ajouter.html.twig');
+        return $this->render('PIDEVCrowdRiseBundle:Profil:ajouter.html.twig',array('erreur'=>false));
     }
 
     public function afficheAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
-        return $this->render('PIDEVCrowdRiseBundle:Profil:affiche.html.twig', array('profil' => $profil));
+        $dte = $profil->getDateDeNaissance();
+        $date = $dte->format("d M Y");
+        return $this->render('PIDEVCrowdRiseBundle:Profil:affiche.html.twig', array('profil' => $profil ,
+            'naissance'=>$date));
 
     }
 
@@ -63,6 +65,8 @@ class ProfilController extends Controller
         $em = $this->getDoctrine()->getManager();
         $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
         $request = $this->get('request');
+        $dte = $profil->getDateDeNaissance();
+        $date = $dte->format("d M Y");
         if ($request->getMethod() == "POST") {
             $nom = $request->get('nom');
             $prenom = $request->get('prenom');
@@ -81,9 +85,11 @@ class ProfilController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($profil);
             $em->flush();
-            return $this->render('PIDEVCrowdRiseBundle:Profil:affiche.html.twig',array('profil'=>$profil));
+            return $this->render('PIDEVCrowdRiseBundle:Profil:affiche.html.twig',array('profil'=>$profil,'naissance'
+            =>$date));
         }
-        return $this->render('PIDEVCrowdRiseBundle:Profil:modifier.html.twig',array('profil'=> $profil));
+        return $this->render('PIDEVCrowdRiseBundle:Profil:modifier.html.twig',array('profil'=> $profil,'naissance'
+        =>$date));
     }
 
     public  function supprimerProfilAction($id){

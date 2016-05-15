@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class NotificationController extends Controller
 {
+
     public function __construct() {
     }
 
@@ -30,6 +31,13 @@ class NotificationController extends Controller
         $em = $this->getDoctrine()->getManager();
         $notification = $em->getRepository('PIDEVCrowdRiseBundle:Notification')->findAll();
         return $this->render('PIDEVCrowdRiseBundle:Notification:listNotification.html.twig', array('notification' => $notification));
+    }
+
+    public function listNotificationByIdAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $notification = $em->getRepository('PIDEVCrowdRiseBundle:Notification')->findBy(array('receiver'=>$id));
+        return $this->render('PIDEVCrowdRiseBundle::layout.html.twig',array('NotificationContent'=>$notification));
+
     }
 
 }

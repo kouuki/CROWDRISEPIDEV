@@ -36,3 +36,7 @@ pidev_profil_modifier:
 pidev_profil_supprimer:
     path:     /supprimerProfil/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Profil:supprimerProfil}
+
+notification_user:
+    path:     /notification/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Notification:listNotificationById}
