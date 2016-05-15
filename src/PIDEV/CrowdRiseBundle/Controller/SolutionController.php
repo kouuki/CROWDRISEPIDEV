@@ -3,23 +3,96 @@
 namespace PIDEV\CrowdRiseBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use PIDEV\CrowdRiseBundle\Form\DemandeSolution;
+use PIDEV\CrowdRiseBundle\Entity\Solution;
+use PIDEV\CrowdRiseBundle\Entity\Membre;
+use PIDEV\CrowdRiseBundle\Entity\Probleme;
+use PIDEV\CrowdRiseBundle\Form\SolutionForm;
+use Symfony\Component\HttpFoundation\Request;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
+use PIDEV\CrowdRiseBundle\Form\AjoutSolutionForm;
+use PIDEV\CrowdRiseBundle\Form\MediaType;
+use PIDEV\CrowdRiseBundle\Entity\Media;
 
 class SolutionController extends Controller {
 
-    public function demandeAction() {
-        return $this->render('PIDEVCrowdRiseBundle:Solution:demandesolution.html.twig', array());
+    public function consulterSolutionAction(Request $request) {
+        
+        $em = $this->get('doctrine.orm.entity_manager');
+        $dql = "SELECT a from PIDEVCrowdRiseBundle:Solution a";
+        $query = $em->createQuery($dql);
+
+
+        $paginator = $this->get('knp_paginator');
+        $solutions = $paginator->paginate(
+                $query, $request->query->get('page', 1), 5
+        );
+        return $this->render('PIDEVCrowdRiseBundle:Solution:consultersolution.html.twig', array('solutions' => $solutions));
     }
-    
-    public function ajouterAction() {
-        return $this->render('PIDEVCrowdRiseBundle:Solution:ajoutersolution.html.twig', array());
+
+    public function ajoutDemandeAction() {
+
+        $em = $this->getDoctrine()->getManager();
+        $request = $this->getRequest();
+
+        $solution = new Solution();
+        $solution->setFichierSolution("");
+        $solution->setEtat("En attente");
+
+        $Membre = new Membre();
+
+        $Membre = $em->getRepository('PIDEVCrowdRiseBundle:Membre')->find(2); //id_membre
+        $solution->setMembreId($Membre);
+
+        $Probleme = new Probleme();
+
+        $Probleme = $em->getRepository('PIDEVCrowdRiseBundle:Probleme')->find(1); //id_probleme
+        $solution->setProblemeId($Probleme);
+
+        $form = $this->createForm(new DemandeSolution(), $solution);
+        $reques = $this->get('request_stack')->getCurrentRequest();
+        $form->handleRequest($reques);
+        if ($form->isValid()) {
+            $em->persist($solution);
+            $em->flush();
+            return $this->redirectToRoute('pidev_crowd_rise_consultersolution');
+        }
+        return $this->render('PIDEVCrowdRiseBundle:Solution:demandesolution.html.twig', array('Form' => $form->createView()));
     }
-    
-    public function consulterAction() {
-        return $this->render('PIDEVCrowdRiseBundle:Solution:consultersolution.html.twig', array());
+
+    public function deleteSolutionAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $solution = $em->getRepository('PIDEVCrowdRiseBundle:Solution')->find($id);
+        $em->remove($solution);
+        $em->flush();
+        return $this->redirectToRoute('pidev_crowd_rise_consultersolution');
     }
-    
-    public function modifierAction() {
-        return $this->render('PIDEVCrowdRiseBundle:Solution:modifiersolution.html.twig', array());
+
+    public function updateSolutionAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $solution = $em->getRepository('PIDEVCrowdRiseBundle:Solution')->find($id);
+        $form = $this->createForm(new SolutionForm(), $solution);
+        $reques = $this->get('request_stack')->getCurrentRequest();
+        $form->handleRequest($reques);
+        if ($form->isValid()) {
+            $em->persist($solution);
+            $em->flush();
+            return $this->redirectToRoute('pidev_crowd_rise_consultersolution');
+        }
+        return $this->render('PIDEVCrowdRiseBundle:Solution:modifiersolution.html.twig', array('Form' => $form->createView()));
+    }
+
+    public function consulterOffreSubmitterAction(Request $request, $id) {
+        $etat = "En attente";
+        $solutions = new Solution();
+        $em = $this->get('doctrine.orm.entity_manager');
+        $query = $em->createQuery('select s from PIDEVCrowdRiseBundle:Solution s join PIDEVCrowdRiseBundle:Membre m where m.id=s.MembreId and m.id='.$id)->getResult(); //id_membre
+  
+        $paginator = $this->get('knp_paginator');
+        $solutions = $paginator->paginate(
+                $query, $request->query->get('page', 1), 5
+        );
+        return $this->render('PIDEVCrowdRiseBundle:Solution:consulteroffre.html.twig', array('solutions' => $solutions));
     }
 
 }

@@ -18,8 +18,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new PIDEV\CrowdRiseBundle\PIDEVCrowdRiseBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             
             new FOS\UserBundle\FOSUserBundle(),
+            new DCS\RatingBundle\DCSRatingBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

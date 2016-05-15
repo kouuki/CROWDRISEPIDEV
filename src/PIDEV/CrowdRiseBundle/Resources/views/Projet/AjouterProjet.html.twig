@@ -1,5 +1,7 @@
 {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+
 {% block content %}
+    {% form_theme Form 'bootstrap_3_layout.html.twig' %}
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
 
@@ -9,73 +11,49 @@
         <div class = "container slider-content">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
-                    <h2>Ajoutez un nouveau Projet</h2>
+                                                     <div class=" text-center ">
+        <h1>Formulaire d'Ajout d'un Projet</h1>
+    </div>
 
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
-                            <form action="#">
-                                <div class="form-body pal">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="input-icon">
-                                                <i class="glyphicon glyphicon-pencil"></i>  Titre du projet
-                                                <input id="titre" type="text" class="form-control" required="required"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
 
-                                        <div class="input-icon">
-                                            <i class="glyphicon glyphicon-edit"></i> Description du Projet
-                                            <textarea rows="5" class="form-control" required="required" placeholder="Description du projet..." ></textarea></div>
+                            <div class="form-body pal">
+                                <div class="row">
+                                    <div class="col-md-12">
+      
                                     </div>
-                                    <div class="form-group">
-                                        <input id="inputIncludeFile" type="file" placeholder="Include image" multiple="true" /></div>
-                                    <div class="input-icon">
-                                        <i class="glyphicon glyphicon-th-list"></i> Type De Financement
-                                        <select class="btn btn-default dropdown-toggle ">
-                                            <option value="Donnation">Donnation</option>
-                                            <option value="Partenaire">Partenaire</option>
-                                            <option value="Produit">Produit</option>
-                                            <option value="Crédit">Crédit</option>
-                                        </select>
-                                    </div>
-                                    <hr />
-                                    <i class="glyphicon glyphicon-calendar"></i>  Date limite
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class='col-sm-6'>
-                                                <div class="form-group">
-                                                    <div class='input-group date' id='datetimepicker1'>
-                                                        <input type='text' class="form-control" />
-                                                        <span class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
 
-                                            <script type="text/javascript">
-                                                $(function () {
-                                                    $('#datetimepicker1').datetimepicker();
-                                                });
-                                            </script>
-                                        </div>
-                                    </div>
                                 </div>
-                                <hr />
-                                <div class="form-group">
-                                    <input id="inputIncludeFile" type="file" placeholder="Inlcude some file" /></div>
-                                <div class="form-actions text-right pal">
-                                    <button type="submit" class="btn btn-primary" style="background-color: #363940">
-                                        Envoyer</button>
-                                </div>
-                            </form>
+                                <div class="jumbotron">
+                               <form action="" method="post" enctype="multipart/form-data">                                  
+                                      titre:  {{ form_widget(Form.titre) }}      
+                                        description:{{ form_widget(Form.description) }} 
+                                        typeFinancement: {{ form_widget(Form.typeFinancement) }}
+                                        Catégorie: {{ form_widget(Form.idcat) }} 
+                                        deadlineProjet: {{ form_widget(Form.deadlineProjet) }} 
+                                        Image Projet   {{ form_widget(Form.image_projet) }}  
+
+                                        fichier Projet   {{ form_widget(Form.fichier_projet) }} 
+                                        video_projet: {{ form_widget(Form.video_projet) }} 
+                                      {{ form_widget(Form.Ajouter,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                                {{ form_rest(Form) }}
+                                        
+                                    </form>
+                              
+                            </div>
+                                                
+                                    
+
+
+
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-    </section>
-{% endblock %}
+                                                
+                </section>
+                                                <div style="background-color: whitesmoke">
+                                                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+            {% endblock %}
 

@@ -16,9 +16,9 @@
                         <div class="panel-body pan" style="background-color: white">
 
 
-                            <div class="input-group"> <span class="input-group-addon">Filter</span>
+                            <div class="input-group"> <span class="input-group-addon">Rechercher</span>
 
-                                <input id="filter" type="text" class="form-control" placeholder="Type here...">
+                                <input id="filter" type="text" class="form-control" placeholder="Ecrire ici ...">
                             </div>
 
                             <table class="table table-striped col-lg-4">
@@ -28,117 +28,28 @@
                                         <th>Problème</th> 
                                         <th>Modifier</th>
                                         <th>Supprimer</th>
-                                        <th>Evaluer</th>
 
                                     </tr>
                                 </thead>
                                 <tbody class="searchable">
+                                    {% for solution in solutions %}
 
-                                    <tr>
-                                        <td>
-                                            <h4>  solution1</h4>
-                                            <p>iuzahqlnv</p>
-                                        </td>
-                                        <td>
-                                            <a href="#">  problème3</a>
-                                        </td>
-                                        <td><a href="#">Modifier</a></td>
-                                        <td><a href="#">Supprimer</a></td>
-                                        <td>
-                                            <div class="form-group">
-                                                <div class="rating">
-                                                    <label for="reliability-5">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="overall-5">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-3">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-2">
-                                                                <i class="fa fa-star text-yellow"></i>
-                                                            </label>
-                                                            <label for="quality-1">
-                                                                <i class="fa fa-star text-yellow"></i>
-                                                            </label>
-
+                                        <tr>
+                                            <td>
+                                                <a href="#"><h6> {{solution.getTitre()}} <i class=""></i></h6></a>
+                                                <div class="item">
+                                                    {{solution.getDescription()}}
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                            </td>
+                                            <td>
 
-                                        <td>
-                                            <h4>  solution2</h4>
-                                            <p>iuzahqlnv</p>
-                                        </td>
-                                        <td>
-                                            <a href="#">  problème3</a>
-                                        </td>
+                                                <a href="#">  {{solution.ProblemeId.getTitre()}}</a>
+                                            </td>
+                                            <td><a href="{{ path('pidev_crowd_rise_updateSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                            <td><a href="{{ path('pidev_crowd_rise_deleteSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-trash"></i></a></td>
 
-                                        <td><a href="#">Modifier</a></td>
-                                        <td><a href="#">Supprimer</a></td>
-
-                                        <td>
-                                            <div class="form-group">
-                                                <div class="rating">
-                                                    <label for="quality-5">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-4">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-3">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-2">
-                                                                <i class="fa fa-star text-yellow"></i>
-                                                            </label>
-                                                            <label for="quality-1">
-                                                                <i class="fa fa-star text-yellow"></i>
-                                                            </label>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-
-                                        <td>
-                                            <h4>  solution1</h4>
-                                            <p>iuzahqlnv</p>
-                                        </td>
-                                        <td>
-                                            <a href="#">  problème3</a>
-                                        </td>
-                                        <td><a href="#">Modifier</a></td>
-                                        <td><a href="#">Supprimer</a></td>
-
-                                        <td>
-                                            <div class="form-group">
-                                                <div class="rating">
-                                                   <label for="quality-5">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-4">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-3">
-                                                                <i class="fa fa-star"></i>
-                                                            </label>
-                                                            <label for="quality-2">
-                                                                <i class="fa fa-star text-yellow"></i>
-                                                            </label>
-                                                            <label for="quality-1">
-                                                                <i class="fa fa-star text-yellow"></i>
-                                                            </label>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        </tr>
+                                    {% endfor %}
 
 
                                 </tbody>
@@ -146,10 +57,11 @@
 
 
                             <nav>
-                                <ul class="pager">
-                                    <li><a href="#">Previous</a></li>
-                                    <li><a href="#">Next</a></li>
-                                </ul>
+                                <div class="pager arcive_Paging">
+                <ul class="ul_paging">
+                    <span class="acitve">{{ knp_pagination_render(solutions) }}</span>
+                </ul>
+            </div>
                             </nav>
 
                         </div>

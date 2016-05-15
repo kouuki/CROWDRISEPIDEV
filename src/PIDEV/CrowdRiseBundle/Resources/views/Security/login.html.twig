@@ -1,0 +1,85 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+<div class="panel-footer col-sm-12 col-md-12 ">
+    <div class="panel-footer text-center col-sm-12 col-md-12">
+        <p class="lead col-sm-12 col-md-12"><strong>Se Connecter</strong></p>
+    </div>
+    {% if error %}
+
+
+        <div class="alert alert-danger">
+            <p class="  lead"><strong>{{ error.messageKey|trans(error.messageData, 'security') }}</strong></p>
+            <span class="close"></span>
+        </div>
+        <form action="{{ path("fos_user_security_check") }}" method="post">
+            <input  type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+            <label class="col-sm-8 col-md-12 " for="username">{{ 'security.login.username'|trans }}</label>
+            <input class="col-sm-6 col-md-12 " type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+
+            <label class="col-sm-8 col-md-12 " for="password">{{ 'security.login.password'|trans }}</label>
+            <input class="col-sm-6 col-md-12" type="password" id="password" name="_password" required="required" />
+
+            <input class=" " type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label class="" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+            <input type="submit" class="btn btn-primary  col-md-12" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+            <li> <a class="col-sm-6 col-md-12 btn btn-link" href="{{ path("fos_user_registration_register") }}">S'inscrire</a></li>
+
+        </form>
+        <br/><br/><br/><br/><br/><br/><br/><br/>
+        {% include 'PIDEVCrowdRiseBundle:Security:login2.html.twig' %}
+
+    {% else %}
+
+        {% if  app.request.headers.get('referer') != "http://localhost/PIDEV/web/app_dev.php/accueil"  %}
+            <div class="container text-center ">
+                <h1>CONNEXION</h1>
+            </div>
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+                <input  type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                <label class="col-sm-8 col-md-12 " for="username">{{ 'security.login.username'|trans }}</label>
+                <input class="col-sm-6 col-md-12 " type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+                <label class="col-sm-8 col-md-12 " for="password">{{ 'security.login.password'|trans }}</label>
+                <input class="col-sm-6 col-md-12" type="password" id="password" name="_password" required="required" />
+
+                <input class=" " type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label class="" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                <input type="submit" class="btn btn-primary  col-md-12" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                <li> <a class="col-sm-6 col-md-12 btn btn-link" href="{{ path("fos_user_registration_register") }}">S'inscrire</a></li>
+
+            </form>
+            <br/><br/><br/><br/><br/>
+            {% include 'PIDEVCrowdRiseBundle:Security:login2.html.twig' %}
+        {% else %}
+            {% block formulaire %}
+                <div class="container text-center ">
+                    <h1>CONNEXION</h1>
+                </div>
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input  type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                    <label class="col-sm-8 col-md-12 " for="username">{{ 'security.login.username'|trans }}</label>
+                    <input class="col-sm-6 col-md-12 " type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+                    <label class="col-sm-8 col-md-12 " for="password">{{ 'security.login.password'|trans }}</label>
+                    <input class="col-sm-6 col-md-12" type="password" id="password" name="_password" required="required" />
+
+                    <input class=" " type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label class="" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+                    <input type="submit" class="btn btn-primary  col-md-12" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                    <li> <a class="col-sm-6 col-md-12 btn btn-link" href="{{ path("fos_user_registration_register") }}">S'inscrire</a></li>
+
+                </form>
+
+            {% endblock formulaire %}
+        {% endif %}
+    {% endif %}
+</div>

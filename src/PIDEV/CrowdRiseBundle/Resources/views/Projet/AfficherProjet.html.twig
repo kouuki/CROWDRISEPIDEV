@@ -1,0 +1,39 @@
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+
+
+    <section id="text-carousel-intro-section" class="parallax" data-stellar-background-ratio="0.5" style="background-color: whitesmoke">
+
+
+
+        <div class="jumbotron">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                <h2>Titre du Projet: {{projet.titre}}</h2>
+
+
+                <div class="panel panel-grey wow bounceInLeft">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body pan">
+
+
+                        <div>DESCRIPTION :  {{projet.description}} </div>
+                        <div>TYPE DE FINANCEMENT : {{projet.typeFinancement}}</div>
+                        <div>Categorie : {{projet.idcat.nom}}</div>
+                       
+                        <div class="row">
+
+                        </div>
+                        <div><img height="100px" width="400px" src="{{ asset('Uploads/' ~ projet.imageProjet.path ) }}" class="img-thumbnail" /> </div>
+ </tbody>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
