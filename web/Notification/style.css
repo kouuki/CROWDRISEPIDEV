@@ -1,0 +1,22 @@
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+body{ background: #f5f5f5; font: 12px 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;   margin: 0;}
+h1, h2, h3, h4, h5{font-family: 'Segoe UI', 'Proxima Nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;  margin: 0; font-weight: lighter;}
+.clear{ clear: both;}
+a{ color: #000000; text-decoration: none;   }
+a img{ border: none;}
+a:hover{ text-decoration: underline;}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+    
+    .undh:hover{ text-decoration: underline; }
+    .red{color: #9d261d;}
+    .pink{color: #8d0046;}
+    .green{color: #005524;}
+    .blue{color: #006a90;}
+    .bg-blue{background: #53bdde;}
+    .bg-black{background: #232323;}
+    .bg-green{background: green;}
+    .bg-pink{background-color: #ff6df6; }
