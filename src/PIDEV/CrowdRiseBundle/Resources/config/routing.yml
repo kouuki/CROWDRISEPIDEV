@@ -55,7 +55,7 @@ vote:
     defaults: { _controller: PIDEVCrowdRiseBundle:Projet:vote }
  
 pidev_crowd_rise_ajoutDemande:
-    path:     /ajoutDemande
+    path:     /ajoutDemande/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:ajoutDemande }
     
 pidev_crowd_rise_deleteSolution:

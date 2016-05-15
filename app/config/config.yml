@@ -79,7 +79,7 @@ fos_user:
     firewall_name: main
     user_class: PIDEV\CrowdRiseBundle\Entity\Membre
     
-<<<<<<< HEAD
+
 dcs_rating:
     db_driver: orm
     base_path_to_redirect: / # when the permalink is not configured
@@ -121,8 +121,8 @@ nomaya_social:
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
 
-=======
->>>>>>> origin/master
+
+
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
     default_options:
@@ -132,9 +132,8 @@ knp_paginator:
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig     # sliding pagination controls template
-<<<<<<< HEAD
+
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
-=======
-        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
->>>>>>> origin/master
+
+

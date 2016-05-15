@@ -17,7 +17,7 @@ use PIDEV\CrowdRiseBundle\Entity\Media;
 class SolutionController extends Controller {
 
     public function consulterSolutionAction(Request $request) {
-        
+
         $em = $this->get('doctrine.orm.entity_manager');
         $dql = "SELECT a from PIDEVCrowdRiseBundle:Solution a";
         $query = $em->createQuery($dql);
@@ -30,7 +30,10 @@ class SolutionController extends Controller {
         return $this->render('PIDEVCrowdRiseBundle:Solution:consultersolution.html.twig', array('solutions' => $solutions));
     }
 
-    public function ajoutDemandeAction() {
+    public function ajoutDemandeAction($id) {
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $user->getId();
 
         $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
@@ -39,14 +42,14 @@ class SolutionController extends Controller {
         $solution->setFichierSolution("");
         $solution->setEtat("En attente");
 
-        $Membre = new Membre();
-
-        $Membre = $em->getRepository('PIDEVCrowdRiseBundle:Membre')->find(2); //id_membre
-        $solution->setMembreId($Membre);
+//        $Membre = new Membre();
+//
+//        $Membre = $em->getRepository('PIDEVCrowdRiseBundle:Membre')->find($user); //id_membre
+        $solution->setMembreId($user);
 
         $Probleme = new Probleme();
 
-        $Probleme = $em->getRepository('PIDEVCrowdRiseBundle:Probleme')->find(1); //id_probleme
+        $Probleme = $em->getRepository('PIDEVCrowdRiseBundle:Probleme')->find($id); //id_probleme
         $solution->setProblemeId($Probleme);
 
         $form = $this->createForm(new DemandeSolution(), $solution);
@@ -86,8 +89,8 @@ class SolutionController extends Controller {
         $etat = "En attente";
         $solutions = new Solution();
         $em = $this->get('doctrine.orm.entity_manager');
-        $query = $em->createQuery('select s from PIDEVCrowdRiseBundle:Solution s join PIDEVCrowdRiseBundle:Membre m where m.id=s.MembreId and m.id='.$id)->getResult(); //id_membre
-  
+        $query = $em->createQuery('select s from PIDEVCrowdRiseBundle:Solution s join PIDEVCrowdRiseBundle:Membre m where m.id=s.MembreId and m.id=' . $id)->getResult(); //id_membre
+
         $paginator = $this->get('knp_paginator');
         $solutions = $paginator->paginate(
                 $query, $request->query->get('page', 1), 5

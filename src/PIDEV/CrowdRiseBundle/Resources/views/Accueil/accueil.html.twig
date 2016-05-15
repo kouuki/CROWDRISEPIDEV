@@ -7,24 +7,12 @@
         <div class="container">
             <div class="caption text-center text-white" >
 
-                <div id="owl-intro-text" class="owl-carousel">
+                <div id="owl-intro-text" class="owl-carousel"> 
                     <div class="">
-                        <h1>Dépensez votre argent pour les bonnes raisons</h1>
-                        <p>Lancez votre projet & Déposez vos solutions</p>
-                        <div class="extra-space-l"></div>
-                        <a class="btn btn-blank" href="https://creativemarket.com/Themetorium" target="_blank" role="button">Inscrivez-vous</a>
-                    </div>
-                    <div class="item">
-                        <h1>Join with us</h1>
-                        <p>To the greatest Journey</p>
-                        <div class="extra-space-l"></div>
-                        <a class="btn btn-blank" href="https://creativemarket.com/Themetorium" target="_blank" role="button">Inscrivez-vous</a>
-                    </div>
-                    <div class="item">
                         <h1>CrowDRise</h1>
-                        <p>One Page Responsive Theme</p>
+                        <p>Mettez fin à nos problèmes!</p>
                         <div class="extra-space-l"></div>
-                        <a class="btn btn-blank" href="https://creativemarket.com/Themetorium" target="_blank" role="button">Inscrivez-vous</a>
+                        <a class="btn btn-blank" href="{{path('fos_user_registration_register')}}" target="_blank" role="button">Inscrivez-vous</a>
 
                     </div>
                 </div>
@@ -42,8 +30,8 @@
         <div class="page-header-wrapper">
             <div class="container">
                 <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
-                    <h2>Populaires</h2>
-                    {{ socialButtons() }}
+                     <div class="extra-space-l"></div>
+                    <h2>Start-Ups</h2>           
                     <div class="devider"></div>
                     <p class="subtitle">That how much</p>
                 </div>
@@ -51,90 +39,37 @@
         </div>
         <!-- End page header-->
 
-        <div class="extra-space-l"></div>
+    
 
         <!-- Begin prices -->
         <div class="prices">
             <div class="container">
                 <div class="row">
-                        <a href="https://github.com/kouuki/Pidev/settings/collaboration">
-                        <div class="price-box col-sm-6 col-md-4 wow flipInY" data-wow-delay="0.3s">
-                            <div class="thumbnail">
-                                <img src='http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg' alt="...">
-                                <div class="caption">
-                                    <h3>Nom du Projet</h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <br>
-                                    <div id="somme">
-                                        <p><b>100.56</b> DNT</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+
+                    {% for projet in projets | slice(0, 3) %}
+                        <a href="{{path('pidev_crowd_rise_AfficherProjet',{'id': projet.idProjet})}}">
+                            <div class="price-box col-sm-6 col-md-4 wow flipInY" data-wow-delay="0.3s">
+                                <div class="thumbnail">
+                                    <img src='{{ asset('Uploads/' ~ projet.imageProjet.path ) }}' alt="...">
+                                    <div class="caption">
+                                        <h3>{{projet.titre}}</h3>
+                                        <p>{{projet.description}}</p>
+                                        <br>
+                                        <div id="somme">
+                                            <p><b>Typede financement: </b>{{projet.typeFinancement}}</p>
+                                            <p><b>Catégorie:</b> {{projet.idcat.nom}}</p>
+                                        </div>
+                                        <div class="">
 
                                         </div>
+
                                     </div>
-                                    <div id="info-deadline-pourcentage">
-                                        <p class="text-right"><i> <b> 20 </b>jours restants</i>
-                                        </p>    
-                                    </div>
-                                    {#<p><a href="#" class="btn btn-default" role="button">Button</a></p>#}
                                 </div>
+
                             </div>
-
-                        </div>
                         </a>
-                         <a href="https://github.com/kouuki/Pidev/settings/collaboration">
-                        <div class="price-box col-sm-6 col-md-4 wow flipInY" data-wow-delay="0.3s">
-                            <div class="thumbnail">
-                                <img src='http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg' alt="...">
-                                <div class="caption">
-                                    <h3>Nom du Projet</h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <br>
-                                    <div id="somme">
-                                        <p><b>100.56</b> DNT</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                    {% endfor %}
 
-                                        </div>
-                                    </div>
-                                    <div id="info-deadline-pourcentage">
-                                        <p class="text-right"><i> <b> 20 </b>jours restants</i>
-                                        </p>    
-                                    </div>
-                                    {#<p><a href="#" class="btn btn-default" role="button">Button</a></p>#}
-                                </div>
-                            </div>
-
-                        </div>
-                        </a>
-                         <a href="https://github.com/kouuki/Pidev/settings/collaboration">
-                        <div class="price-box col-sm-6 col-md-4 wow flipInY" data-wow-delay="0.3s">
-                            <div class="thumbnail">
-                                <img src='http://www.keenthemes.com/preview/conquer/assets/plugins/jcrop/demos/demo_files/image1.jpg' alt="...">
-                                <div class="caption">
-                                    <h3>Nom du Projet</h3>
-                                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                                    <br>
-                                    <div id="somme">
-                                        <p><b>100.56</b> DNT</p>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-
-                                        </div>
-                                    </div>
-                                    <div id="info-deadline-pourcentage">
-                                        <p class="text-right"><i> <b> 20 </b>jours restants</i>
-                                        </p>    
-                                    </div>
-                                    {#<p><a href="#" class="btn btn-default" role="button">Button</a></p>#}
-                                </div>
-                            </div>
-
-                        </div>
-                        </a>
                 </div> <!-- /.row -->
             </div> <!-- /.container -->
         </div>
@@ -328,12 +263,7 @@
 
         <div class="container">
             <ul class="social-list">
-                <li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.3s"><span class="rotate-box-icon"><i class="fa fa-facebook"></i></span></a></li>
-                <li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.4s"><span class="rotate-box-icon"><i class="fa fa-twitter"></i></span></a></li>
-                <li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.5s"><span class="rotate-box-icon"><i class="fa fa-google-plus"></i></span></a></li>
-                <li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.6s"><span class="rotate-box-icon"><i class="fa fa-pinterest-p"></i></span></a></li>
-                <li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.7s"><span class="rotate-box-icon"><i class="fa fa-tumblr"></i></span></a></li>
-                <li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.8s"><span class="rotate-box-icon"><i class="fa fa-dribbble"></i></span></a></li>                      
+                    {{ socialButtons() }}               
             </ul>
         </div>
 

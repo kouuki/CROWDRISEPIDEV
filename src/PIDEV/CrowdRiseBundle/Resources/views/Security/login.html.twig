@@ -37,7 +37,7 @@
 
         {% if  app.request.headers.get('referer') != "http://localhost/PIDEV/web/app_dev.php/accueil"  %}
             <div class="container text-center ">
-                <h1>CONNEXION</h1>
+               <h1>CONNEXION</h1>
             </div>
             <form action="{{ path("fos_user_security_check") }}" method="post">
                 <input  type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -60,7 +60,7 @@
         {% else %}
             {% block formulaire %}
                 <div class="container text-center ">
-                    <h1>CONNEXION</h1>
+                    
                 </div>
                 <form action="{{ path("fos_user_security_check") }}" method="post">
                     <input  type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
