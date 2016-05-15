@@ -1,4 +1,4 @@
-/nbproject/private/
-app/cache/
-app/logs/
-/.idea/
+/nbproject/
+/app/logs/
+/app/cache/
+.idea/

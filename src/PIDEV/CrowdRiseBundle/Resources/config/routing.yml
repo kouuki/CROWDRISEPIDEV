@@ -40,3 +40,15 @@ pidev_profil_supprimer:
 notification_user:
     path:     /notification/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Notification:listNotificationById}
+
+pidev_profil_ajouter_competence:
+    path:     /ajouterCompetence/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Competence:ajoutCompetence}
+
+pidev_profil_afficher_competence:
+    path:     /afficherCompetence/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Competence:affiche}
+pidev_profil_modifier_competence:
+    path:     /modifierCompetence/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Competence:modifier}
+

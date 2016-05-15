@@ -1,0 +1,49 @@
+{# empty Twig template #}
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    <section id="portfolio-section" class="page bg-style1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portfolio">
+                        <!-- Begin page header-->
+                        <div class="page">
+                            <div class="container">
+                                <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
+                                    <h2>Modification de competence</h2>
+                                </div>
+                            </div>
+                            <!-- End page header-->
+                            <form method="POST" action="">
+                                <div>
+                                    <div class="col-xs-12 col-md-4 personnal">
+                                    </div>
+                                    <div class=" col-xs-12 col-md-4 personnal">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Nom</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                   name="nom" placeholder="Nom de votre compétence" value={{ competence.nom }}>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Description</label>
+                                                <textarea class="form-control" id="exampleInputPassword1"
+                                                          name="description" rows="6" placeholder="Description de votre compétence">{{ competence.description }}
+                                                </textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Submit</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4 personnal">
+                                    </div>
+                                </div>
+                        </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+{% endblock %}

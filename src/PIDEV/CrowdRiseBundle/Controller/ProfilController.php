@@ -54,13 +54,16 @@ class ProfilController extends Controller
 
     }
 
+
     /* public function ajoutCompetenceAction($id){
          $em = $this->getDoctrine()->getManager();
          $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
 
      }*/
 
-    public function modifierProfilAction($id)
+    /*The Block that contains a conflict when merging */
+
+    /*public function modifierProfilAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $profil = $em->getRepository('PIDEVCrowdRiseBundle:Profil')->find($id);
@@ -99,5 +102,8 @@ class ProfilController extends Controller
         $em->remove($profil);
         $em->flush();
         return $this->render('PIDEVCrowdRiseBundle:Profil:supprimer.html.twig',array('nom',$nom));
-    }
+    }*/
+
+    /* End The Block that contains a conflict when merging */
+
 }
