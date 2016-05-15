@@ -1,0 +1,13 @@
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+{% block content %}
+    <br/><br/><br/><br/><br/>
+    <div class="jumbotron">
+        <div class="container alert alert-success text-center ">
+
+
+            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+            {% if targetUrl %}
+                <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
+            {% endif %}</div></div>
+        {% endblock content %}

@@ -14,13 +14,18 @@
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
+<<<<<<< HEAD
                             <form action="#">
+=======
+                            <form action="#" method="POST">
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
                                 <div class="form-body pal">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <div class="input-icon">
                                                     <i class="glyphicon glyphicon-pencil"></i>
+<<<<<<< HEAD
                                                     <input type="text" placeholder="Entrez un titre" class="form-control" value="methode1" required="required"/> </div>
                                                     
                                                     <div class="extra-space-m" style="background-color: white"></div>
@@ -48,5 +53,39 @@
                 </div>
             </div>
     </section>
+=======
+                                                    <input type="text" placeholder="Entrez un titre" class="form-control" required="required" {{ form_widget(Form.titre)}} </div>
+                                                <div class="extra-space-m" style="background-color: white"></div>
+                                                <div class="form-group">
+
+                                                    <div class="input-icon">
+                                                        <i class="glyphicon glyphicon-edit"></i>
+                                                        <textarea rows="5" placeholder="Ajoutez une description" class="form-control" required="required" {{ form_widget(Form.description)}} </textarea></div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="extra-space-m" style="background-color: white"></div>
+
+                                <div class="form-actions text-right pal">
+                                    {{ form_widget(Form.Enregistrer,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                    {{ form_rest(Form) }}
+
+                                </div>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 {% endblock %}
 

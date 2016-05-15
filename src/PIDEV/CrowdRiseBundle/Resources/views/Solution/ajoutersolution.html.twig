@@ -14,6 +14,7 @@
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
+<<<<<<< HEAD
                             <form action="#">
                                 <div class="form-body pal">
                                     <div class="row">
@@ -48,6 +49,20 @@
                                     <button type="submit" class="btn btn-primary" style="background-color: #363940">
                                         Envoyer</button>
                                 </div>
+=======
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-body pal">
+                                    <div class="form-group">
+                                       
+                                        {{ form_row(Form.file) }}
+                                        
+                                    </div>
+                                    <hr />
+                                    <div class="form-actions text-right pal">
+                                        {{ form_widget(Form.Enregistrer,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                        {{ form_rest(Form) }}
+                                    </div>
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
                             </form>
                         </div>
                     </div>

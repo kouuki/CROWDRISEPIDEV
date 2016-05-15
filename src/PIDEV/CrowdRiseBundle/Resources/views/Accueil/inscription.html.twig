@@ -1,0 +1,9 @@
+{# empty Twig template #}
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    {% trans_default_domain 'FOSUserBundle'%}
+    {% block formulaire %}
+       
+             <<form action="{{ path("fos user security check") }}"></form>
+  {% endblock %}           
+{% endblock %}

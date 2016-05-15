@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="PIDEV\CrowdRiseBundle\Entity\ProblemeRepository")
  */
-class Probleme
-{
+class Probleme {
+
     /**
      * @var integer
      *
@@ -20,7 +20,6 @@ class Probleme
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $idProbleme;
-
 
     /**
      * @var string
@@ -35,30 +34,40 @@ class Probleme
      * @ORM\Column(name="date_probleme", type="date")
      */
     private $dateProbleme;
-   /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="description", type="text", nullable=false)
      */
     private $description;
+
     /**
      * @var categorie
      *
      * @ORM\Column(name="categorie", type="text", nullable=false)
      */
     private $categorie;
-    /**
+    function getCategorie() {
+        return $this->categorie;
+    }
+
+    function setCategorie(categorie $categorie) {
+        $this->categorie = $categorie;
+    }
+
+        /**
      * @var \DateTime
      *
      * @ORM\Column(name="deadline_probleme", type="date")
      */
     private $deadlineProbleme;
-      /**
+
+    /**
      * @ORM\OneToOne(targetEntity="PIDEV\CrowdRiseBundle\Entity\Media", cascade={"persist","remove"},mappedBy="PIDEV\CrowdRiseBundle\Entity\Probleme")
      *  @ORM\JoinColumn(name="fichier", referencedColumnName="id")
      */
     private $fichier;
-    
 
     /**
      * @var integer
@@ -69,14 +78,12 @@ class Probleme
      */
     private $MembreId;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -86,8 +93,7 @@ class Probleme
      * @param integer $idProbleme
      * @return Probleme
      */
-    public function setIdProbleme($idProbleme)
-    {
+    public function setIdProbleme($idProbleme) {
         $this->idProbleme = $idProbleme;
 
         return $this;
@@ -98,8 +104,7 @@ class Probleme
      *
      * @return integer 
      */
-    public function getIdProbleme()
-    {
+    public function getIdProbleme() {
         return $this->idProbleme;
     }
 
@@ -109,8 +114,7 @@ class Probleme
      * @param string $titre
      * @return Probleme
      */
-    public function setTitre($titre)
-    {
+    public function setTitre($titre) {
         $this->titre = $titre;
 
         return $this;
@@ -121,8 +125,7 @@ class Probleme
      *
      * @return string 
      */
-    public function getTitre()
-    {
+    public function getTitre() {
         return $this->titre;
     }
 
@@ -132,8 +135,7 @@ class Probleme
      * @param \DateTime $dateProbleme
      * @return Probleme
      */
-    public function setDateProbleme($dateProbleme)
-    {
+    public function setDateProbleme($dateProbleme) {
         $this->dateProbleme = $dateProbleme;
 
         return $this;
@@ -144,10 +146,6 @@ class Probleme
      *
      * @return \DateTime 
      */
-    public function getDateProbleme()
-    {
-        return $this->dateProbleme;
-    }
 
     /**
      * Set deadlineProbleme
@@ -155,70 +153,38 @@ class Probleme
      * @param \DateTime $deadlineProbleme
      * @return Probleme
      */
-    public function setDeadlineProbleme($deadlineProbleme)
-    {
-        $this->deadlineProbleme = $deadlineProbleme;
-
-        return $this;
-    }
-
-    /**
-     * Get deadlineProbleme
-     *
-     * @return \DateTime 
-     */
-    public function getDeadlineProbleme()
-    {
-        return $this->deadlineProbleme;
-    }
-    /**
-     * Set fichier
-     *
-     * @param \PIDEV\CrowdRiseBundle\Entity\Media $fichier
-     * @return Produits
-     */
-    public function setfichier(\PIDEV\CrowdRiseBundle\Entity\Media $fichier)
-    {
-        $this->fichier = $fichier;
-        return $this;
-    }
-    /**
-     * Get fichier
-     *
-     * @return \PIDEV\CrowdRiseBundle\Entity\Media 
-     */
-    public function getfichier()
-    {
-        return $this->fichier;
-    }
- 
-    function getMembreId() {
-        return $this->MembreId;
-    }
-
-    function setMembreId($MembreId) {
-        $this->MembreId = $MembreId;
-    }
-
+   
     function getDescription() {
         return $this->description;
+    }
+
+    function getDeadlineProbleme() {
+        return $this->deadlineProbleme;
+    }
+
+    function getFichier() {
+        return $this->fichier;
+    }
+
+    function getMembreId() {
+        return $this->MembreId;
     }
 
     function setDescription($description) {
         $this->description = $description;
     }
 
-    function getCategorie() {
-        return $this->categorie;
+    function setDeadlineProbleme(\DateTime $deadlineProbleme) {
+        $this->deadlineProbleme = $deadlineProbleme;
     }
 
-    function setCategorie($categorie) {
-        $this->categorie = $categorie;
+    function setFichier($fichier) {
+        $this->fichier = $fichier;
     }
-    public function __toString() {
-    return $this->name;
-}
 
+    function setMembreId($MembreId) {
+        $this->MembreId = $MembreId;
+    }
 
 
 }

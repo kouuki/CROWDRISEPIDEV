@@ -1,5 +1,11 @@
 {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+<<<<<<< HEAD
 {% block content %}
+=======
+
+{% block content %}
+    {% form_theme Form 'bootstrap_3_layout.html.twig' %}
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
 
@@ -9,11 +15,18 @@
         <div class = "container slider-content">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+<<<<<<< HEAD
                     <h2>Ajoutez un nouveau Projet</h2>
+=======
+                                                     <div class=" text-center ">
+        <h1>Formulaire d'Ajout d'un Projet</h1>
+    </div>
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
+<<<<<<< HEAD
                             <form action="#">
                                 <div class="form-body pal">
                                     <div class="row">
@@ -78,4 +91,44 @@
             </div>
     </section>
 {% endblock %}
+=======
+
+                            <div class="form-body pal">
+                                <div class="row">
+                                    <div class="col-md-12">
+      
+                                    </div>
+
+                                </div>
+                                <div class="jumbotron">
+                               <form action="" method="post" enctype="multipart/form-data">                                  
+                                      titre:  {{ form_widget(Form.titre) }}      
+                                        description:{{ form_widget(Form.description) }} 
+                                        typeFinancement: {{ form_widget(Form.typeFinancement) }}
+                                        Catégorie: {{ form_widget(Form.idcat) }} 
+                                        deadlineProjet: {{ form_widget(Form.deadlineProjet) }} 
+                                        Image Projet   {{ form_widget(Form.image_projet) }}  
+
+                                        fichier Projet   {{ form_widget(Form.fichier_projet) }} 
+                                        video_projet: {{ form_widget(Form.video_projet) }} 
+                                      {{ form_widget(Form.Ajouter,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                                {{ form_rest(Form) }}
+                                        
+                                    </form>
+                              
+                            </div>
+                                                
+                                    
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                                                
+                </section>
+                                                <div style="background-color: whitesmoke">
+                                                    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
+            {% endblock %}
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 

@@ -25,6 +25,11 @@ class DefaultController extends Controller
     {
         return $this->render('PIDEVCrowdRiseBundle:Accueil:utilisable.html.twig', array());
     }
+    public function inscriptionAction()
+    {
+        return $this->render('PIDEVCrowdRiseBundle:Accueil:inscription.html.twig', array());
+    }
+  
     
     
 }

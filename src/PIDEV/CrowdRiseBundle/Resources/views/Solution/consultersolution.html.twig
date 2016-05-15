@@ -16,9 +16,15 @@
                         <div class="panel-body pan" style="background-color: white">
 
 
+<<<<<<< HEAD
                             <div class="input-group"> <span class="input-group-addon">Filter</span>
 
                                 <input id="filter" type="text" class="form-control" placeholder="Type here...">
+=======
+                            <div class="input-group"> <span class="input-group-addon">Rechercher</span>
+
+                                <input id="filter" type="text" class="form-control" placeholder="Ecrire ici ...">
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
                             </div>
 
                             <table class="table table-striped col-lg-4">
@@ -28,11 +34,15 @@
                                         <th>Problème</th> 
                                         <th>Modifier</th>
                                         <th>Supprimer</th>
+<<<<<<< HEAD
                                         <th>Evaluer</th>
+=======
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 
                                     </tr>
                                 </thead>
                                 <tbody class="searchable">
+<<<<<<< HEAD
 
                                     <tr>
                                         <td>
@@ -139,6 +149,26 @@
                                             </div>
                                         </td>
                                     </tr>
+=======
+                                    {% for solution in solutions %}
+
+                                        <tr>
+                                            <td>
+                                                <a href="#"><h6> {{solution.getTitre()}} <i class=""></i></h6></a>
+                                                <div class="item">
+                                                    {{solution.getDescription()}}
+                                                </div>
+                                            </td>
+                                            <td>
+
+                                                <a href="#">  {{solution.ProblemeId.getTitre()}}</a>
+                                            </td>
+                                            <td><a href="{{ path('pidev_crowd_rise_updateSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                            <td><a href="{{ path('pidev_crowd_rise_deleteSolution',{'id':solution.idSolution}) }}"><i class="glyphicon glyphicon-trash"></i></a></td>
+
+                                        </tr>
+                                    {% endfor %}
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 
 
                                 </tbody>
@@ -146,10 +176,18 @@
 
 
                             <nav>
+<<<<<<< HEAD
                                 <ul class="pager">
                                     <li><a href="#">Previous</a></li>
                                     <li><a href="#">Next</a></li>
                                 </ul>
+=======
+                                <div class="pager arcive_Paging">
+                <ul class="ul_paging">
+                    <span class="acitve">{{ knp_pagination_render(solutions) }}</span>
+                </ul>
+            </div>
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
                             </nav>
 
                         </div>

@@ -1,6 +1,9 @@
 {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
 {% block content %}
+<<<<<<< HEAD
     MODIFIER
+=======
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
 
@@ -10,11 +13,16 @@
         <div class = "container slider-content">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+<<<<<<< HEAD
                     <h2>Ajoutez votre solution</h2>
+=======
+                    <h2>Modifier un Projet</h2>
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
+<<<<<<< HEAD
                             <form action="#">
                                 <div class="form-body pal">
                                     <div class="row">
@@ -56,4 +64,41 @@
             </div>
     </section>
 {% endblock %}
+=======
+
+                            <div class="form-body pal">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            <h3> Modification du projet {{ projet.titre }} </h3>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <form method="post">  
+
+                                                                   
+                                        titre:  {{ form_widget(Form.titre) }}      
+                                        description:{{ form_widget(Form.description) }} 
+                                        typeFinancement: {{ form_widget(Form.typeFinancement) }}
+                                        Catégorie: {{ form_widget(Form.idcat) }} 
+                                        deadlineProjet: {{ form_widget(Form.deadlineProjet) }} 
+                                
+                                        {{ form_widget(Form.Ajouter,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                        <INPUT Type="button" VALUE="Annuler " onClick="history.go(-1);
+                                                return true;">
+
+                                    </form>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+
+            {% endblock %}
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 

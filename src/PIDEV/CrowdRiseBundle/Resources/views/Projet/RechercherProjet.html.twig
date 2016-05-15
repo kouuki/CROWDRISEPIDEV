@@ -10,11 +10,16 @@
         <div class = "container slider-content">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+<<<<<<< HEAD
                     <h2>Ajoutez votre solution</h2>
+=======
+                    <h2>Chercher Solution</h2>
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
 
                     <div class="panel panel-grey wow bounceInLeft">
                         <div class="panel-heading"></div>
                         <div class="panel-body pan">
+<<<<<<< HEAD
                             <form action="#">
                                 <div class="form-body pal">
                                     <div class="row">
@@ -50,6 +55,53 @@
                                         Envoyer</button>
                                 </div>
                             </form>
+=======
+
+                            <div class="form-body pal">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                       
+                                        <div class="input-group"> <span class="input-group-addon">Rechercher</span>
+
+                                <input id="filter" type="text" class="form-control" placeholder="Ecrire ici ...">
+                            </div>
+                                        <table class="table table-striped col-lg-4">
+                                            <thead>
+                                                <tr>
+                                                    <th>titre</th>
+                                                    <th>description</th>
+                                                    <th>typeFinancement</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody class="searchable">
+                                                {% for projet in projets %}
+                                                    <tr>
+                                                        <td>{{projet.titre}}</td>
+                                                        <td>{{projet.description}}</td>
+                                                        <td>{{projet.typeFinancement}}</td>
+                                                        <td></td>
+                                                        {# <td><img height="150px" src="{{ asset(path('my_image_route', {'id': projet.idProjet})) }}"/> </td>#}
+
+
+
+
+
+
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+
+
+                                
+>>>>>>> a10ae7da7d3a2744dbcc1ebeb14f24950b3a4773
                         </div>
                     </div>
                 </div>

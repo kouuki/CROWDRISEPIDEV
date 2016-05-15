@@ -1,5 +1,5 @@
 pidev_crowd_rise_homepage:
-    path:     /hello/{name}
+    path:     /hello
     defaults: { _controller: PIDEVCrowdRiseBundle:Default:index }
 
 pidev_crowd_rise_accueil:
@@ -14,17 +14,14 @@ pidev_crowd_rise_utilisable:
     path:     /utilisable
     defaults: { _controller: PIDEVCrowdRiseBundle:Default:utilisable }
     
-pidev_crowd_rise_demandesolution:
-    path:     /demandesolution
-    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:demande }
-    
-pidev_crowd_rise_ajoutersolution:
-    path:     /ajoutersolution
-    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:ajouter }
+pidev_crowd_rise_ajouterSolution:
+    path:     /ajouterSolution/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:ajouterSolution }
    
 pidev_crowd_rise_consultersolution:
     path:     /consultersolution
-    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulter }
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterSolution }
+    
 
 
 ajouter_problem:
@@ -61,5 +58,59 @@ afficherRefuser:
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:afficherRefuser } 
 
 
+pidev_crowd_rise_AjouterProjet:
+    path:     /AjouterProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:AjouterProjet }
+    
+pidev_crowd_rise_ListProjet:
+    path:     /ListeProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ListProjet }
+
+pidev_crowd_rise_AfficherProjet:
+    path:     /AfficherProjet/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:AfficherProjet }
+my_image_route:
+    path:     /aff/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:photo }
+    
+pidev_crowd_rise_ModifierProjet:
+    path:     /ModifierProjet/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:ModifierProjet }
+    
+pidev_crowd_rise_RechercherProjet:
+    path:     /RechercherProjet
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:RechercherProjet }
+   
+pidev_crowd_rise_SupprimerProjet:
+    path:     /SupprimerProjet/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:SupprimerProjet }
+    
+vote:
+    path:     /vote
+    defaults: { _controller: PIDEVCrowdRiseBundle:Projet:vote }
+ 
+pidev_crowd_rise_ajoutDemande:
+    path:     /ajoutDemande
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:ajoutDemande }
+    
+pidev_crowd_rise_deleteSolution:
+    path:     /deleteSolution/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:deleteSolution }
+    
+pidev_crowd_rise_updateSolution:
+    path:     /updateSolution/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:updateSolution }
+    
+pidev_crowd_rise_consulterOffreSolution:
+    path:     /offreSolution/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterOffreSubmitter }
+    
+pidev_crowd_rise_credit:
+    path:     /rechargeCredit/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Finance:ajoutCredit }
+    
+pidev_crowd_rise_upload:
+    path:     /uploadFile/{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Upload:create }
 
 

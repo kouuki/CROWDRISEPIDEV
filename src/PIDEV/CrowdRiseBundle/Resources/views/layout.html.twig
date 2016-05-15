@@ -8,6 +8,9 @@
 -->
 <html lang="en-US">
     <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -15,7 +18,6 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        
         <title>CrowdRise</title>
         <meta name="description" content="CrowdRise">
         <meta name="keywords" content="HTML5, Bootsrtrap, One Page, Responsive, Template, Portfolio" />
@@ -34,6 +36,7 @@
         <link rel="stylesheet" href={{ asset('inc/font-awesome/css/font-awesome.min.css') }}> <!-- Font Icons -->
         <link rel="stylesheet" href={{ asset('inc/owl-carousel/css/owl.carousel.css') }}>
         <link rel="stylesheet" href={{ asset('inc/owl-carousel/css/owl.theme.css') }}>
+        <link rel="stylesheet" href="{{ asset('bundles/dcsrating/css/rating.css') }}" />
 
         <!-- Theme CSS -->
         <link rel="stylesheet" href={{ asset('css/reset.css') }}>
@@ -84,48 +87,42 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_accueil') }}">Acceuil</a></li>
-
+                                <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_projet') }}">Lancer Un Projet</a></li>
                                 <li><a class="page-scroll" href="{{ path('ajouter_problem') }}">Déposer Problème</a></li>
                                 <li><a class="page-scroll" href="{{ path('afficher') }}">Consulter Problème</a></li>
                                 <li><a class="page-scroll" href="{{ path('pidev_mail_sendmail') }}">CONTACTEZ-NOUS</a></li>
-                                <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="">Se connecter </a></li>
+                                    {% if (app.user) %}
+                                    <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_accueil') }}">hi {{ app.user.username }}</a></li>
+                                    <li><a  href="{{ path('fos_user_security_logout')}}">Déconnexion </a></li>
+                                      {% else %}
+                                      <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="{{ path('fos_user_security_login')}}">Se connecter </a></li>
+                                    {% endif %}
+                                 <li><a class="page-scroll" href="{{ path('pidev_mail_sendmail') }}">CONTACTEZ-NOUS</a></li>
                             </ul>
-                        </div><!-- /.navbar-collapse -->  
-                    </div><!-- /.container -->   
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container -->
                 </nav>
                 <!-- End Navbar -->
                 <div class="modal scroll-fix fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
                     <div class="modal-dialog  modal-sm">
                         <div class="modal-content">
 
-                            <div class=" page-scroll">
+                            
 
                                 <div class="panel-footer col-sm-12 col-md-12 ">
-                                    <p class="lead"><strong>Se connecter</strong></p>
+                                   
                                 </div>
-                                <div class="panel-footer col-sm-12 col-md-12 ">
-
-                                    <ul class="list-group text-center">
-                                        <li class="list-group-item">E-mail: </li>
-                                        <li >
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" placeholder="E-mail">
-                                            </div></li>
-                                        <li class="list-group-item">Mot de passe: </li>
-                                        <li ><div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Mot de passe">
-                                            </div></li>
-
-                                    </ul>
+                                <div>
+                                {% block formulaire %}
+                                {% endblock %}
                                 </div>
                                 <div class="panel-footer text-center col-sm-12 col-md-12">
-                                    <ul>
-                                        <li> <a class="col-sm-6 col-md-12 btn btn-default" href="#">Se connecter</a></li>
-                                        <li> <a class="col-sm-6 col-md-12 btn btn-link" href="#">S'inscrire</a></li>
+                                    
+                                        {#<li> <a class="col-sm-6 col-md-12 btn btn-link" href="fos_user_registration_register">S'inscrire</a></li>#}
                                     </ul>
                                 </div>
-                            </div>										
-
+                           										
+                                
                         </div>
                     </div>
                 </div>
@@ -187,23 +184,14 @@
 
 
             </footer>
+
             <!-- End footer -->
 
             <a href="#" class="scrolltotop"><i class="fa fa-arrow-up"></i></a> <!-- Scroll to top button -->
 
         </div><!-- body ends -->
 
-        <script>$(document).ready(function () {
-                (function ($) {
-                    $('#filter').keyup(function () {
-                        var rex = new RegExp($(this).val(), 'i');
-                        $('.searchable tr').hide();
-                        $('.searchable tr').filter(function () {
-                            return rex.test($(this).text());
-                        }).show();
-                    })
-                }(jQuery));
-            });</script>
+        
 
 
         <!-- Plugins JS -->
@@ -218,10 +206,58 @@
         <script src={{ asset('inc/jquery.easing.min.js') }}></script>
         <script src={{ asset('inc/jquery.counterup.min.js') }}></script>
         <script src={{ asset('inc/smoothscroll.js') }}></script>
-
+        <script src="{{ asset('bundles/dcsrating/js/rating.js') }}"></script>
         <!-- Theme JS -->
         <script src={{ asset('js/theme.js') }}></script>
 
+
+        <script>$(document).ready(function () {
+
+                (function ($) {
+
+                    $('#filter').keyup(function () {
+
+                        var rex = new RegExp($(this).val(), 'i');
+                        $('.searchable tr').hide();
+                        $('.searchable tr').filter(function () {
+                            return rex.test($(this).text());
+                        }).show();
+
+                    })
+
+                }(jQuery));
+
+        });</script>
+
+<script>
+$(function(){ /* to make sure the script runs after page load */
+
+	$('.item').each(function(event){ /* select all divs with the item class */
+	
+		var max_length = 150; /* set the max content length before a read more link will be added */
+		
+		if($(this).html().length > max_length){ /* check for content length */
+			
+			var short_content 	= $(this).html().substr(0,max_length); /* split the content in two parts */
+			var long_content	= $(this).html().substr(max_length);
+			
+			$(this).html(short_content+
+						 '<a href="#" class="read_more"><br/>Afficher la suite</a>'+
+						 '<span class="more_text" style="display:none;">'+long_content+'</span>'); /* Alter the html to allow the read more functionality */
+						 
+			$(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
+ 
+				event.preventDefault(); /* prevent the a from changing the url */
+				$(this).hide(); /* hide the read more button */
+				$(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+		 
+			});
+			
+		}
+		
+	});
+});
+</script>
     </body> 
 
 

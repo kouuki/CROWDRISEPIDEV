@@ -12,3 +12,7 @@ app:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+dcs_rating:
+    resource: "@DCSRatingBundle/Resources/config/routing.xml"
+    prefix:   /Routing
