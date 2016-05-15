@@ -1,6 +1,5 @@
 {% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
 {% block content %}
-
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
     <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
 
@@ -32,7 +31,7 @@
                                     <th>Modifer</th>
                                     <th>Supprimer</th>
                                     <th>Consulter</th>
-                                    <th>Rate</th>  
+                                   
 
                                 </tr>
                             </thead>
@@ -52,7 +51,7 @@
 
                                         <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
                                         <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}"><i class="glyphicon glyphicon-erase"></i></a></td>
-                                        <td><a href="{{path('pidev_crowd_rise_AfficherProjet',{'id': projet.idProjet})}}">consulter Projet</a></td>
+                                        <td><a href="{{path('pidev_crowd_rise_AfficherProjet',{'id': projet.idProjet})}}">Voir</a></td>
                                        
 
 

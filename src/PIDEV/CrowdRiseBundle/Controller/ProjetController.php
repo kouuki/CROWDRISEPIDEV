@@ -22,11 +22,7 @@ class ProjetController extends Controller {
         $form = $this->createForm(new AjoutProjetForm(), $project);
         $request = $this->get('request_stack')->getCurrentRequest();
         $form->handleRequest($request);
-
-
-
-
-
+        
         if ($this->get('request')->getMethod() == 'POST') {
             $em = $this->getDoctrine()->getManager();
             $cat = new Categorie();
@@ -118,6 +114,7 @@ class ProjetController extends Controller {
         $em->persist($project);
         $em->flush();
         return $this->render('PIDEVCrowdRiseBundle:Projet:AfficherProjet.html.twig', array('projet' => $project));
+
     }
 
 }

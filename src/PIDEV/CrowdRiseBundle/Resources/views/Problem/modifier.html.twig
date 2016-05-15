@@ -1,0 +1,60 @@
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+
+
+    <section id="text-carousel-intro-section" class="parallax" data-stellar-background-ratio="0.5" style="background-color: whitesmoke">
+
+        <div class = "container slider-content">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                    <h2>Modifier Votre problème</h2>
+
+                    <div class="panel panel-grey wow bounceInLeft">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body pan">    
+<form action="" method="post" {{ form_enctype(Form) }}>
+                    <!-- START VALIDATIONENGINE PLUGIN -->
+                    <div class="block">
+                                        {% for a in probleme%}
+
+                                            <h4>Problème N° : {{a.idProbleme}}</h4>   <br><br>                             
+                        <form id="validate" role="form" class="form-horizontal" action="javascript:alert('Form #validate submited');">                            
+                                <label>Titre:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                      
+          {{form_widget(Form.titre,{'value' : a.titre },{'attr': {'class': 'validate[required,maxSize[15]] form-control'}} )}}
+                            <br>
+
+                            <br><label>Description:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                {{form_widget(Form.description, {'value' : a.description },{'attr': {'class': 'validate[required,maxSize[15]] form-control'}} )}}
+                                                                        <br>
+
+                                <br><label>Date du Problème:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                {{form_widget(Form.dateProbleme, {'value' : a.dateProbleme|date('d/m/y') },{'attr': {'class': 'validate[required,maxSize[15]] form-control'} })}}
+                                                                        <br>
+
+                                <br><label>Deadline du Problème:</label>&nbsp;&nbsp;&nbsp;
+
+                                {{form_widget(Form.deadlineProbleme, {'value' : a.deadlineProbleme|date('d/m/y') },{'attr': {'class': 'validate[required,maxSize[15]] form-control'}} )}}
+                                         <br>
+
+                                <br> <label>Catégorie:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                {{form_widget(Form.categorie, {'value' : a.categorie },{'attr': {'class': 'validate[required,maxSize[15]] form-control'}} )}}
+                              </div>
+                    
+                              <br><br>
+                    <div class="btn-group pull-right">
+                        {{form_rest(Form)}}
+                    </div> 
+                        {% endfor %}
+                </form>                                   
+                </form>
+          </div>
+                </div>
+            </div>
+    </section>
+{% endblock %}

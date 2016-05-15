@@ -1,0 +1,77 @@
+
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+
+
+    <section id="text-carousel-intro-section" class="parallax" data-stellar-background-ratio="0.5" style="background-color: whitesmoke">
+        <div class = "container slider-content">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                    {% for probleme in problemes | slice(0, 1) %}   
+                        <h2>Les problèmes de la catégorie: {{probleme.getCategorie()}}</h2>
+                    {% endfor %}
+                    <div class="panel panel-grey wow bounceInLeft">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body pan" style="background-color: white">
+                            <div class="input-group"> <span class="input-group-addon">Rechercher</span>
+                                <input id="filter" type="text" class="form-control" placeholder="Ecrire ici ...">
+                            </div>
+                            <table class="table table-striped col-lg-4">
+                                <thead>
+                                    <tr>
+                                        <th>Titre</th>
+                                        <th>Description</th>
+                                        <th>Categorie</th>
+                                        <th>Solution</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="searchable">
+                                    {% for probleme in problemes %}                    
+                                        <tr>
+                                            <td>
+                                                <div class="item">
+                                                    {{probleme.getTitre()}} 
+                                                </div>
+
+                                            </td>
+                                            <td>
+                                                <div class="item">
+                                                    {{probleme.getDescription()}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="item"> {{probleme.getCategorie()}}</div>
+                                            </td>
+
+                                            <td><a href="{{ path('pidev_crowd_rise_ajoutDemande',{'id':probleme.idProbleme}) }}"><i class="glyphicon glyphicon-download-alt"></i>  Déposer un offre</a></td>
+
+                                        </tr>
+
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+
+
+                            <nav>
+                                <div class="pager arcive_Paging">
+                                    <ul class="ul_paging">
+                                        <span class="acitve"></span>
+                                    </ul>
+                                </div>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+

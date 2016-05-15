@@ -30,7 +30,7 @@
         <div class="page-header-wrapper">
             <div class="container">
                 <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
-                     <div class="extra-space-l"></div>
+                    <div class="extra-space-l"></div>
                     <h2>Start-Ups</h2>           
                     <div class="devider"></div>
                     <p class="subtitle">That how much</p>
@@ -39,7 +39,7 @@
         </div>
         <!-- End page header-->
 
-    
+
 
         <!-- Begin prices -->
         <div class="prices">
@@ -71,10 +71,32 @@
                     {% endfor %}
 
                 </div> <!-- /.row -->
+
+                <div class="container">
+
+                    <div class="row wow bounceInLeft" data-wow-delay="0.4s">
+
+                        <div class="col-sm-6 col-md-4">
+
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+
+                        </div>
+
+                        <div class="col-sm-12 col-md-4">
+                            <h4><a href="{{path('pidev_crowd_rise_ListProjet')}}">Voir plus...</a></h4>
+                        </div>    
+
+                    </div>
+
+                </div>
+
+
             </div> <!-- /.container -->
         </div>
         <!-- End prices -->
-        <div class="extra-space-l"></div>
+
     </section>
     <!-- End prices section -->
 
@@ -85,110 +107,75 @@
                 <div class="col-md-12">
                     <div class="portfolio">
                         <!-- Begin page header-->
-                        <div class="page-header-wrapper">
+                        <div class="page">
                             <div class="container">
                                 <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
-                                    <h2>Catégories</h2>
+                                    <h2>Catégories des problèmes</h2>
                                     <div class="devider"></div>
-                                    <p class="subtitle">What we are proud of</p>
+                                    <p class="subtitle">Explorez les problèmes</p>
                                 </div>
                             </div>
                         </div>
                         <!-- End page header-->
-                        <div class="portfoloi_content_area" >
-                            <div class="portfolio_menu" id="filters">
-                                <ul>
-                                    <li class="active_prot_menu"><a href="#porfolio_menu" data-filter="*">all</a></li>
-                                    <li><a href="#porfolio_menu" data-filter=".websites">websites</a></li>
-                                    <li><a href="#porfolio_menu" data-filter=".webDesign" >web design</a></li>
-                                    <li><a href="#porfolio_menu" data-filter=".appsDevelopment">apps development</a></li>
-                                    <li><a href="#porfolio_menu" data-filter=".GraphicDesign">graphic design</a></li>
-                                    <li><a href="#porfolio_menu" data-filter=".responsive">responsive</a></li>
-                                </ul>
-                            </div>
+                        <div>
+
                             <div class="portfolio_content">
                                 <div class="row"  id="portfolio">
                                     <div class="col-xs-12 col-sm-4 appsDevelopment">
                                         <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p1.jpg') }} alt="title"/>
+                                            <img src={{ asset('img/f.jpg') }} alt="title"/>
                                             <div>
-                                                <a href="#">Skull Awesome</a>
-                                                <span>Subtitle</span>
+                                                <a href="{{ path('pidev_crowd_rise_consulterToutProbleme', {'categorie': 'Financier'} )}}">Financier</a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 GraphicDesign">
+                                    <div class="col-xs-12 col-sm-4 appsDevelopment">
                                         <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p2.jpg') }} alt="title"/>
+                                            <img src={{ asset('img/tech.jpg') }} alt="title"/>
                                             <div>
-                                                <a href="#">Photo Frame</a>
-                                                <span>Subtitle</span>
+                                                <a href="{{ path('pidev_crowd_rise_consulterToutProbleme', {'categorie': 'Technique'} )}}">Technique</a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 responsive">
+                                    <div class="col-xs-12 col-sm-4 appsDevelopment">
                                         <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p3.jpg') }}  alt="title"/>
+                                            <img src={{ asset('img/admin.jpg') }} alt="title"/>
                                             <div>
-                                                <a href="#">Hand Shots</a>
-                                                <span>Subtitle</span>
+                                                <a href="{{ path('pidev_crowd_rise_consulterToutProbleme', {'categorie': 'Administratif'} )}}">Administratif</a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 webDesign websites">
+                                    <div class="col-xs-12 col-sm-4 appsDevelopment">
                                         <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p4.jpg') }} alt="title"/>
+                                            <img src={{ asset('img/sociale.png') }} alt="title"/>
                                             <div>
-                                                <a href="#">Night Abstract</a>
-                                                <span>Subtitle</span>
+                                                <a href="{{ path('pidev_crowd_rise_consulterToutProbleme', {'categorie': 'Social'} )}}">Social</a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 appsDevelopment websites">
+                                    <div class="col-xs-12 col-sm-4 appsDevelopment">
                                         <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p5.jpg') }} alt="title"/>
+                                            <img src={{ asset('img/marketing.png') }} alt="title"/>
                                             <div>
-                                                <a href="#">Joy of Independence</a>
-                                                <span>Subtitle</span>
+                                                <a href="{{ path('pidev_crowd_rise_consulterToutProbleme', {'categorie': 'Marketing' } )}}">Marketing</a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 GraphicDesign">
+                                    <div class="col-xs-12 col-sm-4 appsDevelopment">
                                         <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p6.jpg') }} alt="title"/>
+                                            <img src={{ asset('img/autre.png') }} alt="title"/>
                                             <div>
-                                                <a href="#">Night Crawlers</a>
-                                                <span>Subtitle</span>
+                                                <a href="{{ path('pidev_crowd_rise_consulterToutProbleme', {'categorie': 'Autre'} )}}">Autre</a>
+
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-4 responsive">
-                                        <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p7.jpg') }} alt="title"/>
-                                            <div>
-                                                <a href="#">Last Motel</a>
-                                                <span>Subtitle</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4 GraphicDesign">
-                                        <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p8.jpg') }} alt="title"/>
-                                            <div>
-                                                <a href="#">Dirk Road</a>
-                                                <span>Subtitle</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-4 websites">
-                                        <div class="portfolio_single_content">
-                                            <img src={{ asset('img/portfolio/p9.jpg') }} alt="title"/>
-                                            <div>
-                                                <a href="#">Old is Gold</a>
-                                                <span>Subtitle</span>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -197,7 +184,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="btn btn-primary col-md-12 col-sm-12 center-block" style="background-color: whitesmoke" type="submit" ><a href="{{ path('ajouter_problem') }}">Déposez un problème</a></div>                                         
     </section>
+
     <!-- End portfolio -->
 
     <!-- Begin about section -->
@@ -263,7 +253,7 @@
 
         <div class="container">
             <ul class="social-list">
-                    {{ socialButtons() }}               
+                {{ socialButtons() }}               
             </ul>
         </div>
 

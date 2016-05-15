@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  *
  * @ORM\Table(name="solution")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PIDEV\CrowdRiseBundle\Entity\SolutionRepository")
+
  */
 class Solution
 {

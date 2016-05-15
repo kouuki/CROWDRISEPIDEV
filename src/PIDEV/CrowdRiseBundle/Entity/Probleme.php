@@ -1,17 +1,19 @@
 <?php
 
 namespace PIDEV\CrowdRiseBundle\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Probleme
  *
- * @ORM\Table(name="probleme")
- * @ORM\Entity
+ * @ORM\Table()
+ * @UniqueEntity("titre")
+ * @ORM\Entity(repositoryClass="PIDEV\CrowdRiseBundle\Entity\ProblemeRepository")
  */
-class Probleme
-{
+class Probleme {
+
     /**
      * @var integer
      *
@@ -22,11 +24,18 @@ class Probleme
     private $idProbleme;
 
     /**
-     * @var string
+     * @var string $titre
      *
-     * @ORM\Column(name="titre", type="string", length=50, nullable=false)
+     * @ORM\Column(name="titre", type="string", length=255,unique=true)
      */
     private $titre;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_probleme", type="date")
+     */
+    private $dateProbleme;
 
     /**
      * @var string
@@ -36,25 +45,31 @@ class Probleme
     private $description;
 
     /**
-     * @var string
+     * @var categorie
      *
-     * @ORM\Column(name="date_probleme", type="string", length=50, nullable=false)
+     * @ORM\Column(name="categorie", type="text", nullable=false)
      */
-    private $dateProbleme;
+    private $categorie;
+    function getCategorie() {
+        return $this->categorie;
+    }
 
-    /**
-     * @var string
+    function setCategorie(Categorie $categorie) {
+        $this->categorie = $categorie;
+    }
+
+        /**
+     * @var \DateTime
      *
-     * @ORM\Column(name="deadline_probleme", type="string", length=50, nullable=false)
+     * @ORM\Column(name="deadline_probleme", type="date")
      */
     private $deadlineProbleme;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="fichier_probleme", type="string", length=1000, nullable=false)
+     * @ORM\OneToOne(targetEntity="PIDEV\CrowdRiseBundle\Entity\Media", cascade={"persist","remove"},mappedBy="PIDEV\CrowdRiseBundle\Entity\Probleme")
+     *  @ORM\JoinColumn(name="fichier", referencedColumnName="id")
      */
-    private $fichierProbleme;
+    private $fichier;
 
     /**
      * @var integer
@@ -65,62 +80,115 @@ class Probleme
      */
     private $MembreId;
 
-    function getIdProbleme() {
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set idProbleme
+     *
+     * @param integer $idProbleme
+     * @return Probleme
+     */
+    public function setIdProbleme($idProbleme) {
+        $this->idProbleme = $idProbleme;
+
+        return $this;
+    }
+
+    /**
+     * Get idProbleme
+     *
+     * @return integer 
+     */
+    public function getIdProbleme() {
         return $this->idProbleme;
     }
 
-    function getTitre() {
+    /**
+     * Set titre
+     *
+     * @param string $titre
+     * @return Probleme
+     */
+    public function setTitre($titre) {
+        $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get titre
+     *
+     * @return string 
+     */
+    public function getTitre() {
         return $this->titre;
     }
 
-    function getDescription() {
-        return $this->description;
+    /**
+     * Set dateProbleme
+     *
+     * @param \DateTime $dateProbleme
+     * @return Probleme
+     */
+    public function setDateProbleme($dateProbleme) {
+        $this->dateProbleme = $dateProbleme;
+
+        return $this;
     }
 
-    function getDateProbleme() {
-        return $this->dateProbleme;
+    /**
+     * Get dateProbleme
+     *
+     * @return \DateTime 
+     */
+
+    /**
+     * Set deadlineProbleme
+     *
+     * @param \DateTime $deadlineProbleme
+     * @return Probleme
+     */
+   
+    function getDescription() {
+        return $this->description;
     }
 
     function getDeadlineProbleme() {
         return $this->deadlineProbleme;
     }
 
-    function getFichierProbleme() {
-        return $this->fichierProbleme;
+    function getFichier() {
+        return $this->fichier;
     }
 
     function getMembreId() {
         return $this->MembreId;
     }
 
-    function setIdProbleme($idProbleme) {
-        $this->idProbleme = $idProbleme;
-    }
-
-    function setTitre($titre) {
-        $this->titre = $titre;
-    }
-
     function setDescription($description) {
         $this->description = $description;
     }
 
-    function setDateProbleme($dateProbleme) {
-        $this->dateProbleme = $dateProbleme;
-    }
-
-    function setDeadlineProbleme($deadlineProbleme) {
+    function setDeadlineProbleme(\DateTime $deadlineProbleme) {
         $this->deadlineProbleme = $deadlineProbleme;
     }
 
-    function setFichierProbleme($fichierProbleme) {
-        $this->fichierProbleme = $fichierProbleme;
+    function setFichier($fichier) {
+        $this->fichier = $fichier;
     }
 
     function setMembreId($MembreId) {
         $this->MembreId = $MembreId;
     }
-
-
+    function getDateProbleme() {
+        return $this->dateProbleme;
+    }
 
 }

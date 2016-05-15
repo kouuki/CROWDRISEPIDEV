@@ -68,8 +68,10 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
+    transport: smtp
+    encryption: ssl     
+    auth_mode:  login   
+    host: "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
@@ -121,8 +123,6 @@ nomaya_social:
         googleplus:         "https://plus.google.com/105931415830389032796"
     theme:                  'default' # optional
 
-
-
 knp_paginator:
     page_range: 5                      # default page range used in pagination control
     default_options:
@@ -132,8 +132,4 @@ knp_paginator:
         distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
     template:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_pagination.html.twig     # sliding pagination controls template
-
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
-
-
-

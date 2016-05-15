@@ -21,6 +21,42 @@ pidev_crowd_rise_ajouterSolution:
 pidev_crowd_rise_consultersolution:
     path:     /consultersolution
     defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterSolution }
+    
+ajouter_problem:
+    path:     /ajouter
+    defaults: { _controller: PIDEVCrowdRiseBundle:Problem:ajouter }
+    
+consulter:
+    path:     /consulter{categorie}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Problem:Consulter }
+modifier:
+    path:    /modifier{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Problem:Modifier }
+supprimer:
+    path:    /supprimer{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Problem:Supprimer }
+    
+afficher:
+    path:    /afficher
+    defaults: { _controller: PIDEVCrowdRiseBundle:Problem:Afficher }
+    
+affichersolutionPB:
+    path:    /affichersolutionPB{id}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:consulterPB }
+    
+acceptersolution:
+    path:    /acceptersolution{idSolution}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:accepter } 
+    
+refusersolution:
+    path:    /refusersolution{idSolution}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:refuser } 
+afficherAccepter:
+    path:    /afficherAccepter
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:afficherAccepter }  
+afficherRefuser:
+    path:    /afficherRefuser
+    defaults: { _controller: PIDEVCrowdRiseBundle:Solution:afficherRefuser } 
 
 
 pidev_crowd_rise_AjouterProjet:
@@ -78,3 +114,6 @@ pidev_crowd_rise_upload:
     path:     /uploadFile/{id}
     defaults: { _controller: PIDEVCrowdRiseBundle:Upload:create }
 
+pidev_crowd_rise_consulterToutProbleme:
+    path:     /consulter/{categorie}
+    defaults: { _controller: PIDEVCrowdRiseBundle:Problem:ConsulterProb }
