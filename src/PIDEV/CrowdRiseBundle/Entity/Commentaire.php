@@ -37,18 +37,14 @@ class Commentaire
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="Projet")
-     * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="Projet_id", referencedColumnName="id_projet" , onDelete="CASCADE")
+     * 
      * })
      */
     private $Projetid;
 
     /**
      * @var integer
-     * @ORM\ManyToOne(targetEntity="Membre")
-     * @ORM\JoinColumns({
-     * @ORM\JoinColumn(name="Membre_id", referencedColumnName="id" , onDelete="CASCADE")
+     * 
      * })
      */
     private $Membreid;

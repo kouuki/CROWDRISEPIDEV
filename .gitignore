@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 /nbproject/
 /app/logs/
 /app/cache/
 .idea/
+=======
+/nbproject/private/
+/app/logs/
+/app/cache/
+/vendor
+>>>>>>> 79014bbf7bf86fb37ba5e606918e36714386141a

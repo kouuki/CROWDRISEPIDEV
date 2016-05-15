@@ -1,11 +1,12 @@
 <?php
 
 namespace PIDEV\CrowdRiseBundle\Entity;
+
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PIDEV\CrowdRiseBundle\Entity\SolutionRepository")
  * @ORM\Table(name="Membre")
  */
 class Membre extends BaseUser {
@@ -19,9 +20,14 @@ class Membre extends BaseUser {
 
     public function __construct() {
         parent::__construct();
-        
     }
-private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50, nullable=false)
+     */
+    private $nom;
 
     /**
      * @var string
@@ -44,5 +50,53 @@ private $nom;
      * @ORM\JoinColumn(name="profil_id", referencedColumnName="id" , onDelete="CASCADE")
      * })
      */
-private $profil;
+    private $profil;    
+    
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="credit", type="float")
+     */
+    private $credit;
+
+    function getId() {
+        return $this->id;
+    }
+
+    function getNom() {
+        return $this->nom;
+    }
+
+    function getPrenom() {
+        return $this->prenom;
+    }
+
+    function getAdresse() {
+        return $this->adresse;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
+    function setNom($nom) {
+        $this->nom = $nom;
+    }
+
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
+    }
+
+    function setAdresse($adresse) {
+        $this->adresse = $adresse;
+    }
+    
+    function getCredit() {
+        return $this->credit;
+    }
+
+    function setCredit($credit) {
+        $this->credit = $credit;
+    }
+
 }

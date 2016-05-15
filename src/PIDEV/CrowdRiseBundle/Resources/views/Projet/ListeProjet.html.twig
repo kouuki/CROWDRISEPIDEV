@@ -1,0 +1,73 @@
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+
+
+    <section id="text-carousel-intro-section" class="parallax" data-stellar-background-ratio="0.5" style="background-color: whitesmoke">
+
+
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                <div class="text-center">
+                    <h1>Liste des Projets</h1>
+                </div>
+
+                <div class="panel panel-grey wow bounceInLeft">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body pan">
+
+                        <table class="table table-striped col-lg-4">
+                            <thead>
+
+
+
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Description</th>
+                                    <th>Financement</th> 
+                                    <th>Categorie</th>
+                                    <th>Image</th>
+                                    <th>Modifer</th>
+                                    <th>Supprimer</th>
+                                    <th>Consulter</th>
+                                   
+
+                                </tr>
+                            </thead>
+                            <tbody class="searchable">
+                                {% for projet in projets %}
+                                    <tr>
+                                        <td>{{projet.titre}}</td>
+                                        <td>{{projet.description}}</td>
+                                        <td>{{projet.typeFinancement}}</td>
+                                        <td>{{projet.idcat.nom}}</td>
+
+
+
+
+
+                                        <td> <img height="100px" src="{{ asset('Uploads/' ~ projet.imageProjet.path ) }}" class="img-thumbnail" /> </td> 
+
+                                        <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                        <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}"><i class="glyphicon glyphicon-erase"></i></a></td>
+                                        <td><a href="{{path('pidev_crowd_rise_AfficherProjet',{'id': projet.idProjet})}}">Voir</a></td>
+                                       
+
+
+
+
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                            <div class="col-md-12 text-center">
+      <ul class="pagination pagination-lg pager" id="myPager"></ul>
+      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

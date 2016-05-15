@@ -1,0 +1,37 @@
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+    <div class="extra-space-xxl" style="background-color: whitesmoke"></div>
+
+
+    <section id="text-carousel-intro-section" class="parallax" data-stellar-background-ratio="0.5" style="background-color: whitesmoke">
+
+        <div class = "container slider-content">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12">
+                    <h2>Ajoutez votre solution</h2>
+
+                    <div class="panel panel-grey wow bounceInLeft">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body pan">
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <div class="form-body pal">
+                                    <div class="form-group">
+                                       
+                                        {{ form_row(Form.file) }}
+                                        
+                                    </div>
+                                    <hr />
+                                    <div class="form-actions text-right pal">
+                                        {{ form_widget(Form.Enregistrer,{'attr':{'class':'btn btn-primary','style': 'background-color: #363940'}})}}
+                                        {{ form_rest(Form) }}
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

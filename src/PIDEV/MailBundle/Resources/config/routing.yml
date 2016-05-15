@@ -1,0 +1,12 @@
+pidev_mail_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PidevMailBundle:Default:index }
+
+pidev_mail_redirection:
+    path:     /redirection
+    defaults: { _controller: PidevMailBundle:Default:redirection}
+
+pidev_mail_sendmail:
+    path:     /sendMail  
+    defaults: { _controller: PidevMailBundle:Default:sendMail}
+

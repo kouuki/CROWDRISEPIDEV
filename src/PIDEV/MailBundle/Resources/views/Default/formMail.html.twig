@@ -1,0 +1,138 @@
+
+{% extends 'PIDEVCrowdRiseBundle::layout.html.twig' %}
+{% block content %}
+
+    <!--Utilisable -->
+    <!-- Begin contact section -->
+    <section id="contact-section" class="page text-white parallax" data-stellar-background-ratio="0.5" 
+             style="background-image: url({{ asset('img/map-bg.jpg') }});">
+
+        <div class="cover"></div>
+
+        <!-- Begin page header-->
+        <div class="page-header-wrapper">
+            <br>
+            <br>
+            <br>
+            <div class="container">
+                <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
+                    <h2>Contactez-nous</h2>
+                    <div class="devider"></div>
+                    <p class="subtitle">A l'écoute de vos réclamations</p><br><br><br><br>
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+                    <div class="alert alert-success  fade in">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ flashMessage }}
+                    </div>
+
+                {% endfor %}
+                </div>
+                
+            </div>
+        </div>  
+
+        <!-- End page header-->
+
+        <div class="contact wow bounceInRight" data-wow-delay="0.4s">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <div class="contact-info">
+                            <br><h4>Notre Adresse</h4>
+                            <ul class="contact-address">
+                                <li><i class="fa fa-map-marker fa-lg"></i>&nbsp;
+                                    Z.I. Chotrana II - B.P. 160  ,<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    2083 Pôle Technologique - Cité El Ghazala ,<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ariana, Tunisie, 2080</li>
+
+                                <li><i class="fa fa-phone"></i>&nbsp; 00-216-70-685-685 </li>
+                                <li><i class="fa fa-print"></i>&nbsp; 00-216-70-685-685</li>
+                                <li><i class="fa fa-envelope"></i>  <a href="mailto:CrowdRise1516@gmail.com">CrowdRise1516@gmail.com</a></li>
+                                <li><i class="fa fa-skype"></i> Crowd-Rise</li>
+                            </ul>
+
+                        </div>
+
+                        {# ***********importation de l'API Map : bibliothèque JAVASCRIPT********* #}
+                        <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+                        <script>
+                            var myCenter = new google.maps.LatLng(36.8984821, 10.189761900000008);
+
+                            function initialize()
+                            {
+                                var mapProperties = {
+                                    center: myCenter,
+                                    zoom: 10,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+
+                                var map = new google.maps.Map(document.getElementById("googleMap"), mapProperties);
+
+                            {#ajout du Marker #}
+                                    var marker = new google.maps.Marker({
+                                        position: myCenter,
+                                        animation: google.maps.Animation.BOUNCE,{#animation du Marker#}
+                                        title: 'Click to zoom'
+                                    });
+
+                                    marker.setMap(map);
+
+                            {#fenetre dinfo#}
+                                    var infoFenetre = new google.maps.InfoWindow({
+                                        content: 'Welcome To ESPRIT!'
+                                    });
+
+                                    infoFenetre.open(map, marker);
+
+                            {#Zoummer lors du clique sur le marker#}
+                                    google.maps.event.addListener(marker, 'click', function () {
+                                        map.setZoom(16);
+                                        map.setCenter(marker.getPosition());
+                                    });
+
+                                }
+                                google.maps.event.addDomListener(window, 'load', initialize);
+
+                        </script>   
+                        <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div id="googleMap" style="width:530px;height:240px;"></div>
+
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="contact-form">
+                            <br> <h4>Contactez-nous</h4> 
+                            <form role="form" action ="{{path('pidev_mail_sendmail')}}" method="POST">
+                                <div class="form-group">
+                                    <input type="text" name="nom" class="form-control input-lg" placeholder="Votre Nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="prenom" class="form-control input-lg" placeholder="Votre Prénom" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="integer" name="tel" class="form-control input-lg" placeholder="Votre Téléphone" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email"  name="email" class="form-control input-lg" placeholder="Votre Adresse Electronique" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="sujet" class="form-control input-lg" placeholder="Sujet" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="message" class="form-control input-lg" rows="5" placeholder="Message" required></textarea>
+                                </div>
+                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s">Envoyer</button>
+                            </form>
+                        </div>	
+                    </div>
+
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div>
+    </section>
+    <!-- End contact section -->
+
+    <!-- End Utilisable -->
+{% endblock %}
