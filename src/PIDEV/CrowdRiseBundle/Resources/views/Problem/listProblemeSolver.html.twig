@@ -26,7 +26,7 @@
                                         <th>Description</th>
                                         <th>Categorie</th>
                                         <th>Solution</th>
-
+                                        <th>Vote</th>
                                     </tr>
                                 </thead>
                                 <tbody class="searchable">
@@ -47,8 +47,9 @@
                                                 <div class="item"> {{probleme.getCategorie()}}</div>
                                             </td>
 
-                                            <td><a href="{{ path('pidev_crowd_rise_ajoutDemande',{'id':probleme.idProbleme}) }}"><i class="glyphicon glyphicon-download-alt"></i>  Déposer un offre</a></td>
-
+                                            <td><a href="{{ path('pidev_crowd_rise_ajoutDemande',{'id':probleme.idProbleme}) }}"><i class="glyphicon glyphicon-download-alt"></i>  Déposer une offre</a></td>
+                                            <td>
+                                                <p>My rating: <input type="number" name="your_awesome_parameter" id="some_id" class="rating" data-clearable="remove"/></p>                                            </td>
                                         </tr>
 
                                     {% endfor %}

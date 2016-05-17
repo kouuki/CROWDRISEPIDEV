@@ -22,18 +22,22 @@
                         <div>DESCRIPTION :  {{projet.description}} </div>
                         <div>TYPE DE FINANCEMENT : {{projet.typeFinancement}}</div>
                         <div>Categorie : {{projet.idcat.nom}}</div>
-                       
+
                         <div class="row">
 
                         </div>
                         <div><img height="100px" width="400px" src="{{ asset('Uploads/' ~ projet.imageProjet.path ) }}" class="img-thumbnail" /> </div>
- </tbody>
+                        </tbody>
 
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="container">
+            <ul class="social-list">
+                {{ socialButtons() }}               
+            </ul>
+        </div>
     </section>
 {% endblock %}
 

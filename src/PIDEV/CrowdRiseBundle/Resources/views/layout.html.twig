@@ -36,6 +36,7 @@
         <link rel="stylesheet" href={{ asset('css/style.css') }}>
         <link rel="stylesheet" href={{ asset('css/mobile.css') }}>
 
+
         <!-- Skin CSS -->
         <link rel="stylesheet" href={{ asset('css/skin/cool-gray.css') }}>
 <!-- <link rel="stylesheet" href={{ asset('css/skin/ice-blue.css') }}> -->
@@ -59,7 +60,13 @@
         <script type="text/javascript" src={{ asset('Notification/NotificationAffichage.js') }}></script>
         <link rel="stylesheet" href={{ asset('Notification/NotificationStyle.css') }}>
         {#/Notification Liste#}
-
+  <script>
+        $(function(){
+        $('input').on('change',function(){
+          alert("Changed: " + $(this).val())
+        });
+      });
+    </script>
     </head>
 
     <body data-spy="scroll" data-target="#main-navbar">
@@ -90,14 +97,19 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right" id="nav">
                                 <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_accueil') }}">Acceuil</a></li>
-                                <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_AjouterProjet') }}">Lancer Un Projet</a></li>
+                               
                                     {% if (app.user) %}
-                                    <li><a class="page-scroll" href="{{ path('pidev_profil_afficher',{'id':app.user.id}) }}">hi {{ app.user.username }}</a></li>
-                                    <li><a  href="{{ path('fos_user_security_logout')}}">Déconnexion </a></li>
-                                    {% else %}
-                                    <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="{{ path('fos_user_security_login')}}">Se connecter </a></li>
+                                    
+                                   
+                                    
+                                    {% if  (app.user.granted("ROLE_SOLVER")) %}
+                                    <li><a  href="">Crédit</a></li>
+                                    {% elseif (app.user.granted("ROLE_SUBMITTER")) %}
+                                         <li><a class="page-scroll" href="{{ path('pidev_crowd_rise_AjouterProjet') }}">Lancer Un Projet</a></li>
+                                         <li><a class="page-scroll" href="{{ path('ajouter_problem') }}">Demande d'un Service</a></li>
                                     {% endif %}
-                                <li id="notification_li">
+                                     <li><a class="page-scroll" href="{{ path('pidev_profil_afficher',{'id':app.user.id}) }}">hi {{ app.user.username }}</a></li>
+                                      <li id="notification_li">
                                     <span id="notification_count">
                                         {% block NotificationNumber %}
                                             0
@@ -121,6 +133,12 @@
                                     </div>
 
                                 </li>
+                                    <li><a  href="{{ path('fos_user_security_logout')}}">Déconnexion </a></li>
+                                    {% else %}
+                                    <li><a class="page-scroll" data-toggle="modal" data-target=".bs-example-modal-sm" href="{{ path('fos_user_security_login')}}">Se connecter </a></li>
+                                    <li><a class="page-scroll" href="{{ path('pidev_mail_sendmail')}}">Contact us</a></li>
+                                    {% endif %}
+                               
                             </ul>
                         </div><!-- /.navbar-collapse -->
                     </div><!-- /.container -->
@@ -154,137 +172,213 @@
             {% block content %}
             {% endblock %}
             <!-- Begin footer -->
-            <footer class="text-off-white">
+            <!--Utilisable -->
+            <!-- Begin contact section -->
+            <section id="contact-section" class="page text-white parallax" data-stellar-background-ratio="0.5" 
+                     style="background-image: url({{ asset('img/map-bg.jpg') }});">
 
-                <div class="footer-top">
+                <div class="cover"></div>
+
+                <!-- Begin page header-->
+                <div class="page-header-wrapper">
+                    <br>
+                    <br>
+                    <br>
                     <div class="container">
+                        <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
+                            <h2>Contactez-nous</h2>
+                            <div class="devider"></div>
+                            <p class="subtitle">A l'écoute de vos réclamations</p><br><br><br><br>
+                            {% for flashMessage in app.session.flashbag.get('notice') %}
 
-                        <div class="row wow bounceInLeft" data-wow-delay="0.4s">
-
-                            <div class="col-sm-6 col-md-4">
-                                <h4>Useful Links</h4>
-                                <ul class="imp-links">
-                                    <li><a href="">À Propos</a></li>
-                                    <li><a href="">Populaire</a></li>
-                                    <li><a href="">Catégorie</a></li>
-                                    <li><a href="">Copyright</a></li>
-                                    <li><a href="">Advertise</a></li>
-                                    <li><a href="">Legal</a></li>
-                                </ul>
-                            </div>
-
-                            <div class="col-sm-6 col-md-4">
-                                <h4>ABONNEZ-VOUS</h4>
-                                <div id="footer_signup">
-                                    <div id="email">
-                                        <form id="subscribe" method="POST">
-                                            <input type="text" placeholder="Entrez votre e-mail" name="email" id="address" data-validate="validate(required, email)"/>
-                                            <button type="submit">S'inscrire maintenant</button>
-                                            <span id="result" class="section-description"></span>
-                                        </form> 
-                                    </div>
-                                </div> 
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
-                            </div>
-
-                            <div class="col-sm-12 col-md-4">
-                                <h4>Recent Tweets</h4>
-                                <div class="single-tweet">
-                                    <div class="tweet-content"><span>@Unika</span> Excepteur sint occaecat cupidatat non proident</div>
-                                    <div class="tweet-date">1 Hour ago</div>
-                                    <div class="single-tweet">
-                                        <div class="tweet-content"><span>@Unika</span> Excepteur sint occaecat cupidatat non proident uku shumaru</div>
-                                        <div class="tweet-date">1 Hour ago</div>
-                                    </div>
+                                <div class="alert alert-success  fade in">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    {{ flashMessage }}
                                 </div>
 
-                            </div>    </div>
-                       
+                            {% endfor %}
+                        </div>
+
                     </div>
+                </div>  
 
-                </div> <!-- /.row -->
+                <!-- End page header-->
 
-        </div> <!-- /.container -->
-    </div>
+                <div class="contact wow bounceInRight" data-wow-delay="0.4s">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="contact-info">
+                                    <br><h4>Notre Adresse</h4>
+                                    <ul class="contact-address">
+                                        <li><i class="fa fa-map-marker fa-lg"></i>&nbsp;
+                                            Z.I. Chotrana II - B.P. 160  ,<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            2083 Pôle Technologique - Cité El Ghazala ,<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ariana, Tunisie, 2080</li>
+
+                                        <li><i class="fa fa-phone"></i>&nbsp; 00-216-70-685-685 </li>
+                                        <li><i class="fa fa-print"></i>&nbsp; 00-216-70-685-685</li>
+                                        <li><i class="fa fa-envelope"></i>  <a href="mailto:CrowdRise1516@gmail.com">CrowdRise1516@gmail.com</a></li>
+                                        <li><i class="fa fa-skype"></i> Crowd-Rise</li>
+                                    </ul>
+
+                                </div>
+
+                                {# ***********importation de l'API Map : bibliothèque JAVASCRIPT********* #}
+                                <script src="http://maps.googleapis.com/maps/api/js"></script>
+
+                                <script>
+                                    var myCenter = new google.maps.LatLng(36.8984821, 10.189761900000008);
+
+                                    function initialize()
+                                    {
+                                        var mapProperties = {
+                                            center: myCenter,
+                                            zoom: 10,
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        };
+
+                                        var map = new google.maps.Map(document.getElementById("googleMap"), mapProperties);
+
+                                    {#ajout du Marker #}
+                                            var marker = new google.maps.Marker({
+                                                position: myCenter,
+                                                animation: google.maps.Animation.BOUNCE,{#animation du Marker#}
+                                                title: 'Click to zoom'
+                                            });
+
+                                            marker.setMap(map);
+
+                                    {#fenetre dinfo#}
+                                            var infoFenetre = new google.maps.InfoWindow({
+                                                content: 'Welcome To ESPRIT!'
+                                            });
+
+                                            infoFenetre.open(map, marker);
+
+                                    {#Zoummer lors du clique sur le marker#}
+                                            google.maps.event.addListener(marker, 'click', function () {
+                                                map.setZoom(16);
+                                                map.setCenter(marker.getPosition());
+                                            });
+
+                                        }
+                                        google.maps.event.addDomListener(window, 'load', initialize);
+
+                                </script>   
+                                <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <div id="googleMap" style="width:530px;height:240px;"></div>
+
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="contact-form">
+                                    <br> <h4>Contactez-nous</h4> 
+                                    <form role="form" action ="{{path('pidev_mail_sendmail')}}" method="POST">
+                                        <div class="form-group">
+                                            <input type="text" name="nom" class="form-control input-lg" placeholder="Votre Nom" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="prenom" class="form-control input-lg" placeholder="Votre Prénom" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="integer" name="tel" class="form-control input-lg" placeholder="Votre Téléphone" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email"  name="email" class="form-control input-lg" placeholder="Votre Adresse Electronique" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="sujet" class="form-control input-lg" placeholder="Sujet" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea name="message" class="form-control input-lg" rows="5" placeholder="Message" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s">Envoyer</button>
+                                    </form>
+                                </div>	
+                            </div>
+
+                        </div> <!-- /.row -->
+                    </div> <!-- /.container -->
+                </div>
+            </section>
+            <!-- End contact section -->
+
+
+            <a href="#" class="scrolltotop"><i class="fa fa-arrow-up"></i></a> <!-- Scroll to top button -->
+
+        </div><!-- body ends -->
 
 
 
-</footer>
 
-<!-- End footer -->
-
-<a href="#" class="scrolltotop"><i class="fa fa-arrow-up"></i></a> <!-- Scroll to top button -->
-
-</div><!-- body ends -->
-
-
-
-
-<!-- Plugins JS -->
-<script src={{ asset('inc/jquery/jquery-1.11.1.min.js') }}></script>
-<script src={{ asset('inc/bootstrap/js/bootstrap.min.js') }}></script>
-<script src={{ asset('inc/owl-carousel/js/owl.carousel.min.js') }}></script>
-<script src={{ asset('inc/stellar/js/jquery.stellar.min.js') }}></script>
-<script src={{ asset('inc/animations/js/wow.min.js') }}></script>
-<script src={{ asset('inc/waypoints.min.js') }}></script>
-<script src={{ asset('inc/isotope.pkgd.min.js') }}></script>
-<script src={{ asset('inc/classie.js') }}></script>
-<script src={{ asset('inc/jquery.easing.min.js') }}></script>
-<script src={{ asset('inc/jquery.counterup.min.js') }}></script>
-<script src={{ asset('inc/smoothscroll.js') }}></script>
-<script src="{{ asset('bundles/dcsrating/js/rating.js') }}"></script>
-<!-- Theme JS -->
-<script src={{ asset('js/theme.js') }}></script>
+        <!-- Plugins JS -->
+        <script src="{{ asset('js/bootstrap-rating-input.min.js') }}" type="text/javascript"></script>
+        <script src={{ asset('inc/jquery/jquery-1.11.1.min.js') }}></script>
+        <script src={{ asset('inc/bootstrap/js/bootstrap.min.js') }}></script>
+        <script src={{ asset('inc/owl-carousel/js/owl.carousel.min.js') }}></script>
+        <script src={{ asset('inc/stellar/js/jquery.stellar.min.js') }}></script>
+        <script src={{ asset('inc/animations/js/wow.min.js') }}></script>
+        <script src={{ asset('inc/waypoints.min.js') }}></script>
+        <script src={{ asset('inc/isotope.pkgd.min.js') }}></script>
+        <script src={{ asset('inc/classie.js') }}></script>
+        <script src={{ asset('inc/jquery.easing.min.js') }}></script>
+        <script src={{ asset('inc/jquery.counterup.min.js') }}></script>
+        <script src={{ asset('inc/smoothscroll.js') }}></script>
+        <script src="{{ asset('bundles/dcsrating/js/rating.js') }}"></script>
+        <!-- Theme JS -->
+        <script src={{ asset('js/theme.js') }}></script>
 
 
-<script>$(document).ready(function () {
+        <script>$(document).ready(function () {
 
-        (function ($) {
+                                            (function ($) {
 
-            $('#filter').keyup(function () {
+                                                $('#filter').keyup(function () {
 
-                var rex = new RegExp($(this).val(), 'i');
-                $('.searchable tr').hide();
-                $('.searchable tr').filter(function () {
-                    return rex.test($(this).text());
-                }).show();
+                                                    var rex = new RegExp($(this).val(), 'i');
+                                                    $('.searchable tr').hide();
+                                                    $('.searchable tr').filter(function () {
+                                                        return rex.test($(this).text());
+                                                    }).show();
 
-            })
+                                                })
 
-        }(jQuery));
+                                            }(jQuery));
 
-    });</script>
+                                        });</script>
 
-<script>
-    $(function () { /* to make sure the script runs after page load */
+        <script>
+            $(function () { /* to make sure the script runs after page load */
 
-        $('.item').each(function (event) { /* select all divs with the item class */
+                $('.item').each(function (event) { /* select all divs with the item class */
 
-            var max_length = 150; /* set the max content length before a read more link will be added */
+                    var max_length = 150; /* set the max content length before a read more link will be added */
 
-            if ($(this).html().length > max_length) { /* check for content length */
+                    if ($(this).html().length > max_length) { /* check for content length */
 
-                var short_content = $(this).html().substr(0, max_length); /* split the content in two parts */
-                var long_content = $(this).html().substr(max_length);
+                        var short_content = $(this).html().substr(0, max_length); /* split the content in two parts */
+                        var long_content = $(this).html().substr(max_length);
 
-                $(this).html(short_content +
-                        '<a href="#" class="read_more"><br/>Afficher la suite</a>' +
-                        '<span class="more_text" style="display:none;">' + long_content + '</span>'); /* Alter the html to allow the read more functionality */
+                        $(this).html(short_content +
+                                '<a href="#" class="read_more"><br/>Afficher la suite</a>' +
+                                '<span class="more_text" style="display:none;">' + long_content + '</span>'); /* Alter the html to allow the read more functionality */
 
-                $(this).find('a.read_more').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
+                        $(this).find('a.read_more').click(function (event) { /* find the a.read_more element within the new html and bind the following code to it */
 
-                    event.preventDefault(); /* prevent the a from changing the url */
-                    $(this).hide(); /* hide the read more button */
-                    $(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+                            event.preventDefault(); /* prevent the a from changing the url */
+                            $(this).hide(); /* hide the read more button */
+                            $(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+
+                        });
+
+                    }
 
                 });
-
-            }
-
-        });
-    });
-</script>
-</body> 
+            });
+        </script>
+  
+    </body> 
 
 
 </html>

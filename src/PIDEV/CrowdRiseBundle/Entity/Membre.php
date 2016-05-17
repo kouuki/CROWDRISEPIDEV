@@ -99,4 +99,9 @@ class Membre extends BaseUser {
         $this->credit = $credit;
     }
 
+    public function isGranted($role)
+    {
+        return in_array($role, $this->getRoles());
+    }
 }
+

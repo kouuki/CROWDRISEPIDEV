@@ -36,13 +36,13 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface {
         }, $roles);
 // If is a admin or super admin we redirect to the backoffice area
         if (in_array('ROLE_SUBMITTER', $rolesTab, true))
-                $redirection = new RedirectResponse($this->router->generate('pidev_crowd_rise_projet'));
+                $redirection = new RedirectResponse($this->router->generate('pidev_crowd_rise_accueil'));
 // otherwise, if is a commercial user we redirect to the crm area
         elseif (in_array('ROLE_SOLVER', $rolesTab, true))
             $redirection = new RedirectResponse($this->router->generate('pidev_crowd_rise_accueil'));
 // otherwise we redirect user to the member area
         else
-            $redirection = new RedirectResponse($this->router->generate('pidev_crowd_rise_ajoutersolution'));
+            $redirection = new RedirectResponse($this->router->generate('pidev_crowd_rise_accueil'));
         return $redirection;
     }
 

@@ -6,6 +6,9 @@ pidev_crowd_rise_accueil:
     path:     /accueil
     defaults: { _controller: PIDEVCrowdRiseBundle:Default:accueil }
     
+pidev_crowd_rise_accessdenied:
+    path:     /accesdenied
+    defaults: { _controller: PIDEVCrowdRiseBundle:Default:accesdenied }
 pidev_crowd_rise_projet:
     path:     /projet
     defaults: { _controller: PIDEVCrowdRiseBundle:Default:projet }

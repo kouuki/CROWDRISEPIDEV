@@ -28,10 +28,14 @@
                                     <th>Financement</th> 
                                     <th>Categorie</th>
                                     <th>Image</th>
+                                       {% if (app.user) %}
+                                        {% if (app.user.granted("ROLE_SUBMITTER")) %}
                                     <th>Modifer</th>
                                     <th>Supprimer</th>
+                                    {% endif %}
+                                             {% endif %}
                                     <th>Consulter</th>
-                                   
+
 
                                 </tr>
                             </thead>
@@ -47,12 +51,15 @@
 
 
 
-                                        <td> <img height="100px" src="{{ asset('Uploads/' ~ projet.imageProjet.path ) }}" class="img-thumbnail" /> </td> 
-
-                                        <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
-                                        <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}"><i class="glyphicon glyphicon-erase"></i></a></td>
+                                        <td> <img height="100px" src="{{ asset('Uploads/' ~ projet.imageProjet.path ) }}" class="" /> </td> 
+                                             {% if (app.user) %}
+                                        {% if (app.user.granted("ROLE_SUBMITTER")) %}
+                                            <td><a href="{{path('pidev_crowd_rise_ModifierProjet',{'id': projet.idProjet}) }}"><i class="glyphicon glyphicon-edit"></i></a></td>
+                                            <td><a href="{{path('pidev_crowd_rise_SupprimerProjet',{'id': projet.idProjet})}}"><i class="glyphicon glyphicon-erase"></i></a></td>
+                                            {% endif %}
+                                             {% endif %}
                                         <td><a href="{{path('pidev_crowd_rise_AfficherProjet',{'id': projet.idProjet})}}">Voir</a></td>
-                                       
+
 
 
 
@@ -61,9 +68,9 @@
                                 {% endfor %}
                             </tbody>
                         </table>
-                            <div class="col-md-12 text-center">
-      <ul class="pagination pagination-lg pager" id="myPager"></ul>
-      </div>
+                        <div class="col-md-12 text-center">
+                            <ul class="pagination pagination-lg pager" id="myPager"></ul>
+                        </div>
                     </div>
                 </div>
             </div>

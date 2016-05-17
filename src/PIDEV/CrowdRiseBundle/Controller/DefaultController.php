@@ -41,6 +41,10 @@ class DefaultController extends Controller
     {
         return $this->render('PIDEVCrowdRiseBundle:Accueil:inscription.html.twig', array());
     }
+    public function accesdeniedAction()
+    {
+        return $this->render('PIDEVCrowdRiseBundle:Accueil:accesdenied.html.twig', array());
+    }
   
     
     

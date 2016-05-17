@@ -12,8 +12,11 @@
                         <h1>CrowDRise</h1>
                         <p>Mettez fin à nos problèmes!</p>
                         <div class="extra-space-l"></div>
-                        <a class="btn btn-blank" href="{{path('fos_user_registration_register')}}" target="_blank" role="button">Inscrivez-vous</a>
-
+                        {% if (app.user) %}
+                        
+                            {% else %}
+                                <a class="btn btn-blank" href="{{path('fos_user_registration_register')}}" target="_blank" role="button">Inscrivez-vous</a>
+                        {% endif %}
                     </div>
                 </div>
 
@@ -251,11 +254,7 @@
         </div>
         <!-- End page header-->
 
-        <div class="container">
-            <ul class="social-list">
-                {{ socialButtons() }}               
-            </ul>
-        </div>
+       
 
     </section>
     <!-- End social section -->
